@@ -12,18 +12,15 @@ export class CreateUsersComponent implements OnInit {
 
   postForm: FormGroup
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public service : AdminService ) { }
+  constructor() { }
 
 
   ngOnInit(): void {
 
-    this.formControl();
-
-    this.setEdit();
+ 
 
    }
 
-   get error(): any { return this.postForm.controls; }
-  }
+
 
 }
