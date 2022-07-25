@@ -1,63 +1,85 @@
+<form [formGroup]="createForm">
 <mat-card>
 	<mat-card-content>
     <mat-card-title>Creacion de usuarios</mat-card-title>
 <div class="row">
 <div class="col-6">
   <mat-form-field>
-  <input matInput  placeholder="Ingresa tu primer nombre">
+  <input matInput required formControlName="firstName" placeholder="Ingresa tu primer nombre">
+  <mat-error *ngIf="error.firstName.errors"><span *ngIf="error.firstName.errors.required">¡Advertencia! Este campo es requerido</span></mat-error>
 </mat-form-field>
 </div>
+<br>
 <div class="col-6">
 <mat-form-field>
-  <input matInput  placeholder="Ingresa tu segundo nombre">
+  <input matInput required formControlName="middleName" placeholder="Ingresa tu segundo nombre"> 
 </mat-form-field>
 </div>
 </div>
+<br>
 <div class="row">
 <div class="col-6">
   <mat-form-field>
-  <input matInput  placeholder="Ingresa tu primer apellido">
+  <input matInput required formControlName="firstLastname" placeholder="Ingresa tu primer apellido">
+  <mat-error *ngIf="error.firstLastname.errors"><span *ngIf="error.firstLastname.errors.required">¡Advertencia! Este campo es requerido</span></mat-error>
 </mat-form-field>
 </div>
+<br>
 <div class="col-6">
 <mat-form-field>
-  <input matInput  placeholder="Ingresa tu segundo apellido">
+  <input matInput required formControlName="secondLastname" placeholder="Ingresa tu segundo apellido">
+  <mat-error *ngIf="error.secondLastname.errors"><span *ngIf="error.secondLastname.errors.required">¡Advertencia! Este campo es requerido</span></mat-error>
 </mat-form-field>
 </div>
 </div>
+<br>
 <div class="row">
 <div class="col-6">
   <mat-form-field>
-  <input matInput  placeholder="Ingresa tu tipo de documento">
+  <input matInput required formControlName="fkDocumentType" placeholder="Ingresa tu tipo de documento">
+  <mat-error *ngIf="error.fkDocumentType.errors"><span *ngIf="error.fkDocumentType.errors.required">¡Advertencia! Este campo es requerido</span></mat-error>
 </mat-form-field>
 </div>
+<br>
 <div class="col-6">
 <mat-form-field>
-  <input matInput  placeholder="Ingresa tu numero de documento">
+  <input matInput required formControlName="ducumentNumber" placeholder="Ingresa tu numero de documento">
+  <mat-error *ngIf="error.ducumentNumber.errors"><span *ngIf="error.ducumentNumber.errors.required">¡Advertencia! Este campo es requerido</span></mat-error>
+  <mat-error *ngIf="error.ducumentNumber.errors"><span *ngIf="error.ducumentNumber.errors.minlength">¡Aún falta! Recibimos mínimo 5 caracteres</span></mat-error>
 </mat-form-field>
 </div>
 </div>
+<br>
 <div class="row">
 <div class="col-6">
   <mat-form-field>
-  <input matInput  placeholder="Ingresa tu email">
+  <input matInput required formControlName="email" placeholder="Ingresa tu email">
+  <mat-error *ngIf="error.email.errors"><span *ngIf="error.email.errors.required">¡Advertencia! Este campo es requerido</span></mat-error>
+  <mat-error *ngIf="error.email.errors"><span *ngIf="error.email.errors.email">¡Advertencia! Este campo requiere un email</span></mat-error>
 </mat-form-field>
 </div>
+<br>
 <div class="col-6">
 <mat-form-field>
-  <input matInput  placeholder="Ingresa tu numero de telefono">
+  <input type="number" matInput required formControlName="phone" placeholder="Ingresa tu numero de telefono">
+  
+  <mat-error *ngIf="error.phone.errors"><span *ngIf="error.phone.errors.required">¡Advertencia! Este campo es requerido</span></mat-error>
 </mat-form-field>
 </div>
 </div>
+<br>
 <div class="row">
   <div class="col-6">
     <mat-form-field>
-    <input matInput  placeholder="Ingresa tu cargo">
+    <input matInput required formControlName="position" placeholder="Ingresa tu cargo"> 
+    <mat-error *ngIf="error.position.errors"><span *ngIf="error.position.errors.required">¡Advertencia! Este campo es requerido</span></mat-error>
   </mat-form-field>
   </div>
+  <br>
   <div class="col-6">
   <mat-form-field>
-    <input matInput  placeholder="Ingresa a que te dedicas">
+    <input matInput required formControlName="business" placeholder="Ingresa a que te dedicas">                      
+    <mat-error *ngIf="error.business.errors"><span *ngIf="error.business.errors.required">¡Advertencia! Este campo es requerido</span></mat-error>
   </mat-form-field>
   </div>
   </div>
@@ -65,7 +87,7 @@
   <div class="row">
     <div class="col-4"></div>
     <div class="col-4 button">
-      <button mat-raised-button color="primary">Crear usuario</button>
+      <button mat-raised-button color="primary" (click)="sendForm()">Crear usuario</button>
     </div>
     <div class="col-4"></div>
   </div>
