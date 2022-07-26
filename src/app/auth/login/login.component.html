@@ -1,21 +1,23 @@
 
-  <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center" fxFlexFill>
+  <div class="login-wrapper">
 
-  <mat-card class="box">
+  <mat-card >
     <mat-card-header>
-      <mat-card-title>Bienvenido</mat-card-title>
+      <mat-card-title>Bienvenido a PGG Manager</mat-card-title>
     </mat-card-header>
 
     <form class="example-form" [formGroup]="loginForm" (ngSubmit)="loginAuth(loginForm)">
       <mat-card-content>
         <mat-form-field appearance="fill">
-          <input matInput placeholder="email" required formControlName="user" required>
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Escribe tu email" required formControlName="user" required>
           <mat-error *ngIf="error.user.errors"><span *ngIf="error.user.errors.required">¡Advertencia! Este campo es requerido</span></mat-error>
           <mat-error *ngIf="error.user.errors"><span *ngIf="error.user.errors.minlength">¡Aún falta! Recibimos mínimo 3 caracteres</span></mat-error>
           <mat-error *ngIf="error.user.errors"><span *ngIf="error.user.errors.maxlength">¡Cuidado! Solo puedes tener un máximo de 50 caracteres</span></mat-error>
           <mat-error *ngIf="error.user.errors"><span *ngIf="error.user.errors.email">¡Cuidado! No es un correo </span></mat-error>
         </mat-form-field>
 
+        <br><br>
         <mat-form-field class="col-12"  appearance="fill">
           <mat-label>Contraseña</mat-label>
           <input matInput  [type]="hide ? 'password' : 'text'" placeholder="Escribe tu contraseña"  required formControlName="password" required>
@@ -32,7 +34,7 @@
 
       <div class="col-4"> </div>
 
-      <div class="col-4">  <button mat-raised-button color="primary" disabled='{{loginForm.invalid}}'>Ingresar</button> </div>
+      <div class="col-4 boton">  <button mat-raised-button color="primary" disabled='{{loginForm.invalid}}'>Ingresar</button> </div>
 
       <div class="col-4"> </div>
 

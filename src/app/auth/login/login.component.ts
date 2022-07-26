@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
 
   hide: boolean = true;
   loginForm: FormGroup;
-  loginService: any;
 
   constructor( private authService: AuthService, private router: Router ) { }
 
@@ -43,9 +42,13 @@ export class LoginComponent implements OnInit {
 
     this.authService.Authentification(user).subscribe( resp => {
 
-      console.log(resp);
-      localStorage.setItem('token', resp.token);
-      this.router.navigate(['/principal']);
+      if(resp.action !== 'change_password'){
+        localStorage.setItem('user', resp.access_token);
+        this.router.navigate(['/restorePassword']);
+      } else {
+        localStorage.setItem('user', resp.access_token);
+        this.router.navigate(['/principal']);
+      }
     }, error=>{
 
       Swal.fire({

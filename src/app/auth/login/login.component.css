@@ -1,4 +1,9 @@
 .login-wrapper{
 
   padding-top: 13%;
+  padding-left: 25%; padding-right: 25%
+}
+
+.boton {
+  text-align: center;
 }

@@ -19,9 +19,9 @@ import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
-import { MaterialComponentsModule } from './material-component/material.module';
 import { InterceptorInterceptor } from './service/interceptors/Interceptor.Interceptor';
-import { LoginComponent } from './auth/login/login.component';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -29,8 +29,7 @@ import { LoginComponent } from './auth/login/login.component';
     FullComponent,
     AppHeaderComponent,
     SpinnerComponent,
-    AppSidebarComponent,
-    LoginComponent
+    AppSidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +40,7 @@ import { LoginComponent } from './auth/login/login.component';
     HttpClientModule,
     SharedModule,
     ReactiveFormsModule,
+    AuthModule,
     RouterModule.forRoot(AppRoutes),
     JwtModule.forRoot({
       config: {

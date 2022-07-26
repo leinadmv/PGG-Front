@@ -83,14 +83,21 @@ export class AuthService {
 
   getToken(): any {
 
-    var token = JSON.parse(localStorage.getItem('user'));
+    var token = localStorage.getItem('user');
 
     if (token === null) {
       return null;
     } else {
-      return token.access_token;
+      return token;
     }
 
+  }
+
+  restorePassword(password): any {
+    return this.http.post<any>(`${PGG_URL}users/restorePassword`, password)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
 }
