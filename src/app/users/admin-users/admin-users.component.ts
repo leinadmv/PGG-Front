@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { CreateUsersComponent } from '../create-users/create-users.component'; 
+import { UsersService } from 'src/app/service/rest/users.service';
+import { MatIconModule } from '@angular/material/icon';
+import {ThemePalette} from '@angular/material/core';
+import { CdkFixedSizeVirtualScroll } from '@angular/cdk/scrolling';
 @Component({
   selector: 'app-admin-users',
   templateUrl: './admin-users.component.html',
@@ -7,9 +14,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminUsersComponent implements OnInit {
 
-  constructor() { }
+  
+  color: ThemePalette = 'accent';
+  checked = true;
+ 
+
+  displayedColumns: string[] = ['accion', 'Estado', 'firstName', 'fkDocumentType', 'documentNumber', 'email', 'phone', 'position', 'business'];
+  dataSource =  new MatTableDataSource<any>();
+  // 'middleName', 'firstLastname', 'secondLastname',
+  
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  constructor(private router: Router , public service : UsersService, ) { }
+
 
   ngOnInit(): void {
+
+    this.getUsers();
+    
   }
 
+  getUsers() {
+    this.service.getUsers().subscribe((resp) => {
+      this.dataSource.data = resp.data.users;
+
+      console.log(resp)
+    });
+
+    
+    }
+
+    ngAfterViewInit() {
+      this.dataSource.paginator = this.paginator;
+    }
+
+
+  RedirectCreateUser(){
+
+    this.router.navigate(['/create-users']);
+
+  
+  }
+
+
 }
+
+
+
+
+

@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -42,15 +43,32 @@ export class CreateUsersComponent implements OnInit {
 
   }
 
-  sendForm(){
-
-    console.log(this.createForm.controls);
-  }
-   
-   
+  savePost(createForm){
 
 
+      const post = {
+        firstName: createForm.value.firstName,
+        middleName: createForm.value.middleName,
+        firstLastname: createForm.value.firstLastname,
+        secondLastname: createForm.value.secondLastname,
+        fkDocumentType: createForm.value.fkDocumentType,
+        ducumentNumber: createForm.value.ducumentNumber,
+        email: createForm.value.email,
+        phone: createForm.value.phone,
+        position: createForm.value.position,
+        business: createForm.value.business,
+      }
 
+      console.log(post)
 
+      // //this.service.savePost(post).subscribe((resp) => {
+      //   Swal.fire(
+      //     'Creado!',
+      //     'Usted ha creado un usuario con exito!',
+      //     'success'
+        // )
 
-}
+       };
+
+     };
+  
