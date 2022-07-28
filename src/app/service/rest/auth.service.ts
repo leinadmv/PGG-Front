@@ -94,7 +94,8 @@ export class AuthService {
   }
 
   restorePassword(password): any {
-    return this.http.post<any>(`${PGG_URL}users/restorePassword`, password)
+
+    return this.http.post<any>(`${PGG_URL}users/changePassword`, password)
       .pipe(
         catchError(this.handleError)
       );

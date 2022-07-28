@@ -42,12 +42,22 @@ export class LoginComponent implements OnInit {
 
     this.authService.Authentification(user).subscribe( resp => {
 
-      if(resp.action !== 'change_password'){
-        localStorage.setItem('user', resp.access_token);
-        this.router.navigate(['/restorePassword']);
+      if(resp.code === 401){
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: resp.message
+        })
+
       } else {
-        localStorage.setItem('user', resp.access_token);
-        this.router.navigate(['/principal']);
+        if(resp.accion === 'change_password'){
+          localStorage.setItem('user', resp.access_token);
+          this.router.navigate(['/restorePassword']);
+        } else {
+          localStorage.setItem('user', resp.access_token);
+          this.router.navigate(['/']);
+        }
       }
     }, error=>{
 

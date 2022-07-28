@@ -37,23 +37,24 @@ export class AdminUsersComponent implements OnInit {
   getUsers() {
     this.service.getUsers().subscribe((resp) => {
       this.dataSource.data = resp.data.users;
-
-      console.log(resp)
     });
+  }
 
-    
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
+
+  Redirect(row?: any){
+
+    if(row){
+      this.service.createOrEdit('Editar usuario', row);
+      this.router.navigate(['/create-users']);
+    } else {
+      this.service.createOrEdit('Crear usuario');
+      this.router.navigate(['/create-users']);
     }
 
-    ngAfterViewInit() {
-      this.dataSource.paginator = this.paginator;
-    }
-
-
-  RedirectCreateUser(){
-
-    this.router.navigate(['/create-users']);
-
-  
   }
 
 

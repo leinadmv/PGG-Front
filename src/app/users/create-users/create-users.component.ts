@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UsersService } from 'src/app/service/rest/users.service';
 import Swal from 'sweetalert2';
 
 
@@ -10,17 +11,21 @@ import Swal from 'sweetalert2';
 })
 export class CreateUsersComponent implements OnInit {
 
+  createForm: FormGroup;
+  modelo: any;
 
-  createForm: FormGroup
-
-  constructor() { }
-
+  constructor(private userService: UsersService) { }
 
   ngOnInit(): void {
 
     this.formControl();
+    this.modelo = this.userService.responseCreateOrEdit();
 
-    //get error(): any { return this.postForm.controls; }
+    if(this.modelo?.row){
+      console.log('editar', this.modelo);
+      this.setEdit(this.modelo.row);
+    }
+
   }
 
   get error(): any { return this.createForm.controls; } 
@@ -70,5 +75,11 @@ export class CreateUsersComponent implements OnInit {
 
        };
 
-     };
+  setEdit(row:any) {
+
+    this.createForm.controls.firstName.setValue(row.firstName);
+
+  };
+
   
+}

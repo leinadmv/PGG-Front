@@ -37,10 +37,20 @@ export class RestorePasswordComponent implements OnInit {
   loginAuth(loginForm) {
 
     const password = new FormData();
-		password.append('password', loginForm.value.confirmpassword);
+		password.append('newPassword', loginForm.value.confirmpassword);
 
     this.authService.restorePassword(password).subscribe( resp => {
-      this.router.navigate(['/principal']);
+
+      if(resp.code === 404){
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No se pudo realizar el cambio de contraseña!',
+        })
+      } else {
+        this.router.navigate(['/']);
+      }
+      
     }, error=>{
       Swal.fire({
         icon: 'error',

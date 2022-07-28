@@ -13,6 +13,8 @@ const PGG_URL = environment.backPgg;
 })
 export class UsersService {
 
+  modeloCreateOrEdit: any;
+
   constructor( private http: HttpClient, private jwtHelper: JwtHelperService) { }
   handleError(error: HttpErrorResponse): any {
     return throwError(error);
@@ -24,6 +26,18 @@ getUsers(): Observable<any> {
     .pipe(
       catchError(this.handleError)
     );
+}
+
+createOrEdit(type: any, row?: any) {
+  this.modeloCreateOrEdit = {
+    'type': type,
+    'row': row
+  }
+  return this.modeloCreateOrEdit;
+}
+
+responseCreateOrEdit(){
+  return this.modeloCreateOrEdit;
 }
 
 
