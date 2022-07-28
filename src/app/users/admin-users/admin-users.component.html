@@ -152,7 +152,23 @@
       {{ row.business }}
     </td>
   </ng-container>
-
+  <ng-container matColumnDef="idRole">
+    <th
+      style="padding-left: 20px; padding-right: 20px"
+      mat-header-cell
+      *matHeaderCellDef
+    >
+      Idrol
+    </th>
+    <td
+      style="padding-left: 20px; padding-right: 20px"
+      mat-cell
+      *matCellDef="let row"
+    >
+      {{ row.idRole }}
+    </td>
+  </ng-container>
+  
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>

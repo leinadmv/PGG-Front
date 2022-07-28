@@ -32,9 +32,7 @@
             />
           </mat-form-field>
         </div>
-     
       <br />
-      
         <div class="col-6">
           <mat-form-field>
             <input
@@ -70,12 +68,12 @@
 
         <div class="col-6">
           <mat-form-field>
-            <input
-              matInput
-              required
-              formControlName="fkDocumentType"
-              placeholder="Ingresa tu tipo de documento"
-            />
+            <mat-label>Tipo de documento</mat-label>
+            <mat-select formControlName="fkDocumentType" >
+              <mat-option *ngFor="let item of select?.document_type" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
             <mat-error *ngIf="error.fkDocumentType.errors"
               ><span *ngIf="error.fkDocumentType.errors.required"
                 >¡Advertencia! Este campo es requerido</span
@@ -83,7 +81,22 @@
             >
           </mat-form-field>
         </div>
-        <br />
+      <br>
+        <div class="col-6">
+          <mat-form-field>
+            <mat-label>Rol</mat-label>
+             <mat-select formControlName="idRole" >
+              <mat-option *ngFor="let item of select?.roles" [value]="item.id">
+               {{item.rol}}
+              </mat-option>
+            </mat-select>
+          <mat-error *ngIf="error.idRole.errors"
+           ><span *ngIf="error.idRole.errors.required"
+              >¡Advertencia! Este campo es requerido</span
+            ></mat-error
+          >
+        </mat-form-field>
+      </div>   
         <div class="col-6">
           <mat-form-field>
             <input
@@ -179,9 +192,7 @@
             >
           </mat-form-field>
         </div>
-        </div>
-   
-      <br />
+      <br>
       <div class="row">
         <div class="col-4"></div>
         <div class="col-4 button">
@@ -189,6 +200,7 @@
         </div>
         <div class="col-4"></div>
       </div>
+    </div>
     </form>
     </mat-card-content>
   </mat-card>
