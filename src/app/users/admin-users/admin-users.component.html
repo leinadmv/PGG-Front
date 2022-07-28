@@ -19,8 +19,8 @@
           </ng-container>
 
           <ng-container matColumnDef="estado">
-            <th mat-header-cell *matHeaderCellDef>Estado</th>
-            <td mat-cell *matCellDef="let row">
+            <th style="padding-left: 20px; padding-right: 20px" mat-header-cell *matHeaderCellDef>Estado</th>
+            <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
               <mat-slide-toggle class="example-margin" (click)="changeState(row.id, row.state)" [checked]="row.state === 1 ? 'true' : 'false'">
               </mat-slide-toggle>
             </td>
