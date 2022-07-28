@@ -28,9 +28,10 @@ getUsers(): Observable<any> {
     );
 }
 
-createOrEdit(type: any, row?: any) {
+createOrEdit(type: any, tittle: any, row?: any) {
   this.modeloCreateOrEdit = {
     'type': type,
+    'tittle': tittle,
     'row': row
   }
   return this.modeloCreateOrEdit;
@@ -40,8 +41,27 @@ responseCreateOrEdit(){
   return this.modeloCreateOrEdit;
 }
 
+saveUser(users): Observable<any> {
+  return this.http.post<any>(`${PGG_URL}users/create`, users)
+    .pipe(
+      catchError(this.handleError)
+    );
 
+    
+}
 
+updateUser(user): Observable<any> {
+  return this.http.post<any>(`${PGG_URL}users/edit`,user)
+    .pipe(
+      catchError(this.handleError)
+    );
+}
 
+getSelect(): Observable<any> {
+  return this.http.get<any>(`${PGG_URL}users/bringSelectData`)
+  .pipe(
+    catchError(this.handleError)
+  );
+}
 }
 

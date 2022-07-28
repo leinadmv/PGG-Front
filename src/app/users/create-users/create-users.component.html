@@ -1,9 +1,9 @@
 
   <mat-card>
     <mat-card-content>
-      <mat-card-title>{{modelo?.type}}</mat-card-title>
+      <mat-card-title>{{modelo?.tittle}}</mat-card-title>
       <br>
-      <form [formGroup]="createForm">
+      <form [formGroup]="createForm" (ngSubmit)="saveUser(modelo?.type, createForm)" >
       <div class="row">
         
         <div class="col-6">
@@ -27,7 +27,6 @@
           <mat-form-field>
             <input
               matInput
-              required
               formControlName="middleName"
               placeholder="Ingresa tu segundo nombre"
             />
@@ -90,16 +89,16 @@
             <input
               matInput
               required
-              formControlName="ducumentNumber"
+              formControlName="documentNumber"
               placeholder="Ingresa tu numero de documento"
             />
-            <mat-error *ngIf="error.ducumentNumber.errors"
-              ><span *ngIf="error.ducumentNumber.errors.required"
+            <mat-error *ngIf="error.documentNumber.errors"
+              ><span *ngIf="error.documentNumber.errors.required"
                 >¡Advertencia! Este campo es requerido</span
               ></mat-error
             >
-            <mat-error *ngIf="error.ducumentNumber.errors"
-              ><span *ngIf="error.ducumentNumber.errors.minlength"
+            <mat-error *ngIf="error.documentNumber.errors"
+              ><span *ngIf="error.documentNumber.errors.minlength"
                 >¡Aún falta! Recibimos mínimo 5 caracteres</span
               ></mat-error
             >
@@ -186,7 +185,7 @@
       <div class="row">
         <div class="col-4"></div>
         <div class="col-4 button">
-          <button mat-raised-button color="primary">Crear usuario</button>
+          <button type='submit' mat-raised-button color="primary" disabled='{{createForm.invalid}}' cdkFocusInitial>{{modelo?.tittle}}</button>
         </div>
         <div class="col-4"></div>
       </div>

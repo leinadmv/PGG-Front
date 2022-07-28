@@ -48,10 +48,10 @@ export class AdminUsersComponent implements OnInit {
   Redirect(row?: any){
 
     if(row){
-      this.service.createOrEdit('Editar usuario', row);
+      this.service.createOrEdit('editar', 'Editar usuario', row);
       this.router.navigate(['/create-users']);
     } else {
-      this.service.createOrEdit('Crear usuario');
+      this.service.createOrEdit('crear', 'Crear usuario');
       this.router.navigate(['/create-users']);
     }
 

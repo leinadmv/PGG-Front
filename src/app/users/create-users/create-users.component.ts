@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ObjectUnsubscribedError, UnsubscriptionError } from 'rxjs';
 import { UsersService } from 'src/app/service/rest/users.service';
 import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -11,12 +13,21 @@ import Swal from 'sweetalert2';
 })
 export class CreateUsersComponent implements OnInit {
 
+
+  
   createForm: FormGroup;
   modelo: any;
+  select: any;
 
   constructor(private userService: UsersService) { }
 
   ngOnInit(): void {
+
+
+    this.userService.getSelect().subscribe((resp) => {
+      this.select = resp.data;
+      console.log(resp)
+    });
 
     this.formControl();
     this.modelo = this.userService.responseCreateOrEdit();
@@ -34,11 +45,11 @@ export class CreateUsersComponent implements OnInit {
 
     this.createForm = new FormGroup({
       firstName: new FormControl('', [Validators.required, ]),
-      middleName: new FormControl('', [Validators.required, ]),
+      middleName: new FormControl('', []),
       firstLastname: new FormControl('', [Validators.required, ]),
       secondLastname: new FormControl('', [Validators.required, ]),
       fkDocumentType: new FormControl('', [Validators.required, ]),
-      ducumentNumber: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      documentNumber: new FormControl('', [Validators.required, Validators.minLength(5)]),
       email: new FormControl('', [Validators.required, Validators.email ]),
       phone: new FormControl('', [Validators.required, ]),
       position: new FormControl('', [Validators.required, ]),
@@ -48,37 +59,66 @@ export class CreateUsersComponent implements OnInit {
 
   }
 
-  savePost(createForm){
+  saveUser(type, createUser){
 
-
-      const post = {
-        firstName: createForm.value.firstName,
-        middleName: createForm.value.middleName,
-        firstLastname: createForm.value.firstLastname,
-        secondLastname: createForm.value.secondLastname,
-        fkDocumentType: createForm.value.fkDocumentType,
-        ducumentNumber: createForm.value.ducumentNumber,
-        email: createForm.value.email,
-        phone: createForm.value.phone,
-        position: createForm.value.position,
-        business: createForm.value.business,
+      const user = {
+        firstName: createUser.value.firstName,
+        middleName: createUser.value.middleName,
+        firstLastname: createUser.value.firstLastname,
+        secondLastname: createUser.value.secondLastname,
+        fkDocumentType: createUser.value.fkDocumentType,
+        documentNumber: createUser.value.documentNumber,
+        email: createUser.value.email,
+        phone: createUser.value.phone,
+        position: createUser.value.position,
+        business: createUser.value.business,
       }
 
-      console.log(post)
+    
+      console.log(user)
 
-      // //this.service.savePost(post).subscribe((resp) => {
-      //   Swal.fire(
-      //     'Creado!',
-      //     'Usted ha creado un usuario con exito!',
-      //     'success'
-        // )
+if(type === 'crear'){
 
-       };
+  this.userService.saveUser(user).subscribe((resp) => {
+    console.log(resp)
+    Swal.fire(
+     'Creado!',
+     'Usted ha creado un usuario con exito!',
+      'success'
+    )
+
+  });
+
+} else {
+
+  user['id'] = this.modelo.row.id
+
+  this.userService.updateUser(user).subscribe((resp) => {
+    console.log(resp)
+    Swal.fire(
+     'Creado!',
+     'Usted ha editado un usuario con exito!',
+      'success'
+    )
+
+  });
+
+}
+
+    } 
 
   setEdit(row:any) {
-
     this.createForm.controls.firstName.setValue(row.firstName);
-
+    this.createForm.controls.middleName.setValue(row.middleName);
+    this.createForm.controls.firstLastname.setValue(row.firstLastname);
+    this.createForm.controls.secondLastname.setValue(row.secondLastname);
+    this.createForm.controls.fkDocumentType.setValue(row.fkDocumentType);
+    this.createForm.controls.documentNumber.setValue(row.documentNumber);
+    this.createForm.controls.email.setValue(row.email);
+    this.createForm.controls.phone.setValue(row.phone);
+    this.createForm.controls.position.setValue(row.position);
+    this.createForm.controls.business.setValue(row.business);
+    
   };
 
   
