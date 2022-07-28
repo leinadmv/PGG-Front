@@ -46,8 +46,6 @@ saveUser(users): Observable<any> {
     .pipe(
       catchError(this.handleError)
     );
-
-    
 }
 
 updateUser(user): Observable<any> {
@@ -59,6 +57,13 @@ updateUser(user): Observable<any> {
 
 getSelect(): Observable<any> {
   return this.http.get<any>(`${PGG_URL}users/bringSelectData`)
+  .pipe(
+    catchError(this.handleError)
+  );
+}
+
+changeState(state: any):Observable<any>{
+  return this.http.post<any>(`${PGG_URL}users/state`, state)
   .pipe(
     catchError(this.handleError)
   );

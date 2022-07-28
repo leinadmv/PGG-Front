@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ObjectUnsubscribedError, UnsubscriptionError } from 'rxjs';
 import { UsersService } from 'src/app/service/rest/users.service';
 import Swal from 'sweetalert2';
 
@@ -13,8 +12,6 @@ import Swal from 'sweetalert2';
 })
 export class CreateUsersComponent implements OnInit {
 
-
-  
   createForm: FormGroup;
   modelo: any;
   select: any;
@@ -26,14 +23,12 @@ export class CreateUsersComponent implements OnInit {
 
     this.userService.getSelect().subscribe((resp) => {
       this.select = resp.data;
-      console.log(resp)
     });
 
     this.formControl();
     this.modelo = this.userService.responseCreateOrEdit();
 
     if(this.modelo?.row){
-      console.log('editar', this.modelo);
       this.setEdit(this.modelo.row);
     }
 
@@ -74,13 +69,11 @@ export class CreateUsersComponent implements OnInit {
         business: createUser.value.business,
       }
 
-    
-      console.log(user)
-
 if(type === 'crear'){
 
   this.userService.saveUser(user).subscribe((resp) => {
-    console.log(resp)
+
+    this.createForm.reset();
     Swal.fire(
      'Creado!',
      'Usted ha creado un usuario con exito!',
@@ -94,7 +87,8 @@ if(type === 'crear'){
   user['id'] = this.modelo.row.id
 
   this.userService.updateUser(user).subscribe((resp) => {
-    console.log(resp)
+
+    this.createForm.reset();
     Swal.fire(
      'Creado!',
      'Usted ha editado un usuario con exito!',

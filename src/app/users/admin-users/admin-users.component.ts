@@ -2,11 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { CreateUsersComponent } from '../create-users/create-users.component'; 
 import { UsersService } from 'src/app/service/rest/users.service';
-import { MatIconModule } from '@angular/material/icon';
 import {ThemePalette} from '@angular/material/core';
-import { CdkFixedSizeVirtualScroll } from '@angular/cdk/scrolling';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-admin-users',
   templateUrl: './admin-users.component.html',
@@ -14,11 +12,9 @@ import { CdkFixedSizeVirtualScroll } from '@angular/cdk/scrolling';
 })
 export class AdminUsersComponent implements OnInit {
 
-  
   color: ThemePalette = 'accent';
   checked = true;
  
-
   displayedColumns: string[] = ['accion', 'Estado', 'firstName', 'fkDocumentType', 'documentNumber', 'email', 'phone', 'position', 'business'];
   dataSource =  new MatTableDataSource<any>();
   // 'middleName', 'firstLastname', 'secondLastname',
@@ -37,6 +33,7 @@ export class AdminUsersComponent implements OnInit {
   getUsers() {
     this.service.getUsers().subscribe((resp) => {
       this.dataSource.data = resp.data.users;
+      console.log(resp.data.users);
     });
   }
 
@@ -54,6 +51,32 @@ export class AdminUsersComponent implements OnInit {
       this.service.createOrEdit('crear', 'Crear usuario');
       this.router.navigate(['/create-users']);
     }
+
+  }
+
+  changeState(id: any, state: any){
+
+    if(state === 1){
+      state = 0;
+    } else if (state === 0) {
+      state = 1;
+    }
+
+    const estado = new FormData();
+		estado.append('id', id);
+		estado.append('state', state);
+
+    this.service.changeState(estado).subscribe(resp => {
+
+      Swal.fire(
+        'Editado!',
+        resp.message,
+         'success'
+       )
+
+    });
+
+
 
   }
 
