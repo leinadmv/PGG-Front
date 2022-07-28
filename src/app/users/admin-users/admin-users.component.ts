@@ -16,7 +16,7 @@ export class AdminUsersComponent implements OnInit {
   checked = true;
  
 
-  displayedColumns: string[] = ['accion', 'Estado', 'firstName', 'fkDocumentType', 'documentNumber', 'email', 'phone', 'position', 'business', 'idRole' ];
+  displayedColumns: string[] = ['accion', 'estado', 'firstName', 'fkDocumentType', 'documentNumber', 'email', 'phone', 'position', 'business', 'idRole' ];
   dataSource =  new MatTableDataSource<any>();
   // 'middleName', 'firstLastname', 'secondLastname',
   
