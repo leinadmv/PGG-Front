@@ -49,7 +49,7 @@ export class CreateUsersComponent implements OnInit {
       phone: new FormControl('', [Validators.required, ]),
       position: new FormControl('', [Validators.required, ]),
       business: new FormControl('', [Validators.required, ]),
-    
+      idRole: new FormControl('', [Validators.required, ]),
     });
 
   }
@@ -67,6 +67,7 @@ export class CreateUsersComponent implements OnInit {
         phone: createUser.value.phone,
         position: createUser.value.position,
         business: createUser.value.business,
+        idRole: createUser.value.idRole,
       }
 
 if(type === 'crear'){
@@ -112,6 +113,7 @@ if(type === 'crear'){
     this.createForm.controls.phone.setValue(row.phone);
     this.createForm.controls.position.setValue(row.position);
     this.createForm.controls.business.setValue(row.business);
+    this.createForm.controls.idRole.setValue(row.idRole);
     
   };
 
