@@ -15,12 +15,8 @@ export class AdminUsersComponent implements OnInit {
   color: ThemePalette = 'accent';
   checked = true;
  
-<<<<<<< HEAD
-  displayedColumns: string[] = ['accion', 'Estado', 'firstName', 'fkDocumentType', 'documentNumber', 'email', 'phone', 'position', 'business'];
-=======
 
   displayedColumns: string[] = ['accion', 'Estado', 'firstName', 'fkDocumentType', 'documentNumber', 'email', 'phone', 'position', 'business', 'idRole' ];
->>>>>>> 77c729a58e93a9fc235ee6b081f9c2c3586ef1e2
   dataSource =  new MatTableDataSource<any>();
   // 'middleName', 'firstLastname', 'secondLastname',
   
