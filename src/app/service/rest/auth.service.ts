@@ -60,7 +60,7 @@ export class AuthService {
 
   logOut(): Observable<any> {
 
-    return this.http.get<any>(`${PGG_URL}auth/logout`)
+    return this.http.get<any>(`${PGG_URL}logout`)
       .pipe(
         catchError(this.handleError)
       );

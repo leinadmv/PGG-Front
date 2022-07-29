@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { UsersService } from 'src/app/service/rest/users.service';
 import {ThemePalette} from '@angular/material/core';
 import Swal from 'sweetalert2';
+import { VisualService } from 'src/app/service/rest/visual.service';
 @Component({
   selector: 'app-admin-users',
   templateUrl: './admin-users.component.html',
@@ -22,19 +23,19 @@ export class AdminUsersComponent implements OnInit {
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private router: Router , public service : UsersService, ) { }
+  constructor(private router: Router , public service : UsersService, public visualService: VisualService ) { }
 
 
   ngOnInit(): void {
 
     this.getUsers();
+    this.visualService.changeColor('gris');
     
   }
 
   getUsers() {
     this.service.getUsers().subscribe((resp) => {
       this.dataSource.data = resp.data.users;
-      console.log(resp.data.users);
     });
   }
 

@@ -8,7 +8,7 @@ export interface Menu {
 }
 
 const MENUITEMS = [
-  { state: 'dashboard', name: 'Dashboard', type: 'link', icon: 'av_timer' },
+  /* { state: 'dashboard', name: 'Dashboard', type: 'link', icon: 'av_timer' },
   { state: 'button', type: 'link', name: 'Buttons', icon: 'crop_7_5' },
   { state: 'grid', type: 'link', name: 'Grid List', icon: 'view_comfy' },
   { state: 'lists', type: 'link', name: 'Lists', icon: 'view_list' },
@@ -49,8 +49,8 @@ const MENUITEMS = [
     type: 'link',
     name: 'Slide Toggle',
     icon: 'all_inclusive'
-  },
-  { state: 'admin-users', type: 'link', name: 'Usuarios', icon: 'crop_7_5' }
+  }, */
+  { state: 'admin-users', type: 'link', name: 'Usuarios', icon: 'crop_7_5', color: 'gris' }
 ];
 
 @Injectable()
