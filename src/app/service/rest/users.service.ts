@@ -68,5 +68,13 @@ changeState(state: any):Observable<any>{
     catchError(this.handleError)
   );
 }
+
+getUserWhitToken(): Observable<any> {
+  return this.http.post<any>(`${PGG_URL}token/me`, null)
+  .pipe(
+    catchError(this.handleError)
+  );
+}
+
 }
 

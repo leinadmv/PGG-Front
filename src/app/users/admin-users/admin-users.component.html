@@ -16,11 +16,11 @@
                 <td mat-cell *matCellDef="let row">
                   <mat-icon #tooltip="matTooltip"
                   matTooltip="Editar usuario"
-                  [matTooltipPosition]="below"
+                  matTooltipPosition="below"
                   matTooltipHideDelay="20" class="Puntero" (click)="Redirect(row)">create</mat-icon>
                   <mat-icon #tooltip="matTooltip"
                   matTooltip="Cambiar contraseña"
-                  [matTooltipPosition]="below"
+                  matTooltipPosition="below"
                   matTooltipHideDelay="20" class="Puntero" (click)="Change(row)">lock_person</mat-icon>
                 </td>
           </ng-container>

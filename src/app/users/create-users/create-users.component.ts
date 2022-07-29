@@ -3,8 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/service/rest/users.service';
 import Swal from 'sweetalert2';
 
-
-
 @Component({
   selector: 'app-create-users',
   templateUrl: './create-users.component.html',

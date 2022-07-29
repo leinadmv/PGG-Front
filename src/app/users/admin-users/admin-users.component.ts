@@ -6,8 +6,6 @@ import { UsersService } from 'src/app/service/rest/users.service';
 import {ThemePalette} from '@angular/material/core';
 import Swal from 'sweetalert2';
 import { VisualService } from 'src/app/service/rest/visual.service';
-import {TooltipPosition} from '@angular/material/tooltip';
-import { FormControl } from '@angular/forms';
 import { ChangePasswordComponent } from 'src/app/auth/change-password/change-password.component';
 import { MatDialog } from '@angular/material/dialog';
 @Component({

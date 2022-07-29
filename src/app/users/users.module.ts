@@ -6,11 +6,12 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { CreateUsersComponent } from './create-users/create-users.component';
 import { DemoMaterialModule } from '../demo-material-module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ViewUserComponent } from './view-user/view-user.component';
 @NgModule({
   declarations: [
     AdminUsersComponent,
     CreateUsersComponent,
-
+    ViewUserComponent,
   ],
   imports: [
     CommonModule,
