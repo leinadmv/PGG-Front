@@ -1,7 +1,12 @@
 
   <mat-card>
     <mat-card-content>
-      <mat-card-title>{{modelo?.tittle}}</mat-card-title>
+      <mat-card-title>
+        <div class="forms">
+          <h1>{{modelo?.tittle}}
+        </h1>
+      </div>
+      </mat-card-title>
       <br>
       <form [formGroup]="createForm" (ngSubmit)="saveUser(modelo?.type, createForm)" >
       <div class="row">
@@ -196,7 +201,7 @@
       <div class="row">
         <div class="col-4"></div>
         <div class="col-4 button">
-          <button type='submit' mat-raised-button color="primary" disabled='{{createForm.invalid}}' cdkFocusInitial>{{modelo?.tittle}}</button>
+          <button type='submit' mat-raised-button color="success" disabled='{{createForm.invalid}}' cdkFocusInitial>{{modelo?.tittle}}</button>
         </div>
         <div class="col-4"></div>
       </div>
