@@ -30,6 +30,10 @@ export class CreateUsersComponent implements OnInit {
       this.setEdit(this.modelo.row);
     }
 
+    if(this.modelo?.type === 'ver'){
+      this.createForm.disable();
+    }
+
   }
 
   get error(): any { return this.createForm.controls; } 
@@ -82,7 +86,7 @@ if(type === 'crear'){
 
   });
 
-} else {
+} else if(type === 'editar') {
 
   user['id'] = this.modelo.row.id
 

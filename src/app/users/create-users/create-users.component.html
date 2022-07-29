@@ -74,7 +74,7 @@
         <div class="col-6">
           <mat-form-field appearance="fill">
             <mat-label>Tipo de documento</mat-label>
-            <mat-select formControlName="fkDocumentType" >
+            <mat-select formControlName="fkDocumentType">
               <mat-option *ngFor="let item of select?.document_type" [value]="item.id">
                 {{item.name}}
               </mat-option>
@@ -90,7 +90,7 @@
         <div class="col-6">
           <mat-form-field appearance="fill">
             <mat-label>Rol</mat-label>
-             <mat-select formControlName="idRole" >
+             <mat-select formControlName="idRole">
               <mat-option *ngFor="let item of select?.roles" [value]="item.id">
                {{item.rol}}
               </mat-option>
@@ -201,7 +201,7 @@
       <div class="row">
         <div class="col-4"></div>
         <div class="col-4 button">
-          <button type='submit' mat-raised-button color="success" disabled='{{createForm.invalid}}' cdkFocusInitial>{{modelo?.tittle}}</button>
+          <button *ngIf="modelo?.type !== 'ver'" type='submit' mat-raised-button color="success" disabled='{{createForm.invalid}}' cdkFocusInitial>{{modelo?.tittle}}</button>
         </div>
         <div class="col-4"></div>
       </div>

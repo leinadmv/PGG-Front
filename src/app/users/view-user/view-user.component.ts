@@ -8,6 +8,8 @@ import { UsersService } from 'src/app/service/rest/users.service';
 })
 export class ViewUserComponent implements OnInit {
 
+  band: boolean = false;
+
   constructor(private userService: UsersService) { }
 
   ngOnInit(): void {
@@ -15,6 +17,7 @@ export class ViewUserComponent implements OnInit {
     this.userService.getUserWhitToken().subscribe(resp => {
       
       this.userService.createOrEdit('ver', 'Ver Usuario', resp.data.user);
+      this.band = true;
 
     })
 

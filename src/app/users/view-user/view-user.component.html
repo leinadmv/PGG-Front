@@ -1,7 +1,9 @@
 <div class="row">
 
     <div class="col-6">
-        <app-create-users></app-create-users>
+        <div *ngIf="band">
+            <app-create-users></app-create-users>
+        </div>
     </div>
 
     <div class="col-6">
