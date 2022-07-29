@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/service/rest/users.service';
+import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-view-user',
@@ -9,6 +10,8 @@ import { UsersService } from 'src/app/service/rest/users.service';
 export class ViewUserComponent implements OnInit {
 
   band: boolean = false;
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
 
   constructor(private userService: UsersService) { }
 
@@ -22,5 +25,23 @@ export class ViewUserComponent implements OnInit {
     })
 
   }
+
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+}
+imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+}
+imageLoaded(image?: LoadedImage) {
+    // show cropper
+}
+cropperReady() {
+    // cropper ready
+}
+loadImageFailed() {
+    // show message
+}
+
+
 
 }

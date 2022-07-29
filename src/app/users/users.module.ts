@@ -7,6 +7,7 @@ import { CreateUsersComponent } from './create-users/create-users.component';
 import { DemoMaterialModule } from '../demo-material-module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ViewUserComponent } from './view-user/view-user.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 @NgModule({
   declarations: [
     AdminUsersComponent,
@@ -18,6 +19,7 @@ import { ViewUserComponent } from './view-user/view-user.component';
     RouterModule.forChild(UserRoutes),
     DemoMaterialModule,
     ReactiveFormsModule,
+    ImageCropperModule
   ],
 })
 export class UsersModule { }

@@ -8,7 +8,51 @@
 
     <div class="col-6">
         <mat-card>
-            hola
+            
+            <br>
+
+            <div class="row">
+
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <button mat-raised-button color="primary" (click)="fileInput.click()">Cargar Imagen</button>
+                    <input hidden #fileInput type="file" (change)="fileChangeEvent($event)" />
+                </div>
+                <div class="col-4"></div>
+
+            </div>
+
+            <br>
+
+            <div class="row">
+
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <image-cropper
+                    [imageChangedEvent]="imageChangedEvent"
+                    [maintainAspectRatio]="true"
+                    [aspectRatio]="4 / 3"
+                    format="png"
+                    (imageCropped)="imageCropped($event)">
+                    </image-cropper>
+                    <br>
+                </div>
+                <div class="col-1"></div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <button mat-raised-button color="primary">Guardar Imagen</button>
+                    <br>
+                    <br>
+                </div>
+                <div class="col-4"></div>
+
+            </div>
+        <!--     <img [src]="croppedImage" /> -->
         </mat-card>
     </div>
 
