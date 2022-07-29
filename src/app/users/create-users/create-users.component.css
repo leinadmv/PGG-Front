@@ -1,1 +1,16 @@
 .button{text-align: center;}
+
+.forms h1 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700; color:#202020;
+    text-transform: uppercase;
+    word-spacing: 1px; letter-spacing:2px;
+  }
+ 
+  .mat-success
+{
+  background-color: #3f51b5;
+  color: whitesmoke;
+}
+  

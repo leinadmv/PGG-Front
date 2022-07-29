@@ -7,3 +7,9 @@
 .boton {
   text-align: center;
 }
+
+.mat-success
+{
+  background-color: #3f51b5;
+  color: whitesmoke;
+}
