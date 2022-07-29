@@ -6,6 +6,10 @@ import { UsersService } from 'src/app/service/rest/users.service';
 import {ThemePalette} from '@angular/material/core';
 import Swal from 'sweetalert2';
 import { VisualService } from 'src/app/service/rest/visual.service';
+import {TooltipPosition} from '@angular/material/tooltip';
+import { FormControl } from '@angular/forms';
+import { ChangePasswordComponent } from 'src/app/auth/change-password/change-password.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-admin-users',
   templateUrl: './admin-users.component.html',
@@ -15,7 +19,6 @@ export class AdminUsersComponent implements OnInit {
 
   color: ThemePalette = 'accent';
   checked = true;
- 
 
   displayedColumns: string[] = ['accion', 'estado', 'firstName', 'fkDocumentType', 'documentNumber', 'email', 'phone', 'position', 'business', 'idRole' ];
   dataSource =  new MatTableDataSource<any>();
@@ -23,7 +26,7 @@ export class AdminUsersComponent implements OnInit {
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private router: Router , public service : UsersService, public visualService: VisualService ) { }
+  constructor(private router: Router , public service : UsersService, public dialog: MatDialog, public visualService: VisualService ) { }
 
 
   ngOnInit(): void {
@@ -82,8 +85,15 @@ export class AdminUsersComponent implements OnInit {
 
   }
 
+  Change(){
+      const dialogRef = this.dialog.open(ChangePasswordComponent,{
+        width: '50%',
+        panelClass: 'custom-dialog-container',
+      });
+    }
+  }
 
-}
+
 
 
 

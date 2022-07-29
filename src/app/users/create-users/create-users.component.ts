@@ -68,6 +68,7 @@ export class CreateUsersComponent implements OnInit {
         position: createUser.value.position,
         business: createUser.value.business,
         idRole: createUser.value.idRole,
+        blockIp: 1
       }
 
 if(type === 'crear'){

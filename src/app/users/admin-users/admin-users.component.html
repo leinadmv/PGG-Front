@@ -14,7 +14,14 @@
           <ng-container matColumnDef="accion">
                 <th class="start" mat-header-cell *matHeaderCellDef>Acciones</th>
                 <td mat-cell *matCellDef="let row">
-                  <mat-icon class="Puntero" (click)="Redirect(row)">create</mat-icon>
+                  <mat-icon #tooltip="matTooltip"
+                  matTooltip="Editar usuario"
+                  [matTooltipPosition]="below"
+                  matTooltipHideDelay="20" class="Puntero" (click)="Redirect(row)">create</mat-icon>
+                  <mat-icon #tooltip="matTooltip"
+                  matTooltip="Cambiar contraseña"
+                  [matTooltipPosition]="below"
+                  matTooltipHideDelay="20" class="Puntero" (click)="Change(row)">lock_person</mat-icon>
                 </td>
           </ng-container>
 
