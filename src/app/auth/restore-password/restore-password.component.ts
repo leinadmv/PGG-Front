@@ -39,7 +39,7 @@ export class RestorePasswordComponent implements OnInit {
     const password = new FormData();
 		password.append('newPassword', loginForm.value.confirmpassword);
 
-    this.authService.restorePassword(password).subscribe( resp => {
+    this.authService.changePassword(password).subscribe( resp => {
 
       if(resp.code === 404){
         Swal.fire({

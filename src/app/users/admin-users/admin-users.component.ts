@@ -6,8 +6,9 @@ import { UsersService } from 'src/app/service/rest/users.service';
 import {ThemePalette} from '@angular/material/core';
 import Swal from 'sweetalert2';
 import { VisualService } from 'src/app/service/rest/visual.service';
-import { ChangePasswordComponent } from 'src/app/auth/change-password/change-password.component';
+// import { ChangePasswordComponent } from 'src/app/auth/change-password/change-password.component';
 import { MatDialog } from '@angular/material/dialog';
+import { RequireDocumentComponent } from 'src/app/auth/require-document/require-document.component';
 @Component({
   selector: 'app-admin-users',
   templateUrl: './admin-users.component.html',
@@ -80,13 +81,13 @@ export class AdminUsersComponent implements OnInit {
     });
 
 
-
   }
 
-  Change(){
-      const dialogRef = this.dialog.open(ChangePasswordComponent,{
+  Require(row){
+      const dialogRef = this.dialog.open(RequireDocumentComponent,{
         width: '50%',
         panelClass: 'custom-dialog-container',
+        data: row
       });
     }
   }

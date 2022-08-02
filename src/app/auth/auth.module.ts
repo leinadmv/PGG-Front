@@ -8,13 +8,15 @@ import { LoginComponent } from './login/login.component';
 import { DemoMaterialModule } from '../demo-material-module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { RequireDocumentComponent } from './require-document/require-document.component';
 
 
 @NgModule({
   declarations: [
     RestorePasswordComponent,
     LoginComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    RequireDocumentComponent
   ],
   imports: [
     CommonModule,

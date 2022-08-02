@@ -1,0 +1,60 @@
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AuthService } from 'src/app/service/rest/auth.service';
+
+@Component({
+  selector: 'app-require-document',
+  templateUrl: './require-document.component.html',
+  styleUrls: ['./require-document.component.css']
+})
+export class RequireDocumentComponent implements OnInit {
+
+  loginForm: FormGroup;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private authService: AuthService) { }
+
+  ngOnInit(): void {
+
+    console.log(this.data)
+  
+    this.formControl();
+ 
+   }
+
+   formControl(): void {
+    this.loginForm = new FormGroup({
+    documentNumber: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.minLength(5)]),
+     
+    });
+
+}
+
+get error(): any {
+  return this.loginForm.controls;
+}
+
+requireAuth(loginForm) {
+
+  
+
+  const user = new FormData();
+		user.append('idUser',this.data.id);
+		user.append('documentNumber', loginForm.value.documentNumber);
+
+    this.authService.restorePassword(user).subscribe((resp)=>{
+
+
+    }, error=>{
+
+    
+    })
+
+
+  
+
+
+
+
+}
+}

@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-1">
+</div>
+<div class="col-10"><mat-dialog-content class="mat-typography">
+    <form class="example-form"  [formGroup]="loginForm">
+        <div class="forms">
+    <h2 mat-dialog-title>Restablecer contraseña</h2>
+</div>
+    <mat-form-field appearance="fill">
+        <!-- <mat-label>Restablecer contraseña</mat-label> -->
+        <input matInput placeholder="Ingresa tu documento de identidad" required formControlName="documentNumber" required>
+    </mat-form-field>
+    <div  class="row">
+        <div class="col-5"> </div>
+        <div class="col-7 boton">  <button mat-raised-button color ="success">Confirmar</button> </div>
+       </div>
+    </form>
+</mat-dialog-content></div>
+<div class="col-1"></div>
+</div>
+
