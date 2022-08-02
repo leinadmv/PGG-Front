@@ -101,13 +101,6 @@ export class AuthService {
       );
   }
 
-  changePassword(password): any {
-
-    return this.http.post<any>(`${PGG_URL}users/changePassword`, password)
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
 
 }
 
