@@ -48,6 +48,7 @@ requireAuth(loginForm) {
       });
 
       this.dialogRef.close();
+    
    
 
 
