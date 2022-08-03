@@ -1,0 +1,28 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="fill" *ngFor="let control of jsonFormData?.controls">
+
+        <mat-label *ngIf="control.label !== ''">{{ control.label }}</mat-label>
+
+        <input matInput *ngIf="
+        [
+          'text',
+          'password',
+          'email',
+          'number',
+          'search',
+          'tel',
+          'url'
+        ].includes(control.type)
+        " [type]="control.type"
+        [formControlName]="control.name"
+        [value]="control.value">
+
+        <textarea *ngIf="control.type === 'textarea'"
+        [formControlName]="control.name"
+        [value]="control.value"></textarea>
+
+    </mat-form-field>
+
+    <button type='submit' mat-raised-button color="success" disabled='{{myForm.invalid}}' cdkFocusInitial>Guardar</button>
+</form>
