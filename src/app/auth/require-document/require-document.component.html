@@ -2,17 +2,24 @@
     <div class="col-1">
 </div>
 <div class="col-10"><mat-dialog-content class="mat-typography">
-    <form class="example-form"  [formGroup]="loginForm">
+    <form class="example-form"  [formGroup]="loginForm" (ngSubmit)="requireAuth(loginForm)" >
         <div class="forms">
-    <h2 mat-dialog-title>Restablecer contraseña</h2>
+    <h1 mat-dialog-title>Restablecer contraseña
+        <br>
+        <span>Para restablecer la contraseña de este usuario debe ingresar su numero de documento</span>
+    </h1>
 </div>
     <mat-form-field appearance="fill">
-        <!-- <mat-label>Restablecer contraseña</mat-label> -->
+        <mat-label>Ingrese su documento</mat-label>
         <input matInput placeholder="Ingresa tu documento de identidad" required formControlName="documentNumber" required>
+        <mat-error *ngIf="error.documentNumber.errors"><span *ngIf="error.documentNumber.errors.minlength">¡Aún falta! Recibimos mínimo 3 caracteres</span></mat-error>
+        <mat-error *ngIf="error.documentNumber.errors"><span *ngIf="error.documentNumber.errors.maxlength">¡Cuidado! Solo puedes tener un máximo de 35 caracteres</span></mat-error>
     </mat-form-field>
+    <br>
+    <br>
     <div  class="row">
         <div class="col-5"> </div>
-        <div class="col-7 boton">  <button mat-raised-button color ="success">Confirmar</button> </div>
+        <div class="col-7 boton">  <button type = "submit" mat-raised-button color ="success">Confirmar</button> </div>
        </div>
     </form>
 </mat-dialog-content></div>

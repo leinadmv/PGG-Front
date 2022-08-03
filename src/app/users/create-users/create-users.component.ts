@@ -94,7 +94,7 @@ if(type === 'crear'){
 
     this.createForm.reset();
     Swal.fire(
-     'Creado!',
+     'Editado!',
      'Usted ha editado un usuario con exito!',
       'success'
     )

@@ -28,6 +28,7 @@ export class ChangePasswordComponent implements OnInit {
    formControl(): void {
     this.loginForm = new FormGroup({
     password: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.minLength(5)]),
+    confirmpassword: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.minLength(5), this.ObjectValidator()])
      
     });
   }
@@ -60,6 +61,21 @@ export class ChangePasswordComponent implements OnInit {
         }
       })
 } 
+
+
+ObjectValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    if (control.value) {
+      if (control.value !== this.loginForm.value.password) {
+        return { invalidObject: { value: control.value } };
+      } else {
+        return null;
+      }
+    }
+    return null;
+  };
+}
+
 
 }
 

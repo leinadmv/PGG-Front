@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AuthService } from 'src/app/service/rest/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-require-document',
@@ -12,12 +13,10 @@ export class RequireDocumentComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private authService: AuthService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private authService: AuthService, public dialogRef: MatDialogRef<RequireDocumentComponent>) { }
 
   ngOnInit(): void {
 
-    console.log(this.data)
-  
     this.formControl();
  
    }
@@ -36,13 +35,20 @@ get error(): any {
 
 requireAuth(loginForm) {
 
-  
-
   const user = new FormData();
 		user.append('idUser',this.data.id);
-		user.append('documentNumber', loginForm.value.documentNumber);
+		user.append('myDocumentNumber', loginForm.value.documentNumber);
 
     this.authService.restorePassword(user).subscribe((resp)=>{
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Felicidades',
+        text: 'Se ha restablecido la contraseña con exito!',
+      });
+
+      this.dialogRef.close();
+   
 
 
     }, error=>{

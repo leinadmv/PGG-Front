@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ChangePasswordComponent } from 'src/app/auth/change-password/change-password.component';
 import { AuthService } from 'src/app/service/rest/auth.service';
 
 @Component({
@@ -9,7 +11,7 @@ import { AuthService } from 'src/app/service/rest/auth.service';
 })
 export class AppHeaderComponent {
 
-  constructor(private service: AuthService, private router: Router) {
+  constructor(private service: AuthService, private router: Router, public dialog: MatDialog){
     
   }
 
@@ -21,5 +23,13 @@ export class AppHeaderComponent {
     })
 
   }
+
+  changePassword(){
+    const dialogRef = this.dialog.open(ChangePasswordComponent,{
+      width: '50%',
+      panelClass: 'custom-dialog-container',
+    });
+  }
+
 
 }

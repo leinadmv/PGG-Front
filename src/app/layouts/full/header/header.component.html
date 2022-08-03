@@ -12,7 +12,9 @@
         <mat-icon>notifications_off</mat-icon> Disable notifications </button> -->
     <button mat-menu-item routerLink="/view-user">
         <mat-icon>account_box</mat-icon> Perfil </button>
+    <button mat-menu-item (click)="changePassword()">
+        <mat-icon>password</mat-icon> Cambiar contraseña </button>
     <button mat-menu-item (click)="logOut()">
-        <mat-icon>exit_to_app</mat-icon> Cerrar Sesión </button>
+        <mat-icon>exit_to_app</mat-icon> Cerrar Sesión </button>        
 </mat-menu>
 
