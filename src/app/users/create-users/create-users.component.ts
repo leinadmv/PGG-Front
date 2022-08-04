@@ -83,8 +83,15 @@ if(type === 'crear'){
      'Usted ha creado un usuario con exito!',
       'success'
     )
+    
+  }),error=>{
 
-  });
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'No se ha podido crear el usuario!',
+    })
+  };
 
 } else if(type === 'editar') {
 
@@ -98,12 +105,17 @@ if(type === 'crear'){
      'Usted ha editado un usuario con exito!',
       'success'
     )
+    
+  }), error=>{
 
-  });
-
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'No se ha podido editar el usuario!',
+    })
+  }
 }
-
-    } 
+} 
 
   setEdit(row:any) {
     this.createForm.controls.firstName.setValue(row.firstName);

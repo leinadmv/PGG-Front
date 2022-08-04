@@ -42,15 +42,6 @@ export class LoginComponent implements OnInit {
 
     this.authService.Authentification(user).subscribe( resp => {
 
-      if(resp.code === 401){
-
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: resp.message
-        })
-
-      } else {
         if(resp.accion === 'change_password'){
           localStorage.setItem('user', resp.access_token);
           this.router.navigate(['/restorePassword']);
@@ -58,13 +49,13 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('user', resp.access_token);
           this.router.navigate(['/']);
         }
-      }
+      
     }, error=>{
 
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Usuario o contraseña invalidos!',
+        text: 'Usuario o contraseña invalidohjbhjbhjbhhbs!',
       })
     }
     )
