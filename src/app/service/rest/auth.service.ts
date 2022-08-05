@@ -37,7 +37,7 @@ export class AuthService {
    * Servicio que obtiene los datos basicos del usuario del local storage
    */
 
-  getUser(): any {
+  getUsers(): any {
     return this.decryptToken();
   }
 

@@ -50,7 +50,9 @@ const MENUITEMS = [
     name: 'Slide Toggle',
     icon: 'all_inclusive'
   },
-  { state: 'admin-users', type: 'link', name: 'Usuarios', icon: 'crop_7_5', color: 'gris' }
+  { state: 'admin-users', type: 'link', name: 'Usuarios', icon: 'group', color: 'gris' },
+  { state: 'admin-categories', type: 'link', name: 'Categorias', icon: 'category', color: 'gris' },
+
 ];
 
 @Injectable()

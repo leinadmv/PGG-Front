@@ -48,14 +48,16 @@ requireAuth(loginForm) {
       });
 
       this.dialogRef.close();
+  
+    }), error=>{
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No se ha podido restablecer la contraseña!',
+      })
+    }
     
-   
-
-
-    }, error=>{
-
-    
-    })
 
 
   

@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { FullComponent } from './layouts/full/full.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RestorePasswordComponent } from './auth/restore-password/restore-password.component';
+import { DobleAuthComponent } from './auth/doble-auth/doble-auth.component';
 
 export const AppRoutes: Routes = [
   {
@@ -29,6 +30,10 @@ export const AppRoutes: Routes = [
         path: '',
         loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
       },
+      {
+        path: '',
+        loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule)
+      },
     ]
   },
   {
@@ -39,6 +44,11 @@ export const AppRoutes: Routes = [
   {
     path: 'restorePassword',
     component: RestorePasswordComponent
+  },
+
+  {
+    path: 'dobleAuth',
+    component: DobleAuthComponent
   }
 
 

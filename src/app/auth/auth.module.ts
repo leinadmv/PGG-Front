@@ -9,6 +9,7 @@ import { DemoMaterialModule } from '../demo-material-module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { RequireDocumentComponent } from './require-document/require-document.component';
+import { DobleAuthComponent } from './doble-auth/doble-auth.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { RequireDocumentComponent } from './require-document/require-document.co
     RestorePasswordComponent,
     LoginComponent,
     ChangePasswordComponent,
-    RequireDocumentComponent
+    RequireDocumentComponent,
+    DobleAuthComponent
   ],
   imports: [
     CommonModule,

@@ -38,7 +38,15 @@ export class AdminUsersComponent implements OnInit {
   getUsers() {
     this.service.getUsers().subscribe((resp) => {
       this.dataSource.data = resp.data.users;
-    });
+    
+    });error=>{
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No se ha podido listar usuarios!',
+      })
+    }
   }
 
   ngAfterViewInit() {
