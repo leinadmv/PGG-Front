@@ -51,7 +51,7 @@ const MENUITEMS = [
     icon: 'all_inclusive'
   },
   { state: 'admin-users', type: 'link', name: 'Usuarios', icon: 'group', color: 'gris' },
-  { state: 'admin-categories', type: 'link', name: 'Categorias', icon: 'category', color: 'gris' },
+  { state: 'admin-categories', type: 'link', name: 'Categorias', icon: 'category' },
 
 ];
 

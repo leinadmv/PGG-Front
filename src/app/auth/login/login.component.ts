@@ -42,12 +42,14 @@ export class LoginComponent implements OnInit {
 
     this.authService.Authentification(user).subscribe( resp => {
 
-        if(resp.accion === 'change_password'){
-          localStorage.setItem('user', resp.access_token);
+      localStorage.setItem('user', resp.access_token);
+
+        if(resp.accion === 'change_password'){  
           this.router.navigate(['/restorePassword']);
+        } else if(resp.accion === 'doble_authentication'){
+          this.router.navigate(['/dobleAuth']);
         } else {
-          localStorage.setItem('user', resp.access_token);
-          this.router.navigate(['/']);
+         this.router.navigate(['/']);
         }
       
     }, error=>{

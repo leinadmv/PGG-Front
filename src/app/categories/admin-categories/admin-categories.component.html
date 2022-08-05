@@ -1,5 +1,22 @@
-<table mat-table [dataSource]="dataSource">
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<div class="mat-elevation-z4">
+  <table mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="id">
+    <th style="padding-left: 20px; padding-right: 20px" mat-header-cell *matHeaderCellDef>Id</th>
+    <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
+      {{ row.id }}</td>
+  </ng-container>
+<br>
+<ng-container matColumnDef="name">
+  <th style="padding-left: 20px; padding-right: 20px" mat-header-cell *matHeaderCellDef>Name</th>
+    <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
+      {{ row.name }}</td>
+</ng-container>
+<br>
+<ng-container matColumnDef="description">
+  <th style="padding-left: 20px; padding-right: 20px" mat-header-cell *matHeaderCellDef>Descripcion</th>
+  <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
+    {{ row.description }}</td>
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-  </table>
+  </ng-container>
+  </table></div>
