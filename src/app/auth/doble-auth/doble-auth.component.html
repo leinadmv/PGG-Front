@@ -1,4 +1,5 @@
 <div class="login-wrapper forms">
+    <form class="example-form"  [formGroup]="loginForm" (ngSubmit)="authSms(loginForm)" >
     <mat-card>
         <mat-card-header>
             <h1 mat-card-title>
@@ -21,10 +22,12 @@
     </mat-card-content>
             <div  class="row">
                 <div class="col-5"> </div>
-                <div class="col-7 boton">  <button mat-raised-button color ="success">Confirmar</button> </div>
+                <div class="col-7 boton">  <button type = "submit" mat-raised-button color ="success">Confirmar</button> </div>
                </div>
                <br>
             </mat-card>
+        </form>
         </div>
+       
 
 
