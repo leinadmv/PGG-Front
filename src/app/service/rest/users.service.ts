@@ -76,5 +76,10 @@ getUserWhitToken(): Observable<any> {
   );
 }
 
+saveupPhoto(photo): Observable<any> {
+  return this.http.post<any>(`${PGG_URL}users/savePhoto`, photo)
+    .pipe(
+      catchError(this.handleError)
+    );
 }
-
+}

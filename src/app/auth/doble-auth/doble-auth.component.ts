@@ -17,7 +17,10 @@ export class DobleAuthComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+    this.router.navigate(['/']);
     this.formControl();
+    this.authService.dobleAuth
  
   }
 

@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ChangePasswordComponent } from 'src/app/auth/change-password/change-password.component';
 import { AuthService } from 'src/app/service/rest/auth.service';
+import { UsersService } from 'src/app/service/rest/users.service';
 import Swal from 'sweetalert2';
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -38,6 +38,4 @@ export class AppHeaderComponent {
       panelClass: 'custom-dialog-container',
     });
   }
-
-
 }
