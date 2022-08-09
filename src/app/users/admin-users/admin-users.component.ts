@@ -6,7 +6,6 @@ import { UsersService } from 'src/app/service/rest/users.service';
 import {ThemePalette} from '@angular/material/core';
 import Swal from 'sweetalert2';
 import { VisualService } from 'src/app/service/rest/visual.service';
-// import { ChangePasswordComponent } from 'src/app/auth/change-password/change-password.component';
 import { MatDialog } from '@angular/material/dialog';
 import { RequireDocumentComponent } from 'src/app/auth/require-document/require-document.component';
 @Component({
@@ -56,12 +55,12 @@ export class AdminUsersComponent implements OnInit {
 
   Redirect(row?: any){
 
+    this.router.navigate(['/app/create-users']);
+
     if(row){
       this.service.createOrEdit('editar', 'Editar usuario', row);
-      this.router.navigate(['/create-users']);
     } else {
       this.service.createOrEdit('crear', 'Crear usuario');
-      this.router.navigate(['/create-users']);
     }
 
   }
@@ -86,6 +85,12 @@ export class AdminUsersComponent implements OnInit {
          'success'
        )
 
+    }, error=>{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No se pudo realizar el cambio de estado!',
+      })
     });
 
 

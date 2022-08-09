@@ -80,7 +80,7 @@ if(type === 'crear'){
     this.createForm.reset();
     Swal.fire(
      'Creado!',
-     'Usted ha creado un usuario con exito!',
+     resp.message,
       'success'
     )
     
@@ -102,7 +102,7 @@ if(type === 'crear'){
     this.createForm.reset();
     Swal.fire(
      'Editado!',
-     'Usted ha editado un usuario con exito!',
+     resp.message,
       'success'
     )
     

@@ -45,20 +45,19 @@ export class ChangePasswordComponent implements OnInit {
 
     this.authService.changePassword(password).subscribe( resp => {
 
-      if(resp.code === 404){
+        Swal.fire({
+          icon: 'success',
+          title: 'Felicidades',
+          text: resp.message,
+        });
+        this.dialogRef.close();
+      }, error=>{
+
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: 'No se pudo realizar el cambio de contraseña!',
         });
-      } else {
-        Swal.fire({
-          icon: 'success',
-          title: 'Felicidades',
-          text: 'Ha cambiado su contraseña con exito!',
-        });
-        this.dialogRef.close();
-        }
       })
 } 
 

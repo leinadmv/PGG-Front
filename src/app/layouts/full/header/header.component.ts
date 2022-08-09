@@ -20,7 +20,7 @@ export class AppHeaderComponent {
 
     this.service.logOut().subscribe(resp =>{
       localStorage.clear();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
     });error=>{
 
       Swal.fire({

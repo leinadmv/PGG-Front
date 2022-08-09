@@ -16,18 +16,12 @@ export class DobleAuthComponent implements OnInit {
   loginForm: FormGroup;
 
   ngOnInit(): void {
-
-
-    this.router.navigate(['/']);
-    this.formControl();
-    this.authService.dobleAuth
- 
+    this.formControl(); 
   }
 
   formControl(): void {
    this.loginForm = new FormGroup({
-   code: new FormControl('', [ Validators.required,]),
-    
+    code: new FormControl('', [ Validators.required]),
    });
     
   }
@@ -35,6 +29,7 @@ export class DobleAuthComponent implements OnInit {
   get error(): any {
     return this.loginForm.controls;
   }
+
 
   authSms(loginForm) {
 
@@ -44,9 +39,7 @@ export class DobleAuthComponent implements OnInit {
 
     this.authService.dobleAuth(user).subscribe((resp)=>{
 
-      localStorage.setItem('user', resp.access_token);
-
-      this.router.navigate(['/']);
+      this.router.navigate(['/app']);
 
     }, error=>{
 

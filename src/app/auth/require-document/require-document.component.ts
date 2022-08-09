@@ -44,7 +44,7 @@ requireAuth(loginForm) {
       Swal.fire({
         icon: 'success',
         title: 'Felicidades',
-        text: 'Se ha restablecido la contraseña con exito!',
+        text: resp.message,
       });
 
       this.dialogRef.close();

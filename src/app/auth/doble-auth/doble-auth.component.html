@@ -14,7 +14,7 @@
                 <div class="col-6">
             <mat-form-field appearance="fill">
                 <mat-label>Ingrese el codigo que llegó a su celular</mat-label>
-                    <input matInput placeholder="Ingresa tu documento de identidad">
+                    <input formControlName="code" matInput required>
         </mat-form-field>
     </div>
     <div class="col-3"></div>
@@ -22,7 +22,7 @@
     </mat-card-content>
             <div  class="row">
                 <div class="col-5"> </div>
-                <div class="col-7 boton">  <button type = "submit" mat-raised-button color ="success">Confirmar</button> </div>
+                <div class="col-7 boton">  <button type = "submit" mat-raised-button color ="success" disabled='{{loginForm.invalid}}'>Confirmar</button> </div>
                </div>
                <br>
             </mat-card>

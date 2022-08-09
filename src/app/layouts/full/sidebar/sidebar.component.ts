@@ -28,8 +28,6 @@ export class AppSidebarComponent implements OnDestroy {
   }
 
   setColor(color: any){
-
     this.visualService.changeColor(color);
-
   }
 }

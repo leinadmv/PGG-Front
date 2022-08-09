@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/service/rest/users.service';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class ViewUserComponent implements OnInit {
       
       this.userService.createOrEdit('ver', 'Ver Usuario', resp.data.user);
       this.band = true;
-      this.imageChangedEvent = resp.data.users_photo;
+      this.imageChangedEvent = resp.data.user.users_photo;
 
     })
 
@@ -44,10 +45,26 @@ loadImageFailed() {
     // show message
 }
 
-updatePhoto(photo) {
+updatePhoto() {
 
-  this.userService.saveupPhoto(photo).subscribe((resp) => {
-    console.log(resp)
+  const foto = new FormData();
+	foto.append('photo', this.croppedImage);
 
-})
-}}
+  this.userService.saveupPhoto(foto).subscribe((resp) => {
+    console.log(resp);
+    Swal.fire(
+      'Editado!',
+      resp.message,
+       'success'
+     )
+  }, error=>{
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'No se ha podido dubir su imagen!',
+    })
+  });
+}
+
+}
