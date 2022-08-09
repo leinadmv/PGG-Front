@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/service/rest/users.service';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 
+
 @Component({
   selector: 'app-view-user',
   templateUrl: './view-user.component.html',
@@ -21,6 +22,7 @@ export class ViewUserComponent implements OnInit {
       
       this.userService.createOrEdit('ver', 'Ver Usuario', resp.data.user);
       this.band = true;
+      this.imageChangedEvent = resp.data.users_photo;
 
     })
 
@@ -42,6 +44,10 @@ loadImageFailed() {
     // show message
 }
 
+updatePhoto(photo) {
 
+  this.userService.saveupPhoto(photo).subscribe((resp) => {
+    console.log(resp)
 
-}
+})
+}}

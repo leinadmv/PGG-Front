@@ -109,6 +109,13 @@ export class AuthService {
       );
   }
 
+  dobleAuth(datos:any): any {
+
+    return this.http.post<any>(`${PGG_URL}verifyCode`, datos)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
 }
 
