@@ -49,12 +49,7 @@ export class LoginComponent implements OnInit {
         } else if(resp.accion === 'doble_authentication'){
           this.router.navigate(['/dobleAuth']);
         } else {
-<<<<<<< HEAD
-          localStorage.setItem('user', resp.access_token);
           this.router.navigate(['/app']);
-=======
-         this.router.navigate(['/']);
->>>>>>> b022589710809131a269f98e44f92dda1663f6f6
         }
       
     }, error=>{

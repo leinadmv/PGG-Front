@@ -6,23 +6,12 @@ import { DobleAuthComponent } from './auth/doble-auth/doble-auth.component';
 
 export const AppRoutes: Routes = [
   {
-<<<<<<< HEAD
     path: 'app',
-=======
-    path: 'login',
-    component: LoginComponent
-  },{
-    path: '',
->>>>>>> b022589710809131a269f98e44f92dda1663f6f6
     component: FullComponent,
     children: [
       /* {
         path: '',
-<<<<<<< HEAD
         redirectTo: 'dashboard',
-=======
-        redirectTo: '/dashboard', 
->>>>>>> b022589710809131a269f98e44f92dda1663f6f6
         pathMatch: 'full'
       }, */
       {
@@ -48,13 +37,10 @@ export const AppRoutes: Routes = [
     ]
   },
   {
-<<<<<<< HEAD
     path: '',
     component: LoginComponent
   },
   {
-=======
->>>>>>> b022589710809131a269f98e44f92dda1663f6f6
     path: 'restorePassword',
     component: RestorePasswordComponent
   },
