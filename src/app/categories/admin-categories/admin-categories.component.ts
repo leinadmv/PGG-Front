@@ -20,11 +20,7 @@ export class AdminCategoriesComponent implements OnInit {
   constructor(private router: Router , public visualService: VisualService) { }
 
   ngOnInit(): void {
-
-
     this.visualService.changeColor('gris');
-
-  
   }
 
 }

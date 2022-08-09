@@ -6,14 +6,14 @@ import { DobleAuthComponent } from './auth/doble-auth/doble-auth.component';
 
 export const AppRoutes: Routes = [
   {
-    path: '',
+    path: 'app',
     component: FullComponent,
     children: [
-      {
+      /* {
         path: '',
-        redirectTo: '/dashboard',
+        redirectTo: 'dashboard',
         pathMatch: 'full'
-      },
+      }, */
       {
         path: '',
         loadChildren: () => import('./material-component/material.module').then(m => m.MaterialComponentsModule)
@@ -37,15 +37,13 @@ export const AppRoutes: Routes = [
     ]
   },
   {
-    path: 'login',
+    path: '',
     component: LoginComponent
   },
-
   {
     path: 'restorePassword',
     component: RestorePasswordComponent
   },
-
   {
     path: 'dobleAuth',
     component: DobleAuthComponent

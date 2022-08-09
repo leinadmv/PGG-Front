@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/restorePassword']);
         } else {
           localStorage.setItem('user', resp.access_token);
-          this.router.navigate(['/']);
+          this.router.navigate(['/app']);
         }
       
     }, error=>{
