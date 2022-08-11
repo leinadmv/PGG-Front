@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   templateUrl: './view-user.component.html',
   styleUrls: ['./view-user.component.css']
 })
-export class ViewUserComponent implements OnInit, OnDestroy {
+export class ViewUserComponent implements OnInit {
 
   band: boolean = false;
   imageChangedEvent: any = '';
@@ -67,11 +67,6 @@ updatePhoto() {
       text: 'No se ha podido dubir su imagen!',
     })
   });
-}
-
-ngOnDestroy() {
-  this.userService.headPhoto$.next();  // trigger the unsubscribe
-  this.userService.headPhoto$.complete(); // finalize & clean up the subject stream
 }
 
 }

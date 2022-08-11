@@ -89,4 +89,9 @@ saveupPhoto(photo): Observable<any> {
       catchError(this.handleError)
     );
 }
+
+ngOnDestroy() {
+  this.headPhoto$.next();  // trigger the unsubscribe
+  this.headPhoto$.complete(); // finalize & clean up the subject stream
+}
 }
