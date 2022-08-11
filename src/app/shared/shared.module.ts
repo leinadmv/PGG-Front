@@ -21,7 +21,8 @@ import { DemoMaterialModule } from '../demo-material-module';
   exports: [
     AccordionAnchorDirective,
     AccordionLinkDirective,
-    AccordionDirective
+    AccordionDirective,
+    DynamicFormComponent,
    ],
   providers: [ MenuItems ]
 })

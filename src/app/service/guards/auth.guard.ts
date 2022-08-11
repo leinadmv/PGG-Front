@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     } else{
       this.authService.logOut().subscribe(respuesta => {
         if (respuesta != null) {
-          window.location.replace('/login');
+          window.location.replace('/');
           localStorage.clear();
           return false;
         }
@@ -31,7 +31,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     } else{
       this.authService.logOut().subscribe(respuesta => {
         if (respuesta != null) {
-          window.location.replace('/login');
+          window.location.replace('/');
           localStorage.clear();
           return false;
         }

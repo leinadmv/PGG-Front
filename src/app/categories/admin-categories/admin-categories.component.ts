@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CategoriesService } from 'src/app/service/rest/categories.service';
 import Swal from 'sweetalert2';
 
+
+
 @Component({
   selector: 'app-admin-categories',
   templateUrl: './admin-categories.component.html',
@@ -18,6 +20,7 @@ export class AdminCategoriesComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'description'];
   dataSource =  new MatTableDataSource<any>();
+  formulario: any
 
   constructor(private router: Router , public service : CategoriesService, public visualService: VisualService) { }
 
@@ -25,6 +28,9 @@ export class AdminCategoriesComponent implements OnInit {
 
     this.getCategories();
     this.visualService.changeColor('gris');
+    //
+    this.formulario = this.service.getFormulario();
+  
 
   }
   getCategories() {
@@ -40,6 +46,7 @@ export class AdminCategoriesComponent implements OnInit {
       })
     }
   }
+
 
 
 }

@@ -5,6 +5,7 @@ import { AdminCategoriesComponent } from './admin-categories/admin-categories.co
 import { RouterModule } from '@angular/router';
 import { DemoMaterialModule } from '../demo-material-module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterModule.forChild(CategoriesRoutes),
     DemoMaterialModule,
     ReactiveFormsModule,
+    SharedModule,
   ]
 })
 export class CategoriesModule { }

@@ -24,4 +24,168 @@ export class CategoriesService {
         catchError(this.handleError)
       );
   }
+
+  getFormulario(){
+
+    return [
+      {
+          "section":"Datos Básicos Inmueble",
+          "form":[
+              {
+                  "name": "Número Inmueble:",
+                  "value": "",
+                  "type": "numeric",
+                  "validators": {
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 11
+                  }
+              },
+              {
+                  "name": "Código Inmueble:",
+                  "value": "",
+                  "type": "numeric",
+                  "validators": {
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 11
+                  }
+              },
+              {
+                  "name": "Tipo Inmueble:",
+                  "value": "",
+                  "type": "select",
+                  "validators": {
+                    "required": true
+                  },
+                  "options":[
+                      {
+                          "value": "Apartamento",
+                          "label": "Apartamento"
+                      },
+                      {
+                          "value": "Bodega",
+                          "label": "Bodega"
+                      },
+                      {
+                          "value": "Local",
+                          "label": "Local"
+                      },
+                      {
+                          "value": "Casa Local",
+                          "label": "Casa Local"
+                      }
+                  ]
+              },
+              {
+                  "name": "Propiedad:",
+                  "value": "",
+                  "type": "select",
+                  "validators": {
+                    "required": true
+                  },
+                  "options":[
+                      {
+                          "value": "Comodato",
+                          "label": "Comodato"
+                      },
+                      {
+                          "value": "Propía",
+                          "label": "Propía"
+                      }
+                  ]
+              },
+              {
+                  "name": "Número Inmueble:",
+                  "value": "",
+                  "type": "text",
+                  "validators": {
+                    "required": true,
+                    "minLength": 10
+                  }
+              },
+              {
+                  "name": "Ciudad:",
+                  "value": "",
+                  "type": "text",
+                  "validators": {
+                    "required": true,
+                    "minLength": 4
+                  }
+              },
+              {
+                  "name": "Metros cuadrados:",
+                  "value": "",
+                  "type": "numeric",
+                  "validators": {
+                    "required": false,
+                    "numeric-type": "double"
+                  }
+              },
+              {
+                  "name": "Mezanine:",
+                  "value": "",
+                  "type": "numeric",
+                  "validators": {
+                    "required": false,
+                    "numeric-type": "double"
+                  }
+              },
+              {
+                  "name": "Total Metros Cuadrados - Mezanine:",
+                  "value": "Calculo realizado en el back",
+                  "type": "numeric",
+                  "validators": {
+                      "not_editable": true
+                  }                
+              },
+              {
+                  "name": "Matricula Inmobiliaria:",
+                  "value": "",
+                  "type": "text",
+                  "validators": {
+                    "required": false
+                  }
+              },
+              {
+                  "name": "Archivo Matricula Inmobiliaria:",
+                  "value": "",
+                  "type": "file",
+                  "validators": {
+                    "required": false,
+                    "extenxion": ".pdf"
+                  }
+              },
+              {
+                  "name": "Escritura Publica:",
+                  "value": "",
+                  "type": "text",
+                  "validators": {
+                    "required": false
+                  }
+              },
+              {
+                  "name": "Archivo Escritura Publíca:",
+                  "value": "",
+                  "type": "file",
+                  "validators": {
+                    "required": false,
+                    "extenxion": ".pdf"
+                  }
+              },
+              {
+                  "name": "Fecha:",
+                  "value": "",
+                  "type": "date",
+                  "validators": {
+                    "required": false
+                  }
+              }
+              
+  
+  
+          ]
+      }
+  ]
+  }
 }

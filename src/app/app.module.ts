@@ -24,6 +24,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { LoaderInterceptor } from './service/interceptors/loader.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CategoriesModule } from './categories/categories.module';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ReactiveFormsModule,
     AuthModule,
     NgxSpinnerModule,
+    CategoriesModule,
+    UsersModule,
     RouterModule.forRoot(AppRoutes),
     JwtModule.forRoot({
       config: {

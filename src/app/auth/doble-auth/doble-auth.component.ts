@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { interval, pipe } from 'rxjs';
 import { AuthService } from 'src/app/service/rest/auth.service';
 import Swal from 'sweetalert2';
 
@@ -10,9 +9,17 @@ import Swal from 'sweetalert2';
   templateUrl: './doble-auth.component.html',
   styleUrls: ['./doble-auth.component.css']
 })
-export class DobleAuthComponent implements OnInit {
+export class DobleAuthComponent implements OnInit, OnDestroy{
+
+  interval:any;
 
   constructor( private authService: AuthService, private router: Router ) { }
+  
+  ngOnDestroy(): void {
+
+clearInterval(this.interval);
+
+  }
 
   loginForm: FormGroup;
 
@@ -21,7 +28,7 @@ export class DobleAuthComponent implements OnInit {
     this.formControl(); 
 
 
-    setTimeout(() => {
+    this.interval = setTimeout(() => {
       this.router.navigate(['/']);
   }, 120000);  
   }
