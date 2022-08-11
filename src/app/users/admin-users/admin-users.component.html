@@ -34,8 +34,8 @@
           </ng-container>
 
           <ng-container matColumnDef="firstName">
-            <th mat-header-cell *matHeaderCellDef>Nombre de usuario</th>
-            <td mat-cell *matCellDef="let row">
+            <th  mat-header-cell *matHeaderCellDef>Nombre de usuario</th>
+            <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
               {{ row.firstName }} {{ row.middleName }} {{ row.firstLastname }}
               {{ row.secondLastname }}
             </td>
@@ -43,14 +43,14 @@
 
           <ng-container matColumnDef="fkDocumentType">
             <th  mat-header-cell *matHeaderCellDef>Tipo de Documento</th>
-            <td  mat-cell *matCellDef="let row">
-              {{ row.fkDocumentType === 2 ? "Cediiiiula" : "hola" || row.fkDocumentType === 1 ? "Cedula" : "hola" }}
+            <td style="padding-left: 20px; padding-right: 20px"  mat-cell *matCellDef="let row">
+              {{ row.fkDocumentType === 2 ? "" : "hola" || row.fkDocumentType === 1 ? "Cedula" : "hola" }}
             </td>
           </ng-container>
 
           <ng-container matColumnDef="documentNumber">
-            <th  mat-header-cell *matHeaderCellDef>N° de Documento</th>
-            <td mat-cell *matCellDef="let row">
+            <th style="padding-left: 20px; padding-right: 20px" mat-header-cell *matHeaderCellDef>N° de Documento</th>
+            <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
               {{ row.documentNumber }}
             </td>
           </ng-container>
@@ -64,7 +64,7 @@
 
           <ng-container matColumnDef="phone">
             <th mat-header-cell *matHeaderCellDef>Telefono</th>
-            <td  mat-cell *matCellDef="let row">
+            <td  style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
               {{ row.phone }}
             </td>
           </ng-container>
