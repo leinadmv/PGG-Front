@@ -20,14 +20,14 @@ export class AdminCategoriesComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'description'];
   dataSource =  new MatTableDataSource<any>();
-  formulario: any
+  formulario: any='';
 
   constructor(private router: Router , public service : CategoriesService, public visualService: VisualService) { }
 
   ngOnInit(): void {
 
     this.getCategories();
-    this.visualService.changeColor('gris');
+    this.visualService.changeColor('catPurple');
     //
     this.formulario = this.service.getFormulario();
   

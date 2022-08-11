@@ -47,7 +47,9 @@ export class DynamicFormComponent implements OnChanges {
 
   constructor(private fb: FormBuilder) { }
 
+
   ngOnChanges(changes: SimpleChanges) {
+    console.log(this.jsonFormData);
     if (!changes.jsonFormData.firstChange) {
       console.log(this.jsonFormData);
     }

@@ -50,8 +50,8 @@ const MENUITEMS = [
   // //   name: 'Slide Toggle',
   // //   icon: 'all_inclusive'
   // // },
-  { state: 'admin-users', type: 'link', name: 'Usuarios', icon: 'group', color: 'purple', },
-  { state: 'admin-categories', type: 'link', name: 'Categorias', icon: 'category', color: 'gris', },
+  { state: 'admin-users', type: 'link', name: 'Usuarios', icon: 'group', color: 'usersGrey', },
+  { state: 'admin-categories', type: 'link', name: 'Categorias', icon: 'category', color: 'catPurple', },
 
 ];
 
