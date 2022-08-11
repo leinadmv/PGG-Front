@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserRoutes } from './users.routing';
 import { RouterModule } from '@angular/router';
@@ -21,6 +21,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     ReactiveFormsModule,
     ImageCropperModule
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class UsersModule { }
 
