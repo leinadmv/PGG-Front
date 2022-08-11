@@ -13,4 +13,9 @@ export class VisualService {
   changeColor(color: any){
     this.sideNavColor$.next(color);
   }
+
+  ngOnDestroy() {
+    this.sideNavColor$.next();  // trigger the unsubscribe
+    this.sideNavColor$.complete(); // finalize & clean up the subject stream
+  }
 }

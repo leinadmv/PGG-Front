@@ -6,9 +6,6 @@ import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 
-
-
-
 const PGG_URL = environment.backPgg;
 
 @Injectable({

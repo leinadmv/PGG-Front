@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/service/rest/users.service';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 import Swal from 'sweetalert2';
@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   templateUrl: './view-user.component.html',
   styleUrls: ['./view-user.component.css']
 })
-export class ViewUserComponent implements OnInit {
+export class ViewUserComponent implements OnInit, OnDestroy {
 
   band: boolean = false;
   imageChangedEvent: any = '';
@@ -51,11 +51,9 @@ updatePhoto() {
 	foto.append('photo', this.croppedImage);
 
   this.userService.saveupPhoto(foto).subscribe((resp) => {
-    console.log(resp);
 
-    this.userService.headPhoto$.next(resp);
+    this.userService.headPhoto$.next(this.croppedImage);
     
-
     Swal.fire(
       'Editado!',
       resp.message,
@@ -69,6 +67,11 @@ updatePhoto() {
       text: 'No se ha podido dubir su imagen!',
     })
   });
+}
+
+ngOnDestroy() {
+  this.userService.headPhoto$.next();  // trigger the unsubscribe
+  this.userService.headPhoto$.complete(); // finalize & clean up the subject stream
 }
 
 }
