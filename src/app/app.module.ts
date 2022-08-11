@@ -22,6 +22,8 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { InterceptorInterceptor } from './service/interceptors/Interceptor.Interceptor';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { LoaderInterceptor } from './service/interceptors/loader.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { AuthModule } from './auth/auth.module';
     SharedModule,
     ReactiveFormsModule,
     AuthModule,
+    NgxSpinnerModule,
     RouterModule.forRoot(AppRoutes),
     JwtModule.forRoot({
       config: {
@@ -55,7 +58,12 @@ import { AuthModule } from './auth/auth.module';
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorInterceptor,
       multi: true
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })

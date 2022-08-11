@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { interval, pipe } from 'rxjs';
 import { AuthService } from 'src/app/service/rest/auth.service';
 import Swal from 'sweetalert2';
 
@@ -18,6 +19,11 @@ export class DobleAuthComponent implements OnInit {
   ngOnInit(): void {
 
     this.formControl(); 
+
+
+    setTimeout(() => {
+      this.router.navigate(['/']);
+  }, 120000);  
   }
 
   formControl(): void {

@@ -27,7 +27,7 @@ mat-sidenav {
         &:hover {
           background: none;
           > a {
-            color: $themecolor;
+            color: white;
           }
         }
       }
@@ -40,7 +40,7 @@ mat-sidenav {
         display: flex;
         font-size: 15px;
         white-space: nowrap;
-        color: $sidebar-text;
+        color: rgb(179, 176, 176);
         mat-icon:not(.dd-icon) {
           margin-right: 8px;
         }
@@ -58,7 +58,7 @@ mat-sidenav {
       &.selected > .mat-list-item-content > a {
         background: rgb(115, 195, 248);
         border-radius: $radius;
-        color: $white;
+        color: white;
   
         mat-icon {
           color: $white;
@@ -70,7 +70,7 @@ mat-sidenav {
       }
       &.selected .sub-item .mat-list-item-content a.selected {
         background: transparent;
-        color: $info;
+        color: white;
         font-weight: 500;
       }
     }

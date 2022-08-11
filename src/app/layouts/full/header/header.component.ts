@@ -21,12 +21,16 @@ export class AppHeaderComponent implements OnInit {
 
   
   ngOnInit(): void {
-    
+
+    this.user.getUserWhitToken().subscribe(resp => {
+      this.photo = resp.data.user.users_photo.photo
+    });
+
+
     this.user.headPhoto$.subscribe(resp =>{
       this.photo = resp;
-      console.log(resp)
     })
-  }
+     };
 
   logOut(){
 

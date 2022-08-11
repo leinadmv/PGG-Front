@@ -63,8 +63,8 @@ updatePhoto() {
 
     Swal.fire({
       icon: 'error',
-      title: 'Oops...',
-      text: 'No se ha podido dubir su imagen!',
+      title: 'No se ha podido subir su imagen!',
+      text: 'Verifique que el tamaño o la resolucion de la imagen no sea demasiado grande',
     })
   });
 }
