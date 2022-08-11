@@ -11,13 +11,14 @@
     word-spacing: 1px; letter-spacing:2px;
   }
   .forms h1 span {
+    text-align: center;
     font-size: 13px;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     line-height: 3em;
     padding-left: 0.25em;
-    color: rgba(0, 0, 0, 0.4);
+    color: rgba(3, 1, 1, 0.781);
     padding-bottom: 50px;
   }
   .mat-success {

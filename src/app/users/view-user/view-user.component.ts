@@ -52,6 +52,10 @@ updatePhoto() {
 
   this.userService.saveupPhoto(foto).subscribe((resp) => {
     console.log(resp);
+
+    this.userService.headPhoto$.next(resp);
+    
+
     Swal.fire(
       'Editado!',
       resp.message,

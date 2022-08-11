@@ -18,7 +18,7 @@ export class AdminUsersComponent implements OnInit {
   color: ThemePalette = 'accent';
   checked = true;
 
-  displayedColumns: string[] = ['accion', 'estado', 'firstName', 'fkDocumentType', 'documentNumber', 'email', 'phone', 'position', 'business', 'idRole' ];
+  displayedColumns: string[] = ['accion', 'estado', 'firstName', 'fkDocumentType', 'documentNumber', 'email', 'phone', 'position', 'business', 'idRole', 'fkRol', ];
   dataSource =  new MatTableDataSource<any>();
   // 'middleName', 'firstLastname', 'secondLastname',
   
@@ -30,7 +30,7 @@ export class AdminUsersComponent implements OnInit {
   ngOnInit(): void {
 
     this.getUsers();
-    this.visualService.changeColor('gris');
+    this.visualService.changeColor('purple');
     
   }
 
@@ -83,8 +83,8 @@ export class AdminUsersComponent implements OnInit {
         'Editado!',
         resp.message,
          'success'
-       )
-
+      )
+      
     }, error=>{
       Swal.fire({
         icon: 'error',

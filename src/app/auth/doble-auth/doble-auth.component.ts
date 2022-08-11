@@ -16,6 +16,7 @@ export class DobleAuthComponent implements OnInit {
   loginForm: FormGroup;
 
   ngOnInit(): void {
+
     this.formControl(); 
   }
 

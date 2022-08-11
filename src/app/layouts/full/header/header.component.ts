@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ChangePasswordComponent } from 'src/app/auth/change-password/change-password.component';
@@ -10,10 +10,22 @@ import Swal from 'sweetalert2';
   templateUrl: './header.component.html',
   styleUrls: []
 })
-export class AppHeaderComponent {
+export class AppHeaderComponent implements OnInit {
 
-  constructor(private service: AuthService, private router: Router, public dialog: MatDialog){
+
+  photo: any
+
+  constructor(private service: AuthService, private user: UsersService, private router: Router, public dialog: MatDialog){
     
+  }
+
+  
+  ngOnInit(): void {
+    
+    this.user.headPhoto$.subscribe(resp =>{
+      this.photo = resp;
+      console.log(resp)
+    })
   }
 
   logOut(){
@@ -38,4 +50,6 @@ export class AppHeaderComponent {
       panelClass: 'custom-dialog-container',
     });
   }
+
+ 
 }

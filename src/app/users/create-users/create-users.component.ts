@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import { UsersService } from 'src/app/service/rest/users.service';
 import Swal from 'sweetalert2';
 
@@ -14,7 +15,7 @@ export class CreateUsersComponent implements OnInit {
   modelo: any;
   select: any;
 
-  constructor(private userService: UsersService) { }
+  constructor(private userService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -91,6 +92,9 @@ if(type === 'crear'){
       title: 'Oops...',
       text: 'No se ha podido crear el usuario!',
     })
+
+    this.router.navigate(['/app/admin-users']);
+    
   };
 
 } else if(type === 'editar') {
@@ -99,13 +103,11 @@ if(type === 'crear'){
 
   this.userService.updateUser(user).subscribe((resp) => {
 
-    this.createForm.reset();
     Swal.fire(
      'Editado!',
      resp.message,
       'success'
     )
-    
   }), error=>{
 
     Swal.fire({

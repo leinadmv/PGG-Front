@@ -3,7 +3,7 @@
 
   <mat-card >
     <mat-card-header>
-      <mat-card-title>Bienvenido a PGG Manager</mat-card-title>
+      <mat-card-title class="jt">Bienvenido a PGG Manager</mat-card-title>
     </mat-card-header>
 
     <form class="example-form" [formGroup]="loginForm" (ngSubmit)="loginAuth(loginForm)">
@@ -29,6 +29,10 @@
           </a>
       </mat-form-field>
       </mat-card-content>
+
+      <label class="js">Si usted no recuerda su contraseña debe comunicarse con el administrador para que su contraseña sea restablecida</label>
+
+      <br>
 
       <div  class="row">
 

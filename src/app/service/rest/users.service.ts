@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -13,12 +13,19 @@ const PGG_URL = environment.backPgg;
 })
 export class UsersService {
 
+  headPhoto$: Subject<any> = new Subject();
+
   modeloCreateOrEdit: any;
 
   constructor( private http: HttpClient, private jwtHelper: JwtHelperService) { }
   handleError(error: HttpErrorResponse): any {
     return throwError(error);
 
+}
+
+getHeadPhoto(photo: any){
+  this.headPhoto$.next(photo);
+  
 }
 
 getUsers(): Observable<any> {

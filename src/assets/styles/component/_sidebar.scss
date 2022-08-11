@@ -56,7 +56,7 @@ mat-sidenav {
         }
       }
       &.selected > .mat-list-item-content > a {
-        background: $themecolor-alt;
+        background: rgb(115, 195, 248);
         border-radius: $radius;
         color: $white;
   
@@ -70,7 +70,7 @@ mat-sidenav {
       }
       &.selected .sub-item .mat-list-item-content a.selected {
         background: transparent;
-        color: $inverse;
+        color: $info;
         font-weight: 500;
       }
     }
