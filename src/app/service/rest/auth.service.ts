@@ -48,8 +48,8 @@ export class AuthService {
    */
 
   verifyTokent(): boolean {
-    const token = JSON.parse(localStorage.getItem('user'));
-    return !this.jwtHelper.isTokenExpired(token.access_token);
+    const token = localStorage.getItem('user');
+    return !this.jwtHelper.isTokenExpired(token);
   }
 
   /**

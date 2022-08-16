@@ -3,11 +3,14 @@ import { FullComponent } from './layouts/full/full.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RestorePasswordComponent } from './auth/restore-password/restore-password.component';
 import { DobleAuthComponent } from './auth/doble-auth/doble-auth.component';
+import { AuthGuard } from './service/guards/auth.guard';
 
 export const AppRoutes: Routes = [
   {
     path: 'app',
     component: FullComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       /* {
         path: '',

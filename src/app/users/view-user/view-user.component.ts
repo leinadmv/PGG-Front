@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/service/rest/users.service';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 import Swal from 'sweetalert2';
+import { VisualService } from 'src/app/service/rest/visual.service';
 
 
 @Component({
@@ -16,11 +17,13 @@ export class ViewUserComponent implements OnInit {
   croppedImage: any = '';
   image: any = '';
 
-  constructor(private userService: UsersService) { 
+  constructor(private userService: UsersService, public visualService: VisualService) { 
 
   }
 
   ngOnInit() {
+
+    this.visualService.changeColor('usersGrey');
 
     this.userService.getUserWhitToken().subscribe(async resp => {
       
