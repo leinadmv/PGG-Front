@@ -6,3 +6,8 @@ th{
     align-content: center !important;
     align-items: center !important;
   }
+  .mat-success
+{
+  background-color: #35007A;
+  color: whitesmoke;
+}

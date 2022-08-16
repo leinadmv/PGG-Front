@@ -1,0 +1,87 @@
+<mat-card>
+  <mat-card-content>
+    <mat-card-title>
+      <div class="forms">
+        <th>{{ modelo?.tittle }}</th>
+      </div>
+    </mat-card-title>
+    <br />
+    <form
+      [formGroup]="createForm"
+      (ngSubmit)="saveCategories(modelo?.type, createForm)"
+    >
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="fill">
+            <mat-label>Categoria</mat-label>
+            <input
+              matInput
+              required
+              formControlName="name"
+              placeholder="Ingresa el nombre de la Categoria que quieres crear"
+            />
+            <mat-error *ngIf="error.name.errors"
+              ><span *ngIf="error.name.errors.required"
+                >¡Advertencia! Este campo es requerido</span
+              ></mat-error
+            >
+          </mat-form-field>
+        </div>
+        <br />
+        <div class="col-6">
+          <mat-form-field appearance="fill">
+            <mat-label>Descripcion</mat-label>
+            <input
+              matInput
+              formControlName="description"
+              placeholder="Ingresa la descripcion de la categoria que quieres crear"
+            />
+            <mat-error *ngIf="error.description.errors"
+              ><span *ngIf="error.description.errors.required"
+                >¡Advertencia! Este campo es requerido</span
+              ></mat-error
+            >
+          </mat-form-field>
+        </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Color de categoria</mat-label>
+          <input
+            matInput
+            formControlName="configuration"
+            placeholder="Selecciona el colorde la categoria que quieres crear"
+          />
+          <mat-error *ngIf="error.description.errors"
+            ><span *ngIf="error.description.errors.required"
+              >¡Advertencia! Este campo es requerido</span
+            ></mat-error
+          >
+        </mat-form-field>
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-4 button">
+            <button
+              *ngIf="modelo?.type !== 'ver'"
+              type="submit"
+              mat-raised-button
+              color="success"
+              disabled="{{ createForm.invalid }}"
+              cdkFocusInitial
+            >
+              {{ modelo?.tittle }}
+            </button>
+            <button
+              *ngIf="modelo?.type === 'editar'"
+              type="submit"
+              mat-raised-button
+              color="success"
+              routerLink="/app/admin-categories"
+            >
+              Volver a Categorias
+            </button>
+          </div>
+          <div class="col-4"></div>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

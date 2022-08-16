@@ -6,11 +6,13 @@ import { RouterModule } from '@angular/router';
 import { DemoMaterialModule } from '../demo-material-module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { CreateCategoriesComponent } from './create-categories/create-categories.component';
 
 
 @NgModule({
   declarations: [
-    AdminCategoriesComponent
+    AdminCategoriesComponent,
+    CreateCategoriesComponent
   ],
   imports: [
     CommonModule,

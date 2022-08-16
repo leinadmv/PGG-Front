@@ -1,24 +1,61 @@
-<div class="mat-elevation">
-  <table mat-table [dataSource]="dataSource">
-  <ng-container matColumnDef="id">
-    <th style="padding-left: 20px; padding-right: 20px" mat-header-cell *matHeaderCellDef>Id</th>
-    <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
-      {{ row.id }}</td>
-  </ng-container>
-<br>
-<ng-container matColumnDef="name">
-  <th style="padding-left: 20px; padding-right: 20px" mat-header-cell *matHeaderCellDef>Name</th>
-    <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
-      {{ row.name }}</td>
-</ng-container>
-<br>
-<ng-container matColumnDef="description">
-  <th style="padding-left: 20px; padding-right: 20px" mat-header-cell *matHeaderCellDef>Descripcion</th>
-  <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
-    {{ row.description }}</td>
-<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </ng-container>
-  </table></div>
 
-  <app-dynamic-form [jsonFormData]="formulario"></app-dynamic-form>
+  <div class="col-6">
+  <button mat-raised-button color="success" (click)="redirectCategories()">
+    Crear Categorias
+  </button>
+</div>
+<br>
+<br>
+<div class="mat-elevation">
+  <table mat-table [dataSource]="dataSource">  
+    <ng-container matColumnDef="accion">
+      <th class="start" mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let row">
+        <mat-icon #tooltip="matTooltip"
+        matTooltip="Editar categorias"
+        matTooltipPosition="below"
+        matTooltipHideDelay="20" class="Puntero" (click)="redirectCategories(row)">create</mat-icon>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="estado">
+      <th style="padding-left: 20px; padding-right: 20px" mat-header-cell *matHeaderCellDef>Estado</th>
+      <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
+        <mat-slide-toggle class="example-margin" (click)="changeStatus(row.id, row.status)" [checked]="row.status === 0 ? 'true' : 'false'">
+        </mat-slide-toggle>
+      </td>
+      <ng-container matColumnDef="id">
+        <th style="padding-left: 20px; padding-right: 20px" mat-header-cell *matHeaderCellDef>Id</th>
+        <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
+          {{ row.id }}
+        </td>
+      </ng-container>
+    
+    </ng-container>
+    <ng-container matColumnDef="name">
+    <th style="padding-left: 20px; padding-right: 20px" mat-header-cell *matHeaderCellDef>Categorias</th>
+    <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
+      {{ row.name }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th style="padding-left: 20px; padding-right: 20px" mat-header-cell *matHeaderCellDef>Descripcion</th>
+    <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
+      {{ row.description }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="configuration">
+    <th style="padding-left: 20px; padding-right: 20px" mat-header-cell *matHeaderCellDef>Configuracion</th>
+    <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
+      {{ row.configuration }}
+    </td>
+  </ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr></table>
+    
+
+  </div>
+
+  <!-- <app-dynamic-form [jsonFormData]="formulario"></app-dynamic-form> -->

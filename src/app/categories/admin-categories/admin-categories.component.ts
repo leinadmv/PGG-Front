@@ -18,23 +18,23 @@ export class AdminCategoriesComponent implements OnInit {
   color: ThemePalette = 'accent';
   checked = true;
 
-  displayedColumns: string[] = ['id', 'name', 'description'];
+  displayedColumns: string[] = ['accion', 'estado', 'id', 'name', 'description', 'configuration' ];
   dataSource =  new MatTableDataSource<any>();
   formulario: any='';
 
-  constructor(private router: Router , public service : CategoriesService, public visualService: VisualService) { }
+  constructor(private router: Router , public categsService : CategoriesService, public visualService: VisualService) { }
 
   ngOnInit(): void {
 
     this.getCategories();
     this.visualService.changeColor('catPurple');
     //
-    this.formulario = this.service.getFormulario();
+    this.formulario = this.categsService.getFormulario();
   
 
   }
   getCategories() {
-    this.service.getCategories().subscribe((resp) => {
+    this.categsService.getCategories().subscribe((resp) => {
       this.dataSource.data = resp.data.categories;
     
     });error=>{
@@ -47,6 +47,45 @@ export class AdminCategoriesComponent implements OnInit {
     }
   }
 
+  redirectCategories(row?: any){
+
+    this.router.navigate(['/app/create-categories']);
+
+    if(row){
+      this.categsService.categoriesCreateOrEdit('editar', 'Editar categoria', row);
+    } else {
+      this.categsService.categoriesCreateOrEdit('crear', 'Crear categoria');
+    }
+}
+
+changeStatus(id: any, status: any){
+
+  if(status === 0){
+    status = 1;
+  } else if (status === 1) {
+    status = 0;
+  }
+
+  const estado = new FormData();
+  estado.append('id', id);
+  estado.append('status', status);
+
+  this.categsService.changeCategoriesState(estado).subscribe(resp => {
+
+    Swal.fire(
+      'Editado!',
+      resp.message,
+       'success'
+    )
+    
+  }, error=>{
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'No se pudo realizar el cambio de estado!',
+    })
+  });
 
 
+}
 }

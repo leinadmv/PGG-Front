@@ -46,6 +46,7 @@ import { CategoriesModule } from './categories/categories.module';
     AuthModule,
     NgxSpinnerModule,
     CategoriesModule,
+
     UsersModule,
     RouterModule.forRoot(AppRoutes),
     JwtModule.forRoot({
