@@ -1,6 +1,8 @@
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 
-    <mat-form-field appearance="fill" *ngFor="let control of jsonFormData?.controls">
+  <div *ngFor="let control of jsonFormData[0].form">
+
+    <mat-form-field appearance="fill">
 
         <mat-label *ngIf="control.label !== ''">{{ control.label }}</mat-label>
 
@@ -23,6 +25,8 @@
         [value]="control.value"></textarea>
 
     </mat-form-field>
+
+  </div>
 
     <button type='submit' mat-raised-button color="success" disabled='{{myForm.invalid}}' cdkFocusInitial>Guardar</button>
 </form>

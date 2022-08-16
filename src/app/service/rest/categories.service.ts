@@ -70,6 +70,7 @@ export class CategoriesService {
   }
 
   getFormulario(){
+    
 
     return [
       {
@@ -78,7 +79,8 @@ export class CategoriesService {
               {
                   "name": "Número Inmueble:",
                   "value": "",
-                  "type": "numeric",
+                  "label": "hola",
+                  "type": "number",
                   "validators": {
                     "required": true,
                     "minLength": 1,
@@ -88,14 +90,15 @@ export class CategoriesService {
               {
                   "name": "Código Inmueble:",
                   "value": "",
-                  "type": "numeric",
+                  "label": "hola",
+                  "type": "number",
                   "validators": {
                     "required": true,
                     "minLength": 1,
                     "maxLength": 11
                   }
               },
-              {
+              /* {
                   "name": "Tipo Inmueble:",
                   "value": "",
                   "type": "select",
@@ -120,8 +123,8 @@ export class CategoriesService {
                           "label": "Casa Local"
                       }
                   ]
-              },
-              {
+              }, */
+              /* {
                   "name": "Propiedad:",
                   "value": "",
                   "type": "select",
@@ -138,10 +141,11 @@ export class CategoriesService {
                           "label": "Propía"
                       }
                   ]
-              },
+              }, */
               {
                   "name": "Número Inmueble:",
                   "value": "",
+                  "label": "hola",
                   "type": "text",
                   "validators": {
                     "required": true,
@@ -151,6 +155,7 @@ export class CategoriesService {
               {
                   "name": "Ciudad:",
                   "value": "",
+                  "label": "hola",
                   "type": "text",
                   "validators": {
                     "required": true,
@@ -160,71 +165,76 @@ export class CategoriesService {
               {
                   "name": "Metros cuadrados:",
                   "value": "",
-                  "type": "numeric",
+                  "label": "hola",
+                  "type": "number",
                   "validators": {
                     "required": false,
-                    "numeric-type": "double"
+                    //"numeric-type": "double"
                   }
               },
               {
                   "name": "Mezanine:",
                   "value": "",
-                  "type": "numeric",
+                  "label": "hola",
+                  "type": "number",
                   "validators": {
                     "required": false,
-                    "numeric-type": "double"
+                    //"numeric-type": "double"
                   }
               },
               {
                   "name": "Total Metros Cuadrados - Mezanine:",
                   "value": "Calculo realizado en el back",
-                  "type": "numeric",
+                  "label": "hola",
+                  "type": "number",
                   "validators": {
-                      "not_editable": true
+                      //"not_editable": true
                   }                
               },
               {
                   "name": "Matricula Inmobiliaria:",
                   "value": "",
+                  "label": "hola",
                   "type": "text",
                   "validators": {
                     "required": false
                   }
               },
-              {
+              /* {
                   "name": "Archivo Matricula Inmobiliaria:",
                   "value": "",
                   "type": "file",
                   "validators": {
                     "required": false,
-                    "extenxion": ".pdf"
+                    //"extenxion": ".pdf"
                   }
-              },
+              }, */
               {
                   "name": "Escritura Publica:",
                   "value": "",
+                  "label": "hola",
                   "type": "text",
                   "validators": {
                     "required": false
                   }
               },
-              {
+              /* {
                   "name": "Archivo Escritura Publíca:",
                   "value": "",
                   "type": "file",
                   "validators": {
                     "required": false,
-                    "extenxion": ".pdf"
+                    //"extenxion": ".pdf"
                   }
-              },
-              {
+              }, */
+              /* {
                   "name": "Fecha:",
                   "value": "",
                   "type": "date",
                   "validators": {
                     "required": false
                   }
-              }
+              } */
               
   
   

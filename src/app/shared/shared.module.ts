@@ -5,6 +5,7 @@ import { AccordionAnchorDirective, AccordionLinkDirective, AccordionDirective } 
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from '../demo-material-module';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { DemoMaterialModule } from '../demo-material-module';
   ],
   imports: [
     ReactiveFormsModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    CommonModule
   ],
   exports: [
     AccordionAnchorDirective,
