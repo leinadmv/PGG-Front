@@ -63,7 +63,7 @@ export class CategoriesService {
   }
 
   updateCategories(categories): Observable<any> {
-    return this.http.post<any>(`${PGG_URL}users/edit`,categories)
+    return this.http.post<any>(`${PGG_URL}categoriesBussines/edit`,categories)
       .pipe(
         catchError(this.handleError)
       );

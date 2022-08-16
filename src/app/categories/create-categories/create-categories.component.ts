@@ -64,7 +64,9 @@ if(type === 'crear'){
      resp.message,
       'success'
     )
-    
+  
+    this.router.navigate(['/app/admin-categories']);
+
   }),error=>{
 
     Swal.fire({
@@ -73,7 +75,7 @@ if(type === 'crear'){
       text: 'No se ha podido crear la categoria de negocio!',
     })
 
-    this.router.navigate(['/app/']);
+    
     
   };
 
