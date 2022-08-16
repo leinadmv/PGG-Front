@@ -14,19 +14,28 @@ export class ViewUserComponent implements OnInit {
   band: boolean = false;
   imageChangedEvent: any = '';
   croppedImage: any = '';
+  image: any = '';
 
-  constructor(private userService: UsersService) { }
+  constructor(private userService: UsersService) { 
 
-  ngOnInit(): void {
+  }
 
-    this.userService.getUserWhitToken().subscribe(resp => {
+  ngOnInit() {
+
+    this.userService.getUserWhitToken().subscribe(async resp => {
       
       this.userService.createOrEdit('ver', 'Ver Usuario', resp.data.user);
       this.band = true;
-      this.imageChangedEvent = resp.data.user.users_photo;
+      this.image = await this.b64toBlob(resp.data.user.users_photo.photo);
 
     })
 
+  }
+
+  async b64toBlob(b64Data) {
+    const r = await fetch(b64Data);
+    const blob = await r.blob();
+    return blob;
   }
 
   fileChangeEvent(event: any): void {

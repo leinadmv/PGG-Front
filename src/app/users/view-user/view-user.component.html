@@ -32,6 +32,7 @@
                     [imageChangedEvent]="imageChangedEvent"
                     [maintainAspectRatio]="true"
                     [aspectRatio]="4 / 3"
+                    [imageFile]="image"
                     format="png"
                     (imageCropped)="imageCropped($event)">
                     </image-cropper>
@@ -52,7 +53,7 @@
                 <div class="col-4"></div>
 
             </div>
-        <!--     <img [src]="croppedImage" /> -->
+            <!-- <img [src]="croppedImage" /> -->
         </mat-card>
     </div>
 
