@@ -58,7 +58,7 @@
         </mat-form-field>
         <div class="row">
           <div class="col-4"></div>
-          <div class="col-4 button">
+          <div class="col-2 button">
             <button
               *ngIf="modelo?.type !== 'ver'"
               type="submit"
@@ -68,7 +68,8 @@
               cdkFocusInitial
             >
               {{ modelo?.tittle }}
-            </button>
+            </button></div>
+            <div class="col-6 button">
             <button
               *ngIf="modelo?.type === 'editar'"
               type="submit"
@@ -77,9 +78,10 @@
               routerLink="/app/admin-categories"
             >
               Volver a Categorias
-            </button>
-          </div>
-          <div class="col-4"></div>
+            </button></div>
+            
+          
+         
         </div>
       </div>
     </form>
