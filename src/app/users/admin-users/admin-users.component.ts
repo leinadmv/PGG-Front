@@ -36,6 +36,7 @@ export class AdminUsersComponent implements OnInit {
 
   getUsers() {
     this.service.getUsers().subscribe((resp) => {
+
       this.dataSource.data = resp.data.users;
     
     });error=>{

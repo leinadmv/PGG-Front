@@ -49,7 +49,7 @@ export class CreateUsersComponent implements OnInit {
       fkDocumentType: new FormControl('', [Validators.required, ]),
       documentNumber: new FormControl('', [Validators.required, ]),
       email: new FormControl('', [Validators.required, Validators.email ]),
-      phone: new FormControl('', [Validators.required, Validators.min(10)]),
+      phone: new FormControl('', [Validators.required, ]),
       position: new FormControl('', [Validators.required, ]),
       business: new FormControl('', [Validators.required, ]),
       idRole: new FormControl('', [Validators.required, ]),
@@ -79,6 +79,8 @@ if(type === 'crear'){
   this.userService.saveUser(user).subscribe((resp) => {
 
     this.createForm.reset();
+    this.router.navigate(['/app/admin-users']);
+
     Swal.fire(
      'Creado!',
      resp.message,
@@ -95,7 +97,7 @@ if(type === 'crear'){
       text: 'No se ha podido crear el usuario!',
     })
 
-    
+    this.router.navigate(['/app/admin-users']);
     
   };
 
@@ -122,6 +124,7 @@ if(type === 'crear'){
 } 
 
   setEdit(row:any) {
+
     this.createForm.controls.firstName.setValue(row.firstName);
     this.createForm.controls.middleName.setValue(row.middleName);
     this.createForm.controls.firstLastname.setValue(row.firstLastname);
