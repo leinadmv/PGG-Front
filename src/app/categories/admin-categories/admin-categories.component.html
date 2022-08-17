@@ -1,10 +1,15 @@
-<div class="col-6">
-  <button mat-raised-button color="success" (click)="redirectCategories()">
-    Crear Categorias
-  </button>
+<div class="row">
+  <div class="col 3"> <h1>Categorias  <mat-icon>category</mat-icon> </h1>  </div>
+  <div class="col-1">
+    <button mat-raised-button color="success" (click)="redirectCategories()">
+      Crear Categorias
+    </button>
+  </div>
+  <div class="col-8"></div>
 </div>
 <br />
 <br />
+
 <div class="mat-elevation">
   <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="accion">
