@@ -47,9 +47,9 @@ export class CreateUsersComponent implements OnInit {
       firstLastname: new FormControl('', [Validators.required, ]),
       secondLastname: new FormControl('', [Validators.required, ]),
       fkDocumentType: new FormControl('', [Validators.required, ]),
-      documentNumber: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      documentNumber: new FormControl('', [Validators.required, ]),
       email: new FormControl('', [Validators.required, Validators.email ]),
-      phone: new FormControl('', [Validators.required, ]),
+      phone: new FormControl('', [Validators.required, Validators.min(10)]),
       position: new FormControl('', [Validators.required, ]),
       business: new FormControl('', [Validators.required, ]),
       idRole: new FormControl('', [Validators.required, ]),
@@ -85,6 +85,8 @@ if(type === 'crear'){
       'success'
     )
     
+    this.router.navigate(['/app/admin-users']);
+
   }),error=>{
 
     Swal.fire({
@@ -93,7 +95,7 @@ if(type === 'crear'){
       text: 'No se ha podido crear el usuario!',
     })
 
-    this.router.navigate(['/app/admin-users']);
+    
     
   };
 

@@ -162,17 +162,18 @@
               formControlName="phone"
               placeholder="Ingresa tu numero de telefono"
             />
-
             <mat-error *ngIf="error.phone.errors"
               ><span *ngIf="error.phone.errors.required"
                 >¡Advertencia! Este campo es requerido</span
               ></mat-error
-            >
+            ><mat-error *ngIf="error.phone.errors"
+            ><span *ngIf="error.phone.errors.min"
+              >¡Advertencia! Este campo debe tener minimo 10 caracteres</span
+            ></mat-error
+          >
           </mat-form-field>
         </div>
-
       <br />
- 
         <div class="col-6">
           <mat-form-field appearance="fill">
             <mat-label>Cargo</mat-label>
