@@ -30,12 +30,13 @@ export class AdminUsersComponent implements OnInit {
   ngOnInit(): void {
 
     this.getUsers();
-    this.visualService.changeColor('purple');
+    this.visualService.changeColor('usersGrey');
     
   }
 
   getUsers() {
     this.service.getUsers().subscribe((resp) => {
+
       this.dataSource.data = resp.data.users;
     
     });error=>{

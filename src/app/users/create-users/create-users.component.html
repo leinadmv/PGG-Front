@@ -168,6 +168,12 @@
                 >¡Advertencia! Este campo es requerido</span
               ></mat-error
             >
+
+            <mat-error *ngIf="error.phone.errors"
+              ><span *ngIf="error.phone.errors.min"
+                >¡Advertencia! El número minimo de caracteres es 10</span
+              ></mat-error
+            >
           </mat-form-field>
         </div>
 
