@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { min } from 'rxjs-compat/operator/min';
 import { UsersService } from 'src/app/service/rest/users.service';
 import Swal from 'sweetalert2';
 
@@ -49,7 +50,7 @@ export class CreateUsersComponent implements OnInit {
       fkDocumentType: new FormControl('', [Validators.required, ]),
       documentNumber: new FormControl('', [Validators.required, ]),
       email: new FormControl('', [Validators.required, Validators.email ]),
-      phone: new FormControl('', [Validators.required, ]),
+      phone: new FormControl('', [Validators.required, Validators.min(999999999) ]),
       position: new FormControl('', [Validators.required, ]),
       business: new FormControl('', [Validators.required, ]),
       idRole: new FormControl('', [Validators.required, ]),
