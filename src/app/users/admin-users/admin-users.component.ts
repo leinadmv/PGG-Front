@@ -15,7 +15,7 @@ import { RequireDocumentComponent } from 'src/app/auth/require-document/require-
 })
 export class AdminUsersComponent implements OnInit {
 
-  color: ThemePalette = 'accent';
+  color: any;
   checked = true;
 
   displayedColumns: string[] = ['accion', 'estado', 'firstName', 'fkDocumentType', 'documentNumber', 'email', 'phone', 'position', 'business', 'idRole', ];
@@ -30,7 +30,8 @@ export class AdminUsersComponent implements OnInit {
   ngOnInit(): void {
 
     this.getUsers();
-    this.visualService.changeColor('usersGrey');
+    this.color = localStorage.getItem('color');
+    this.visualService.changeColor(this.color);
     
   }
 

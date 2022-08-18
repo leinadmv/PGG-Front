@@ -4,7 +4,7 @@ Author: Themedesigner
 Email: niravjoshi87@gmail.com
 File: scss
 */
-// Variables
+
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
 
 $bodyfont: 'Poppins', sans-serif;
@@ -27,13 +27,12 @@ $custom-typography: mat-typography-config(
   $font-family: 'Oxygen'
 );
 
-// Override the typography in the core CSS.
 @include mat-core($custom-typography);
 
-// Default Theme
+/* Default Theme */
 @include angular-material-theme($theme);
 
-// Dark Theme
+/* Dark Theme */
 
 /*Theme Colors*/
 
@@ -46,6 +45,8 @@ $headingtext: #455a64;
 $bodytext: #67757c;
 $sidebar-text: #607d8b;
 $sidebar-icons: #99abb4;
+
+$usersGrey: #BDBEBF;
 
 $font-16: 16px;
 
@@ -66,6 +67,10 @@ $dark: #263238;
 $light: #f2f4f8;
 $extra-light: #ebf3f5;
 $secondary: #727b84;
+
+$usersGrey : #BDBEBF;
+$catPurple : #35007A;
+
 
 /*Light colors*/
 $light-danger: #f9e7eb;

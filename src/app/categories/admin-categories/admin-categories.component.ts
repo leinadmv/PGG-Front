@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 })
 export class AdminCategoriesComponent implements OnInit {
 
-  color: ThemePalette = 'accent';
+  color: any;
   checked = true;
 
   displayedColumns: string[] = ['accion', 'estado', 'id', 'name', 'description', 'configuration' ];
@@ -27,7 +27,8 @@ export class AdminCategoriesComponent implements OnInit {
   ngOnInit(): void {
 
     this.getCategories();
-    this.visualService.changeColor('catPurple');
+    this.color = localStorage.getItem('color');
+    this.visualService.changeColor(this.color);
     //
     this.formulario = this.categsService.getFormulario();
   

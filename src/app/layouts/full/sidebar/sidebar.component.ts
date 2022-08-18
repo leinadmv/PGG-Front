@@ -28,6 +28,7 @@ export class AppSidebarComponent implements OnDestroy {
   }
 
   setColor(color: any){
+    localStorage.setItem('color', color);
     this.visualService.changeColor(color);
   }
 }
