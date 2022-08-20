@@ -11,3 +11,6 @@ th{
   background-color: #35007A;
   color: whitesmoke;
 }
+.icon-display {
+  transform: scale(1.5);
+}

@@ -5,7 +5,7 @@
 th{
   color: white !important;
   font-weight: bold;
-  background-color: #BDBEBF;
+  background-color: #828384;
   text-align: center !important;
   align-content: center !important;
   align-items: center !important;
@@ -13,13 +13,16 @@ th{
 
 .mat-success
 {
-  background-color: #BDBEBF;
+  background-color: #828384;
   color: whitesmoke;
 }
 
 .h1{
-  background-color: #BDBEBF;
+  background-color: #828384;
   color: whitesmoke;
   font-weight: 700
 
+}
+.icon-display {
+  transform: scale(2);
 }
