@@ -1,32 +1,50 @@
+<h2>{{jsonFormData[0].section}}</h2>
+<br>
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 
-  <div *ngFor="let control of jsonFormData[0].form">
+  <div class="row">
 
-    <mat-form-field appearance="fill">
+    <div *ngFor="let control of jsonFormData[0].form" class="{{control.col}}">
 
-        <mat-label *ngIf="control.label !== ''">{{ control.label }}</mat-label>
+        <mat-form-field *ngIf="control.type !== 'file'" appearance="fill">
+  
+          <mat-label *ngIf="control.label !== ''">{{ control.label }}</mat-label>
+  
+          <input matInput *ngIf="
+          [
+            'text',
+            'password',
+            'email',
+            'number',
+            'search',
+            'tel',
+            'url'
+          ].includes(control.type)
+          " [type]="control.type"
+          [formControlName]="control.name"
+          [value]="control.value">
+  
+          <textarea *ngIf="control.type === 'textarea'"
+          [formControlName]="control.name"
+          [value]="control.value"></textarea>
 
-        <input matInput *ngIf="
-        [
-          'text',
-          'password',
-          'email',
-          'number',
-          'search',
-          'tel',
-          'url'
-        ].includes(control.type)
-        " [type]="control.type"
-        [formControlName]="control.name"
-        [value]="control.value">
+          <mat-select *ngIf="control.type === 'select'" [formControlName]="control.name">
+            <mat-option *ngFor="let option of control.options" value="option.value">{{option.label}}</mat-option>
+          </mat-select>
+      
+      <mat-error>{{getErrorMessage(control)}}</mat-error>
+      
+      </mat-form-field>
 
-        <textarea *ngIf="control.type === 'textarea'"
-        [formControlName]="control.name"
-        [value]="control.value"></textarea>
+      <button *ngIf="control.type === 'file'" type="button" mat-raised-button (click)="fileInput.click()">Subir Archivo</button> <br><br>
+      <input hidden (change)="onFileSelected()" #fileInput type="file" id="file"> 
 
-    </mat-form-field>
+      </div>
 
   </div>
 
     <button type='submit' mat-raised-button color="success" disabled='{{myForm.invalid}}' cdkFocusInitial>Guardar</button>
+
+    <button (click)="controles()" >contorles</button>
+
 </form>

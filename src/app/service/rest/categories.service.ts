@@ -81,6 +81,7 @@ export class CategoriesService {
                   "value": "",
                   "label": "hola",
                   "type": "number",
+                  "col": "col-6",
                   "validators": {
                     "required": true,
                     "minLength": 1,
@@ -92,15 +93,17 @@ export class CategoriesService {
                   "value": "",
                   "label": "hola",
                   "type": "number",
+                  "col": "col-6",
                   "validators": {
                     "required": true,
                     "minLength": 1,
                     "maxLength": 11
                   }
               },
-              /* {
+              {
                   "name": "Tipo Inmueble:",
                   "value": "",
+                  "label": "hola",
                   "type": "select",
                   "validators": {
                     "required": true
@@ -123,10 +126,11 @@ export class CategoriesService {
                           "label": "Casa Local"
                       }
                   ]
-              }, */
-              /* {
+              },
+              {
                   "name": "Propiedad:",
                   "value": "",
+                  "label": "hola",
                   "type": "select",
                   "validators": {
                     "required": true
@@ -141,7 +145,7 @@ export class CategoriesService {
                           "label": "Propía"
                       }
                   ]
-              }, */
+              },
               {
                   "name": "Número Inmueble:",
                   "value": "",
@@ -200,7 +204,7 @@ export class CategoriesService {
                     "required": false
                   }
               },
-              /* {
+              {
                   "name": "Archivo Matricula Inmobiliaria:",
                   "value": "",
                   "type": "file",
@@ -208,7 +212,7 @@ export class CategoriesService {
                     "required": false,
                     //"extenxion": ".pdf"
                   }
-              }, */
+              },
               {
                   "name": "Escritura Publica:",
                   "value": "",

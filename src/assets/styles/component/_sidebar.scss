@@ -56,12 +56,12 @@ mat-sidenav {
         }
       }
       &.selected > .mat-list-item-content > a {
-        background: rgb(115, 195, 248);
+        background: white;
         border-radius: $radius;
-        color: white;
+        color: black;
   
         mat-icon {
-          color: $white;
+          color: $black;
         }
         .dd-icon {
           -webkit-transform: rotate(-180deg);

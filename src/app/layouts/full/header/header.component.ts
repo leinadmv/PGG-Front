@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { PrintHook } from '@angular/flex-layout';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ChangePasswordComponent } from 'src/app/auth/change-password/change-password.component';
 import { AuthService } from 'src/app/service/rest/auth.service';
 import { UsersService } from 'src/app/service/rest/users.service';
 import Swal from 'sweetalert2';
+import { photo } from './photo';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -12,8 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class AppHeaderComponent implements OnInit {
 
-
-  photo: any
+  photoHeader: any
 
   constructor(private service: AuthService, private user: UsersService, private router: Router, public dialog: MatDialog){
     
@@ -23,12 +24,17 @@ export class AppHeaderComponent implements OnInit {
   ngOnInit(): void {
 
     this.user.getUserWhitToken().subscribe(resp => {
-      this.photo = resp.data.user.users_photo.photo
+      if ( resp.data.user.users_photo){
+        this.photoHeader = resp.data.user.users_photo.photo;
+      } else {
+        this.photoHeader = photo;
+      }
+      
     });
 
 
     this.user.headPhoto$.subscribe(resp =>{
-      this.photo = resp;
+      this.photoHeader = resp;
     })
      };
 

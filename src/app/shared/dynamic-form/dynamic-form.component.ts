@@ -110,9 +110,53 @@ export class DynamicFormComponent implements OnChanges {
     }
   }
 
+  getErrorMessage(control) {
+    if (this.myForm.controls[control.name]) {
+      if (this.myForm.controls[control.name].hasError('required')) {
+        return `${control.label} es requerido`;
+      }
+      if (this.myForm.controls[control.name].hasError('min')) {
+        return `${control.label} debe ser minimo ${control.validators.min}`;
+      }
+      if (this.myForm.controls[control.name].hasError('max')) {
+        return `${control.label} debe ser maximo ${control.validators.max}`;
+      }
+      if (this.myForm.controls[control.name].hasError('requiredTrue')) {
+        return `${control.label} es requerido`;
+      }
+      if (this.myForm.controls[control.name].hasError('email')) {
+        return `${control.label} debe ser un email`;
+      }
+      if (this.myForm.controls[control.name].hasError('minLength')) {
+        return `${control.label} debe tener mas de ${control.validators.minLength} caracteres`;
+      }
+      if (this.myForm.controls[control.name].hasError('maxLength')) {
+        return `${control.label} debe tener menos de ${control.validators.maxLength} caracteres`;
+      }
+    }
+  }
+
+  onFileSelected() {
+    const inputNode: any = document.querySelector('#file');
+  
+    if (typeof (FileReader) !== 'undefined') {
+      const reader = new FileReader();
+  
+      reader.onload = (e: any) => {
+        //this.srcResult = e.target.result;
+      };
+  
+      reader.readAsArrayBuffer(inputNode.files[0]);
+    }
+  }
+
   onSubmit() {
     console.log('Form valid: ', this.myForm.valid);
     console.log('Form values: ', this.myForm.value);
+  }
+
+  controles(){
+    console.log('Controles: ', this.myForm.controls);
   }
 
 }
