@@ -7,7 +7,10 @@ export interface Menu {
   icon: string;
 }
 
-const MENUITEMS = [
+const MENUITEMS = JSON.parse(localStorage.getItem('menu'));
+
+/* const MENUITEMS = [
+
   // { state: 'dashboard', name: 'Dashboard', type: 'link', icon: 'av_timer' },
   // { state: 'button', type: 'link', name: 'Buttons', icon: 'crop_7_5' },
   // { state: 'grid', type: 'link', name: 'Grid List', icon: 'view_comfy' },
@@ -50,10 +53,10 @@ const MENUITEMS = [
   // //   name: 'Slide Toggle',
   // //   icon: 'all_inclusive'
   // // },
-  { state: 'admin-users', type: 'link', name: 'Usuarios', icon: 'group', color: 'usersGrey', },
-  { state: 'admin-categories', type: 'link', name: 'Categorias', icon: 'category', color: 'catPurple', },
+  //{ state: 'admin-users', type: 'link', name: 'Usuarios', icon: 'group', color: 'usersGrey', },
+  //{ state: 'admin-categories', type: 'link', name: 'Categorias', icon: 'category', color: 'catPurple', },
 
-];
+]; */
 
 @Injectable()
 export class MenuItems {

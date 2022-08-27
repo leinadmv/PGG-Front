@@ -4,7 +4,7 @@
 
   <div class="row">
 
-    <div *ngFor="let control of jsonFormData[0].form" class="{{control.col}}">
+    <div *ngFor="let control of jsonFormData[0].form" class="col-{{control.col}}">
 
         <mat-form-field *ngIf="control.type !== 'file'" appearance="fill">
   
@@ -36,8 +36,16 @@
       
       </mat-form-field>
 
-      <button *ngIf="control.type === 'file'" type="button" mat-raised-button (click)="fileInput.click()">Subir Archivo</button> <br><br>
-      <input hidden (change)="onFileSelected()" #fileInput type="file" id="file"> 
+      <div *ngIf="control.type === 'file'">
+
+        <button  type="button" mat-raised-button (click)="fileInput.click()">Subir {{control.label}}</button>
+        <input hidden [formControlName]="control.name" (change)="onFileSelected($event, control)" #fileInput type="file" id="file" accept="{{control?.validators?.extenxion}}"> 
+        <p style="cursor: pointer;" *ngIf="control.nameFile" (click)="downloadFile(control)">{{control.nameFile}} <mat-icon>download</mat-icon> 
+        <mat-error>{{getErrorMessage(control)}}</mat-error></p>
+        
+
+      </div>
+      
 
       </div>
 
