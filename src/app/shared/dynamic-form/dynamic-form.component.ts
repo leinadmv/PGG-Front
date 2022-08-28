@@ -156,9 +156,11 @@ export class DynamicFormComponent implements OnChanges {
 
   onSubmit() {
 
-    this.jsonFormData.form.forEach(element => {
-      element.value = this.myForm.value[element.name];
-    });
+    this.fullForm.forEach(element => {
+      element.form.forEach(element => {
+        element.value = this.myForm.value[element.name];
+      });
+    });    
 
   }
 
