@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
     this.authService.Authentification(user).subscribe( resp => {
 
       localStorage.setItem('user', resp.access_token);
+      localStorage.setItem('menu', JSON.stringify(resp.data.menu));
 
         if(resp.accion === 'change_password'){  
           this.router.navigate(['/restorePassword']);

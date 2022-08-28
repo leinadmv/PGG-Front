@@ -74,14 +74,14 @@ export class CategoriesService {
 
     return [
       {
-          "section":"Datos Básicos Inmueble",
+          "section":"Datos Básicos Inmueble perraaas",
           "form":[
               {
-                  "name": "Número Inmueble:",
+                  "name": "Número Inmueble",
                   "value": "",
                   "label": "hola",
                   "type": "number",
-                  "col": "col-6",
+                  "col": "3",
                   "validators": {
                     "required": true,
                     "minLength": 1,
@@ -100,6 +100,7 @@ export class CategoriesService {
                     "maxLength": 11
                   }
               },
+              /* 
               {
                   "name": "Tipo Inmueble:",
                   "value": "",
@@ -208,9 +209,11 @@ export class CategoriesService {
                   "name": "Archivo Matricula Inmobiliaria:",
                   "value": "",
                   "type": "file",
+                  "col": "3",
+                  "label": "Archivo Matricula Inmobiliaria",
                   "validators": {
-                    "required": false,
-                    //"extenxion": ".pdf"
+                    "required": true,
+                    "extenxion": ".pdf"
                   }
               },
               {
@@ -221,7 +224,7 @@ export class CategoriesService {
                   "validators": {
                     "required": false
                   }
-              },
+              }, */
               /* {
                   "name": "Archivo Escritura Publíca:",
                   "value": "",

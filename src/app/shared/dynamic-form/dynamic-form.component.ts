@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { saveAs as importedSaveAs } from 'file-saver';
 
 interface JsonFormValidators {
   min?: number;
@@ -136,23 +137,21 @@ export class DynamicFormComponent implements OnChanges {
     }
   }
 
-  onFileSelected() {
-    const inputNode: any = document.querySelector('#file');
-  
-    if (typeof (FileReader) !== 'undefined') {
-      const reader = new FileReader();
-  
-      reader.onload = (e: any) => {
-        //this.srcResult = e.target.result;
-      };
-  
-      reader.readAsArrayBuffer(inputNode.files[0]);
-    }
+  onFileSelected(e, control) {
+    control['nameFile'] = e.target.files[0].name;
+    control['File'] = e.target.files[0];
+  }
+
+  downloadFile(control) {
+    importedSaveAs(control.File, control.name);
   }
 
   onSubmit() {
-    console.log('Form valid: ', this.myForm.valid);
-    console.log('Form values: ', this.myForm.value);
+
+    this.jsonFormData[0].form.forEach(element => {
+      element.value = this.myForm.value[element.name];
+    });
+
   }
 
   controles(){
