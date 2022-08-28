@@ -100,7 +100,7 @@ export class CategoriesService {
                     "maxLength": 11
                   }
               },
-              /* 
+              
               {
                   "name": "Tipo Inmueble:",
                   "value": "",
@@ -173,8 +173,7 @@ export class CategoriesService {
                   "label": "hola",
                   "type": "number",
                   "validators": {
-                    "required": false,
-                    //"numeric-type": "double"
+                    "required": false
                   }
               },
               {
@@ -183,8 +182,7 @@ export class CategoriesService {
                   "label": "hola",
                   "type": "number",
                   "validators": {
-                    "required": false,
-                    //"numeric-type": "double"
+                    "required": false
                   }
               },
               {
@@ -193,7 +191,6 @@ export class CategoriesService {
                   "label": "hola",
                   "type": "number",
                   "validators": {
-                      //"not_editable": true
                   }                
               },
               {
@@ -224,24 +221,24 @@ export class CategoriesService {
                   "validators": {
                     "required": false
                   }
-              }, */
-              /* {
+              },
+              {
                   "name": "Archivo Escritura Publíca:",
                   "value": "",
                   "type": "file",
                   "validators": {
                     "required": false,
-                    //"extenxion": ".pdf"
+                    "extenxion": ".pdf"
                   }
-              }, */
-              /* {
+              },
+              {
                   "name": "Fecha:",
                   "value": "",
                   "type": "date",
                   "validators": {
                     "required": false
                   }
-              } */
+              }
               
   
   

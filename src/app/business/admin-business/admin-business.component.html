@@ -1,1 +1,11 @@
+<div class="row">
+    <div class="col 10"> <h1>  <mat-icon class="icon-display">{{categoria.icon}}</mat-icon> {{categoria.name}} </h1>  </div>
+    <div class="col-1">
+      <button mat-raised-button color="success" (click)="createBusiness()">
+        Crear {{categoria.name}}
+      </button>
+    </div>
+    <div class="col-1"></div>
+  </div>
+<br><br>
 <app-dynamic-table [Data]="infoBusiness"></app-dynamic-table>

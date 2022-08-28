@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { BusinessService } from 'src/app/service/rest/business.service';
 import { VisualService } from 'src/app/service/rest/visual.service';
+import { CreateBusinessComponent } from '../create-business/create-business.component';
 
 @Component({
   selector: 'app-admin-business',
@@ -11,9 +13,10 @@ import { VisualService } from 'src/app/service/rest/visual.service';
 export class AdminBusinessComponent implements OnInit {
 
   color: any;
+  categoria: any;
   infoBusiness: any;
 
-  constructor(private route: ActivatedRoute, private busineesService: BusinessService, public visualService: VisualService) { }
+  constructor(private route: ActivatedRoute, private busineesService: BusinessService, public visualService: VisualService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -21,6 +24,7 @@ export class AdminBusinessComponent implements OnInit {
     this.visualService.changeColor(this.color);
 
     const id = this.route.snapshot.paramMap.get('id');
+    this.categoria = JSON.parse(localStorage.getItem('menu')).find(x => x.id === +id);
 
     const idCategorie = new FormData();
 		idCategorie.append('idCategorie', id);
@@ -29,6 +33,13 @@ export class AdminBusinessComponent implements OnInit {
       this.infoBusiness = resp;
     });
 
+  }
+
+  createBusiness(){
+    const dialogRef = this.dialog.open(CreateBusinessComponent,{
+      width: '100%',
+      panelClass: 'custom-dialog-container',
+    });
   }
 
 }
