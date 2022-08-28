@@ -8,7 +8,7 @@
           </mat-option>
     </mat-select>
 </mat-form-field>
+<div mat-dialog-content>
+    <app-dynamic-form *ngIf="band" [jsonFormData]="formulario.data.form"></app-dynamic-form>
+</div>
 
-<br><br>
-
-<app-dynamic-form *ngIf="band" [jsonFormData]="formulario.data.form"></app-dynamic-form>
