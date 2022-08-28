@@ -5,7 +5,7 @@ import { CreateCategoriesComponent } from './create-categories/create-categories
 
 export const CategoriesRoutes: Routes = [
   {
-    path: 'admin-categories',
+    path: 'admin-categories/:id',
     component: AdminCategoriesComponent 
   },
   {

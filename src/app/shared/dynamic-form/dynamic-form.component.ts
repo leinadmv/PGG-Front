@@ -52,7 +52,6 @@ export class DynamicFormComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
  
     if (!changes.jsonFormData[0]) {
-      console.log(this.jsonFormData[0].form);
       this.createForm(this.jsonFormData[0].form);
     }
 

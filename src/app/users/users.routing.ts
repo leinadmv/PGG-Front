@@ -6,7 +6,7 @@ import { ViewUserComponent } from './view-user/view-user.component';
 
 export const UserRoutes: Routes = [
   {
-    path: 'admin-users',
+    path: 'admin-users/:id',
     component: AdminUsersComponent
   },
   {
@@ -17,6 +17,5 @@ export const UserRoutes: Routes = [
     path: 'view-user',
     component: ViewUserComponent
   },
-]
-;
+];
 
