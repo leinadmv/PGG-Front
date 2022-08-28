@@ -94,13 +94,13 @@
         <div class="col-6">
           <mat-form-field appearance="fill">
             <mat-label>Rol</mat-label>
-             <mat-select formControlName="idRole">
+             <mat-select formControlName="roles">
               <mat-option *ngFor="let item of select?.roles" [value]="item.id">
                {{item.rol}}
               </mat-option>
             </mat-select>
-          <mat-error *ngIf="error.idRole.errors"
-           ><span *ngIf="error.idRole.errors.required"
+          <mat-error *ngIf="error.roles.errors"
+           ><span *ngIf="error.roles.errors.required"
               >¡Advertencia! Este campo es requerido</span
             ></mat-error
           >

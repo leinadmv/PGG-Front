@@ -46,7 +46,7 @@
           <ng-container matColumnDef="fkDocumentType">
             <th  mat-header-cell *matHeaderCellDef>Tipo de Documento</th>
             <td style="padding-left: 20px; padding-right: 20px"  mat-cell *matCellDef="let row">
-              {{ row.fkDocumentType === 2 ? "" : "hola" || row.fkDocumentType === 1 ? "Cedula" : "hola" }}
+              {{ row.document_type.name}}
             </td>
           </ng-container>
 
@@ -85,19 +85,18 @@
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="idRole">
+          <ng-container matColumnDef="roles">
             <th style="padding-left: 20px; padding-right: 20px" mat-header-cell *matHeaderCellDef>Rol</th>
             <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
-              {{ row.idRole }}
-            </td>
+            {{row.roles.rol}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="fkRol">
+          <!-- <ng-container matColumnDef="fkRol">
             <th style="padding-left: 20px; padding-right: 20px" mat-header-cell *matHeaderCellDef>Rol</th>
             <td style="padding-left: 20px; padding-right: 20px" mat-cell *matCellDef="let row">
               {{ row.fkRol }}
             </td>
-          </ng-container>
+          </ng-container> -->
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

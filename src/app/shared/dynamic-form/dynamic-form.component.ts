@@ -52,6 +52,10 @@ export class DynamicFormComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
  
     if (!changes.jsonFormData[0]) {
+<<<<<<< HEAD
+=======
+     
+>>>>>>> 91dd9e3423862266a8d03fce35fa3b1ba0b33b29
       this.createForm(this.jsonFormData[0].form);
     }
 
@@ -154,7 +158,6 @@ export class DynamicFormComponent implements OnChanges {
   }
 
   controles(){
-    console.log('Controles: ', this.myForm.controls);
   }
 
 }

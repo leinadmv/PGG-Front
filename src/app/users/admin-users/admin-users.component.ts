@@ -18,7 +18,7 @@ export class AdminUsersComponent implements OnInit {
   color: any;
   checked = true;
 
-  displayedColumns: string[] = ['accion', 'estado', 'firstName', 'fkDocumentType', 'documentNumber', 'email', 'phone', 'position', 'business', 'idRole', ];
+  displayedColumns: string[] = ['accion', 'estado', 'firstName', 'fkDocumentType', 'documentNumber', 'email', 'phone', 'position', 'business', 'roles', ];
   dataSource =  new MatTableDataSource<any>();
   // 'middleName', 'firstLastname', 'secondLastname',
   
