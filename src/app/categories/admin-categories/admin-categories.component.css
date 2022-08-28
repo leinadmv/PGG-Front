@@ -1,16 +1,10 @@
 th{
-    color: white !important;
     font-weight: bold;
-    background-color: #35007A;
     text-align: center !important;
     align-content: center !important;
     align-items: center !important;
   }
-  .mat-success
-{
-  background-color: #35007A;
-  color: whitesmoke;
-}
+ 
 .icon-display {
   transform: scale(1.5);
 }

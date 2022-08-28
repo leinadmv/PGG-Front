@@ -3,23 +3,13 @@
 }
 
 th{
-  color: white !important;
   font-weight: bold;
-  background-color: #828384;
   text-align: center !important;
   align-content: center !important;
   align-items: center !important;
 }
 
-.mat-success
-{
-  background-color: #828384;
-  color: whitesmoke;
-}
-
 .h1{
-  background-color: #828384;
-  color: whitesmoke;
   font-weight: 700
 }
 
