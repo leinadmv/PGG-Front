@@ -53,7 +53,7 @@ export class CreateUsersComponent implements OnInit {
       phone: new FormControl('', [Validators.required, Validators.min(999999999) ]),
       position: new FormControl('', [Validators.required, ]),
       business: new FormControl('', [Validators.required, ]),
-      idRole: new FormControl('', [Validators.required, ]),
+      roles: new FormControl('', [Validators.required, ]),
     });
 
   }
@@ -71,8 +71,8 @@ export class CreateUsersComponent implements OnInit {
         phone: createUser.value.phone,
         position: createUser.value.position,
         business: createUser.value.business,
-        idRole: createUser.value.idRole,
-        blockIp: 1
+        idRole: createUser.value.roles,
+        blockIp: 1,
       }
 
 if(type === 'crear'){
@@ -136,7 +136,7 @@ if(type === 'crear'){
     this.createForm.controls.phone.setValue(row.phone);
     this.createForm.controls.position.setValue(row.position);
     this.createForm.controls.business.setValue(row.business);
-    this.createForm.controls.idRole.setValue(row.idRole);
+    this.createForm.controls.roles.setValue(row.roles.id);
     
   };
 
