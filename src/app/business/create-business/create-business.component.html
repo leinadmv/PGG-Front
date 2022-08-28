@@ -1,14 +1,24 @@
 <h1>Crear Negocio</h1>
-
-<mat-form-field appearance="fill">
-    <mat-label>Elija le negocio que quiere crear</mat-label>
-    <mat-select>
-        <mat-option *ngFor="let item of data.data.typeBusiness" [value]="item.id" (click)="getForm(item.id)">
-            {{item.name}}
-          </mat-option>
-    </mat-select>
-</mat-form-field>
-
+<br><br>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8"><mat-form-field appearance="fill">
+        <mat-label>Elija le negocio que quiere crear</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let item of data.data.typeBusiness" [value]="item.id" (click)="getForm(item.id)">
+                {{item.name}}
+              </mat-option>
+        </mat-select>
+    </mat-form-field></div>
+    <div class="col-2"></div>
+</div>
+<br><br>
+<div class="row">
+<div class="col-5"></div>
+<div class="col-7"><button mat-raised-button color="success">
+    Crear negocio
+  </button></div></div>
+      
 <br><br>
 
 <app-dynamic-form *ngIf="band" [jsonFormData]="formulario.data.form"></app-dynamic-form>

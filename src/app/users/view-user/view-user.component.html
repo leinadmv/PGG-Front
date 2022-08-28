@@ -15,7 +15,7 @@
 
                 <div class="col-4"></div>
                 <div class="col-4">
-                    <button mat-raised-button color="primary" (click)="fileInput.click()">Cargar Imagen</button>
+                    <button mat-raised-button color="success" (click)="fileInput.click()">Cargar Imagen</button>
                     <input hidden #fileInput type="file" (change)="fileChangeEvent($event)" />
                 </div>
                 <div class="col-4"></div>
@@ -46,7 +46,7 @@
 
                 <div class="col-4"></div>
                 <div class="col-4">
-                    <button mat-raised-button color="primary" (click)="updatePhoto()" disabled="{{croppedImage===''}}" >Guardar Imagen</button>
+                    <button mat-raised-button color="success" (click)="updatePhoto()" disabled="{{croppedImage===''}}" >Guardar Imagen</button>
                     <br>
                     <br>
                 </div>
