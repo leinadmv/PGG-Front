@@ -15,6 +15,7 @@ export class CreateBusinessComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private businessService: BusinessService ) { }
 
   ngOnInit(): void {
+    console.log(this.data)
   }
 
   getForm(id){
