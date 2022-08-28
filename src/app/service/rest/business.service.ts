@@ -25,5 +25,13 @@ export class BusinessService {
       );
   }
 
+  getForm(id): any {
+
+    return this.http.post<any>(`${PGG_URL}formsBussines/showForm`, id)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { BusinessService } from 'src/app/service/rest/business.service';
 
 @Component({
   selector: 'app-create-business',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateBusinessComponent implements OnInit {
 
-  constructor() { }
+  formulario: any;
+  band: boolean = false;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private businessService: BusinessService ) { }
 
   ngOnInit(): void {
+    console.log(this.data)
+  }
+
+  getForm(id){
+
+    this.businessService.getForm(id).subscribe(resp => {
+      this.formulario = resp;
+      this.band = true;
+    });
+    
   }
 
 }

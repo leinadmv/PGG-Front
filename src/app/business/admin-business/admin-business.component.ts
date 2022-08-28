@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { BusinessService } from 'src/app/service/rest/business.service';
 import { VisualService } from 'src/app/service/rest/visual.service';
@@ -39,6 +39,7 @@ export class AdminBusinessComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateBusinessComponent,{
       width: '100%',
       panelClass: 'custom-dialog-container',
+      data: this.infoBusiness
     });
   }
 

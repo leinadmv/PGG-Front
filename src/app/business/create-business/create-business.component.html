@@ -1,1 +1,14 @@
-<p>create-business works!</p>
+<h1>Crear Negocio</h1>
+
+<mat-form-field appearance="fill">
+    <mat-label>Elija le negocio que quiere crear</mat-label>
+    <mat-select>
+        <mat-option *ngFor="let item of data.data.typeBusiness" [value]="item.id" (click)="getForm(item.id)">
+            {{item.name}}
+          </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<br><br>
+
+<app-dynamic-form *ngIf="band" [jsonFormData]="formulario.data.form"></app-dynamic-form>

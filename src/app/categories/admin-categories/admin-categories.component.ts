@@ -20,7 +20,6 @@ export class AdminCategoriesComponent implements OnInit {
 
   displayedColumns: string[] = ['accion', 'estado', 'id', 'name', 'description', 'configuration' ];
   dataSource =  new MatTableDataSource<any>();
-  formulario: any='';
 
   constructor(private router: Router , public categsService : CategoriesService, public visualService: VisualService) { }
 
@@ -29,8 +28,6 @@ export class AdminCategoriesComponent implements OnInit {
     this.getCategories();
     this.color = localStorage.getItem('color');
     this.visualService.changeColor(this.color);
-    //
-    this.formulario = this.categsService.getFormulario();
   
 
   }
