@@ -43,6 +43,7 @@ export interface JsonFormData {
 export class DynamicFormComponent implements OnChanges {
 
   @Input() jsonFormData: any;
+  fullForm: any;
 
   public myForm: FormGroup = this.fb.group({});
 
@@ -51,8 +52,14 @@ export class DynamicFormComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
  
-    if (!changes.jsonFormData[0]) {
-      this.createForm(this.jsonFormData[0].form);
+    if (changes.jsonFormData) {
+
+      this.fullForm = JSON.parse(this.jsonFormData.form);
+
+      this.fullForm.forEach(element => {
+        this.createForm(element.form);
+      });
+   
     }
 
   }
@@ -147,13 +154,10 @@ export class DynamicFormComponent implements OnChanges {
 
   onSubmit() {
 
-    this.jsonFormData[0].form.forEach(element => {
+    this.jsonFormData.form.forEach(element => {
       element.value = this.myForm.value[element.name];
     });
 
-  }
-
-  controles(){
   }
 
 }

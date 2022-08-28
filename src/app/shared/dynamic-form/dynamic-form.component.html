@@ -1,10 +1,14 @@
-<h2>{{jsonFormData[0].section}}</h2>
+<h2>{{jsonFormData?.section}}</h2>
 <br>
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 
-  <div class="row">
+    <div *ngFor="let element of fullForm">
 
-    <div *ngFor="let control of jsonFormData[0].form" class="col-{{control.col}}">
+      {{element.section}}
+
+      <div class="row">
+      
+      <div *ngFor="let control of element.form" class="col-{{control.col}}">
 
         <mat-form-field *ngIf="control.type !== 'file'" appearance="fill">
   
@@ -43,16 +47,14 @@
         <p style="cursor: pointer;" *ngIf="control.nameFile" (click)="downloadFile(control)">{{control.nameFile}} <mat-icon>download</mat-icon> 
         <mat-error>{{getErrorMessage(control)}}</mat-error></p>
         
-
       </div>
       
+      </div>
 
       </div>
 
-  </div>
+    </div>
 
     <button type='submit' mat-raised-button color="success" disabled='{{myForm.invalid}}' cdkFocusInitial>Guardar</button>
 
-    <button (click)="controles()" >contorles</button>
-
-</form>
+  </form>
