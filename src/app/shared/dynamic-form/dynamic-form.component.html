@@ -5,6 +5,7 @@
     <div *ngFor="let element of fullForm">
 
       {{element.section}}
+      <br><br>
 
       <div class="row">
       
@@ -28,14 +29,21 @@
           [formControlName]="control.name"
           [value]="control.value">
   
-          <textarea *ngIf="control.type === 'textarea'"
+          <textarea matInput *ngIf="control.type === 'textarea'"
           [formControlName]="control.name"
           [value]="control.value"></textarea>
 
           <mat-select *ngIf="control.type === 'select'" [formControlName]="control.name">
             <mat-option *ngFor="let option of control.options" value="option.value">{{option.label}}</mat-option>
           </mat-select>
-      
+
+          <div *ngIf="control.type === 'date'">
+            <input matInput [matDatepicker]="picker1" [formControlName]="control.name" [value]="control.value">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </div>
+          
       <mat-error>{{getErrorMessage(control)}}</mat-error>
       
       </mat-form-field>

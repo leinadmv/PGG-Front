@@ -56,6 +56,8 @@ export class DynamicFormComponent implements OnChanges {
 
       this.fullForm = JSON.parse(this.jsonFormData.form);
 
+      console.log(this.fullForm)
+
       this.fullForm.forEach(element => {
         this.createForm(element.form);
       });
@@ -158,6 +160,10 @@ export class DynamicFormComponent implements OnChanges {
       element.value = this.myForm.value[element.name];
     });
 
+  }
+
+  controles(){
+    console.log(this.myForm.controls);
   }
 
 }
