@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BusinessService } from 'src/app/service/rest/business.service';
 import { VisualService } from 'src/app/service/rest/visual.service';
 import { CreateBusinessComponent } from '../create-business/create-business.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-business',
@@ -32,6 +33,13 @@ export class AdminBusinessComponent implements OnInit {
     this.busineesService.getBusiness(idCategorie).subscribe(resp => {
       this.infoBusiness = resp;
       this.infoBusiness['categoria'] = this.categoria;
+    }, error=>{
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No se pudo obtener el negocio!',
+      });
     });
 
   }

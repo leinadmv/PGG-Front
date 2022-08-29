@@ -56,8 +56,6 @@ export class DynamicFormComponent implements OnChanges {
 
       this.fullForm = JSON.parse(this.jsonFormData.form);
 
-      console.log(this.fullForm)
-
       this.fullForm.forEach(element => {
         this.createForm(element.form);
       });

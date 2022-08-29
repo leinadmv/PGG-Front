@@ -33,7 +33,6 @@ export class DynamicTableComponent implements OnInit, OnChanges {
   }
 
   drawTable(data:any){
-    console.log(data?.currentValue?.data?.typeBusiness);
     this.dataSource.data = data?.currentValue?.data?.typeBusiness;
   }
 
