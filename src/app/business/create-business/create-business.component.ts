@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BusinessService } from 'src/app/service/rest/business.service';
 import Swal from 'sweetalert2';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-business',
@@ -15,11 +16,15 @@ export class CreateBusinessComponent implements OnInit {
   select: any;
   data: any;
 
-  constructor(private businessService: BusinessService ) { }
+  constructor(private businessService: BusinessService, private _location: Location) { }
 
   ngOnInit(): void {
 
     this.data = this.businessService.responseCreate();
+
+    if(!this.data){
+      this._location.back();
+    }
 
     console.log(this.data);
 
