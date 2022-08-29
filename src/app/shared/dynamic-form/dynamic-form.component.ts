@@ -62,8 +62,6 @@ export class DynamicFormComponent implements OnChanges {
 
       this.fullForm = JSON.parse(this.jsonFormData.form);
 
-      console.log(this.fullForm);
-
       this.fullForm.forEach(element => {
         this.createForm(element.form);
       });
@@ -236,13 +234,8 @@ export class DynamicFormComponent implements OnChanges {
       if (this.fullForm[indexAuxSec].section.includes(Seccion.section)) {
         this.fullForm.splice(indexAuxSec + 1, 0, resp);
       }
-
-			//this.fullForm.push(resp);
 			this.createForm(resp.form);
 		});
-
-    console.log(this.fullForm);
-
   }
 
 }
