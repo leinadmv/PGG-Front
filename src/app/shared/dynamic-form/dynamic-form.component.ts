@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { saveAs as importedSaveAs } from 'file-saver';
+import { BusinessService } from 'src/app/service/rest/business.service';
 
 interface JsonFormValidators {
   min?: number;
@@ -29,6 +30,10 @@ interface JsonFormControls {
   options?: JsonFormControlOptions;
   required: boolean;
   validators: JsonFormValidators;
+  col: string;
+  enable: boolean;
+  disabled: boolean;
+  add: boolean;
 }
 
 export interface JsonFormData {
@@ -44,10 +49,11 @@ export class DynamicFormComponent implements OnChanges {
 
   @Input() jsonFormData: any;
   fullForm: any;
+  formulario:any = [];
 
   public myForm: FormGroup = this.fb.group({});
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private service: BusinessService) { }
 
 
   ngOnChanges(changes: SimpleChanges) {
@@ -55,6 +61,8 @@ export class DynamicFormComponent implements OnChanges {
     if (changes.jsonFormData) {
 
       this.fullForm = JSON.parse(this.jsonFormData.form);
+
+      console.log(this.fullForm);
 
       this.fullForm.forEach(element => {
         this.createForm(element.form);
@@ -114,6 +122,12 @@ export class DynamicFormComponent implements OnChanges {
         control.name,
         this.fb.control(control.value, validatorsToAdd)
       );
+
+      if(control.enable){
+        this.myForm.controls[control.name].enable();
+      } else if(control.disabled){
+        this.myForm.controls[control.name].disable();
+      }
     }
   }
 
@@ -159,6 +173,75 @@ export class DynamicFormComponent implements OnChanges {
         element.value = this.myForm.value[element.name];
       });
     });    
+
+  }
+
+  addCampo(campo, seccion){
+
+    let campoOriginal = Object.assign({}, campo);
+		let campoCopia = campoOriginal;
+		let cont = 0;
+		let indexAuxField = 0;
+		let indexAuxSec = 0;
+
+    this.fullForm.forEach((section, indexSec) => {
+			section.form.forEach((question, indexField) => {
+				if (question.name.includes(campo.name) && seccion === section.section) {
+					cont++;
+					indexAuxField = indexField;
+					indexAuxSec = indexSec;
+				}
+			});
+		});
+
+    cont = cont + 1;
+
+		campoCopia.name = campoOriginal.name + '_' + cont;
+    campoCopia.label = campoOriginal.label + ' ' + cont;
+		campoCopia.value = '';
+		campoCopia.add = false;
+
+    if (this.fullForm[indexAuxSec].section === seccion) {
+			this.fullForm[indexAuxSec].form.splice(indexAuxField + 1, 0, campoCopia);
+		}
+
+    const arregloEnvio = [];
+    arregloEnvio.push(campoCopia);
+
+    this.createForm(arregloEnvio);
+
+  }
+
+  addSeccion(Seccion){
+
+    let seccionOriginal = Object.assign({}, Seccion);
+		let seccionCopia = seccionOriginal;
+		let cont = 0;
+    let indexAuxSec = 0;
+  
+    this.fullForm.forEach((element, indexSec) => {
+      if (element.section.includes(Seccion .section)) {
+				cont++;
+        indexAuxSec = indexSec;
+			}
+    });
+
+    cont = cont + 1;
+
+    let sendSection = new FormData();
+    sendSection.append('section', JSON.stringify(seccionCopia));
+		sendSection.append('cont', cont.toString());
+		this.service.duplicateSeccion(sendSection).subscribe((resp) => {
+
+      if (this.fullForm[indexAuxSec].section.includes(Seccion.section)) {
+        this.fullForm.splice(indexAuxSec + 1, 0, resp);
+      }
+
+			//this.fullForm.push(resp);
+			this.createForm(resp.form);
+		});
+
+    console.log(this.fullForm);
 
   }
 

@@ -11,7 +11,7 @@
 
       <ng-template matStepLabel>{{element.section}}</ng-template>
 
-      {{element.section}}
+      {{element.section}} <span *ngIf="element.add" (click)="addSeccion(element)"> <mat-icon>add</mat-icon> </span>
       
       <br><br>
 
@@ -19,51 +19,65 @@
       
       <div *ngFor="let control of element.form" class="col-{{control.col}}">
 
-        <mat-form-field *ngIf="control.type !== 'file'" appearance="fill">
-  
-          <mat-label *ngIf="control.label !== ''">{{ control.label }}</mat-label>
-  
-          <input matInput *ngIf="
-          [
-            'text',
-            'password',
-            'email',
-            'number',
-            'search',
-            'tel',
-            'url'
-          ].includes(control.type)
-          " [type]="control.type"
-          [formControlName]="control.name"
-          [value]="control.value">
-  
-          <textarea matInput *ngIf="control.type === 'textarea'"
-          [formControlName]="control.name"
-          [value]="control.value"></textarea>
+        <div class="row">
 
-          <mat-select *ngIf="control.type === 'select'" [formControlName]="control.name">
-            <mat-option *ngFor="let option of control.options" value="option.value">{{option.label}}</mat-option>
-          </mat-select>
+          <div class="col-10">
 
-          <div *ngIf="control.type === 'date'">
-            <input matInput [matDatepicker]="picker1" [formControlName]="control.name" [value]="control.value">
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
-          </div>
+            <mat-form-field *ngIf="control.type !== 'file'" appearance="fill">
+  
+              <mat-label *ngIf="control.label !== ''">{{ control.label }}</mat-label>
+      
+              <input matInput *ngIf="
+              [
+                'text',
+                'password',
+                'email',
+                'number',
+                'search',
+                'tel',
+                'url'
+              ].includes(control.type)
+              " [type]="control.type"
+              [formControlName]="control.name"
+              [value]="control.value">
+      
+              <textarea matInput *ngIf="control.type === 'textarea'"
+              [formControlName]="control.name"
+              [value]="control.value"></textarea>
+    
+              <mat-select *ngIf="control.type === 'select'" [formControlName]="control.name">
+                <mat-option *ngFor="let option of control.options" value="option.value">{{option.label}}</mat-option>
+              </mat-select>
+    
+              <div *ngIf="control.type === 'date'">
+                <input matInput [matDatepicker]="picker1" [formControlName]="control.name" [value]="control.value">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </div>
+              
+          <mat-error>{{getErrorMessage(control)}}</mat-error>
           
-      <mat-error>{{getErrorMessage(control)}}</mat-error>
-      
-      </mat-form-field>
+          </mat-form-field>
+    
+          <div *ngIf="control.type === 'file'">
+    
+            <button  type="button" mat-raised-button (click)="fileInput.click()">Subir {{control.label}}</button>
+            <input hidden [formControlName]="control.name" (change)="onFileSelected($event, control)" #fileInput type="file" id="file" accept="{{control?.validators?.extenxion}}"> 
+            <p style="cursor: pointer;" *ngIf="control.nameFile" (click)="downloadFile(control)">{{control.nameFile}} <mat-icon>download</mat-icon> 
+            <mat-error>{{getErrorMessage(control)}}</mat-error></p>
+            
+          </div>
 
-      <div *ngIf="control.type === 'file'">
+          </div>
 
-        <button  type="button" mat-raised-button (click)="fileInput.click()">Subir {{control.label}}</button>
-        <input hidden [formControlName]="control.name" (change)="onFileSelected($event, control)" #fileInput type="file" id="file" accept="{{control?.validators?.extenxion}}"> 
-        <p style="cursor: pointer;" *ngIf="control.nameFile" (click)="downloadFile(control)">{{control.nameFile}} <mat-icon>download</mat-icon> 
-        <mat-error>{{getErrorMessage(control)}}</mat-error></p>
-        
-      </div>
-      
+          <div class="col-2">
+
+            <span *ngIf="control.add" (click)="addCampo(control, element.section)"> <mat-icon>add</mat-icon> </span>
+
+          </div>
+
+        </div>
+
       </div>
 
       </div>

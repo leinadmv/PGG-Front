@@ -33,5 +33,13 @@ export class BusinessService {
       );
   }
 
+  duplicateSeccion(data): any {
+
+    return this.http.post<any>(`${PGG_URL}duplicateSection/duplicateSection`, data)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   
 }
