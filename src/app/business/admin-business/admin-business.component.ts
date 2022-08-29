@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BusinessService } from 'src/app/service/rest/business.service';
 import { VisualService } from 'src/app/service/rest/visual.service';
 import { CreateBusinessComponent } from '../create-business/create-business.component';
@@ -17,7 +17,7 @@ export class AdminBusinessComponent implements OnInit {
   categoria: any;
   infoBusiness: any;
 
-  constructor(private route: ActivatedRoute, private busineesService: BusinessService, public visualService: VisualService, public dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute, private busineesService: BusinessService, public visualService: VisualService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -45,11 +45,10 @@ export class AdminBusinessComponent implements OnInit {
   }
 
   createBusiness(){
-    const dialogRef = this.dialog.open(CreateBusinessComponent,{
-      width: '100%',
-      panelClass: 'custom-dialog-container',
-      data: this.infoBusiness
-    });
+
+    this.router.navigate(['/app/create-business']);
+    this.busineesService.createBusiness(this.infoBusiness);
+
   }
 
 }

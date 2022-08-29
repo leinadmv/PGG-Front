@@ -11,6 +11,8 @@ const PGG_URL = environment.backPgg;
 })
 export class BusinessService {
 
+  modeloCreate: any;
+
   constructor( private http: HttpClient ) { }
 
   handleError(error: HttpErrorResponse): any {
@@ -39,6 +41,14 @@ export class BusinessService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  createBusiness(data) {
+    this.modeloCreate = data;
+  }
+  
+  responseCreate(){
+    return this.modeloCreate;
   }
 
   

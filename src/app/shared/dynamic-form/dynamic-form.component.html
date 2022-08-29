@@ -3,7 +3,7 @@
 
   <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 
-    <mat-stepper #stepper>
+    <mat-stepper #stepper orientation="vertical">
 
     <div *ngFor="let element of fullForm">
 
@@ -89,6 +89,8 @@
     <br>
 
     </mat-stepper>
+
+    <br>
 
     <div class="row">
 
