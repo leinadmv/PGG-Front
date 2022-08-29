@@ -11,11 +11,13 @@ export class CreateBusinessComponent implements OnInit {
 
   formulario: any;
   band: boolean = false;
+  select: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private businessService: BusinessService ) { }
 
   ngOnInit(): void {
     console.log(this.data)
+    this.select = this.data.data.selectTypeBussines;
   }
 
   getForm(id){

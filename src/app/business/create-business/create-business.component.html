@@ -5,7 +5,7 @@
     <div class="col-8"><mat-form-field appearance="fill">
         <mat-label>Elija le negocio que quiere crear</mat-label>
         <mat-select>
-            <mat-option *ngFor="let item of data.data.typeBusiness" [value]="item.id" (click)="getForm(item.id)">
+            <mat-option *ngFor="let item of select" [value]="item.id" (click)="getForm(item.id)">
                 {{item.name}}
               </mat-option>
         </mat-select>
