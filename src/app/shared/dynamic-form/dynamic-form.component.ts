@@ -162,8 +162,4 @@ export class DynamicFormComponent implements OnChanges {
 
   }
 
-  controles(){
-    console.log(this.myForm.controls);
-  }
-
 }
