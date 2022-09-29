@@ -18,8 +18,7 @@ export class DynamicTableComponent implements OnInit, OnChanges {
 
   @Input() Data: any;
 
-  columnsToDisplay: string[] = ['accion', 'id', 'name', 'description'];
-  columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
+  displayedColumns: string[] = [];
   dataSource =  new MatTableDataSource<any>();
 
   constructor() { 
@@ -33,7 +32,8 @@ export class DynamicTableComponent implements OnInit, OnChanges {
   }
 
   drawTable(data:any){
-    this.dataSource.data = data?.currentValue?.data?.typeBusiness;
+    this.displayedColumns = data?.currentValue?.data?.table?.encabezados;
+    this.dataSource.data = data?.currentValue?.data?.data;
   }
 
 }

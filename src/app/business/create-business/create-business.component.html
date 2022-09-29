@@ -1,4 +1,5 @@
-<h1>Crear {{data.categoria.name}}</h1>
+<div *ngIf="data">
+    <h1>Crear {{data.categoria.name}}</h1>
 <br><br>
 <div class="row">
     <div class="col-2"></div>
@@ -14,8 +15,11 @@
     <div class="col-2"></div>
 </div>
 <div mat-dialog-content>
-    <app-dynamic-form *ngIf="band" [jsonFormData]="formulario.data.form"></app-dynamic-form>
+    <app-dynamic-form *ngIf="band" [jsonFormData]="formulario.data.form.form" (guardar)="guardar($event)"></app-dynamic-form>
 </div>
+
+</div>
+
 
       
 

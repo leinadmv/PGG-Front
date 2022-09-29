@@ -51,5 +51,14 @@ export class BusinessService {
     return this.modeloCreate;
   }
 
+  saveForm(form){
+
+    return this.http.post<any>(`${PGG_URL}formsBussines/saveBussines`, form)
+      .pipe(
+        catchError(this.handleError)
+      );
+
+  }
+
   
 }

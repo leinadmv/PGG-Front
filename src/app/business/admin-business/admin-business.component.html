@@ -8,4 +8,4 @@
     <div class="col-1"></div>
   </div>
 <br><br>
-<app-dynamic-table [Data]="infoBusiness"></app-dynamic-table>
+<app-dynamic-table *ngIf="infoBusiness" [Data]="infoBusiness"></app-dynamic-table>

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { saveAs as importedSaveAs } from 'file-saver';
 import { BusinessService } from 'src/app/service/rest/business.service';
@@ -48,6 +48,7 @@ export interface JsonFormData {
 export class DynamicFormComponent implements OnChanges {
 
   @Input() jsonFormData: any;
+  @Output() guardar = new EventEmitter<any>();
   fullForm: any;
   formulario:any = [];
 
@@ -60,7 +61,7 @@ export class DynamicFormComponent implements OnChanges {
  
     if (changes.jsonFormData) {
 
-      this.fullForm = JSON.parse(this.jsonFormData.form);
+      this.fullForm = JSON.parse(this.jsonFormData);
 
       this.fullForm.forEach(element => {
         this.createForm(element.form);
@@ -127,6 +128,7 @@ export class DynamicFormComponent implements OnChanges {
         this.myForm.controls[control.name].disable();
       }
     }
+
   }
 
   getErrorMessage(control) {
@@ -146,10 +148,10 @@ export class DynamicFormComponent implements OnChanges {
       if (this.myForm.controls[control.name].hasError('email')) {
         return `${control.label} debe ser un email`;
       }
-      if (this.myForm.controls[control.name].hasError('minLength')) {
+      if (this.myForm.controls[control.name].hasError('minlength')) {
         return `${control.label} debe tener mas de ${control.validators.minLength} caracteres`;
       }
-      if (this.myForm.controls[control.name].hasError('maxLength')) {
+      if (this.myForm.controls[control.name].hasError('maxlength')) {
         return `${control.label} debe tener menos de ${control.validators.maxLength} caracteres`;
       }
     }
@@ -170,7 +172,9 @@ export class DynamicFormComponent implements OnChanges {
       element.form.forEach(element => {
         element.value = this.myForm.value[element.name];
       });
-    });    
+    }); 
+  
+    this.guardar.emit(this.fullForm);
 
   }
 
@@ -231,10 +235,12 @@ export class DynamicFormComponent implements OnChanges {
 		sendSection.append('cont', cont.toString());
 		this.service.duplicateSeccion(sendSection).subscribe((resp) => {
 
+      let respuesta = JSON.parse(resp);
+
       if (this.fullForm[indexAuxSec].section.includes(Seccion.section)) {
-        this.fullForm.splice(indexAuxSec + 1, 0, resp);
+        this.fullForm.splice(indexAuxSec + 1, 0, respuesta);
       }
-			this.createForm(resp.form);
+			this.createForm(respuesta.form);
 		});
   }
 

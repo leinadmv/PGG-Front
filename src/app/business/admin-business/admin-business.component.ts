@@ -15,7 +15,7 @@ export class AdminBusinessComponent implements OnInit {
 
   color: any;
   categoria: any;
-  infoBusiness: any;
+  infoBusiness: any = null;
 
   constructor(private route: ActivatedRoute, private busineesService: BusinessService, public visualService: VisualService, public dialog: MatDialog, private router: Router) { }
 
@@ -28,7 +28,7 @@ export class AdminBusinessComponent implements OnInit {
     this.categoria = JSON.parse(localStorage.getItem('menu')).find(x => x.id === +id);
 
     const idCategorie = new FormData();
-		idCategorie.append('idCategorie', id);
+		idCategorie.append('idCategory', id);
 
     this.busineesService.getBusiness(idCategorie).subscribe(resp => {
       this.infoBusiness = resp;
