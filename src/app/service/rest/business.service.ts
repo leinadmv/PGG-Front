@@ -56,8 +56,25 @@ export class BusinessService {
     return this.http.post<any>(`${PGG_URL}formsBussines/saveBussines`, form)
       .pipe(
         catchError(this.handleError)
-      );
+    );
 
+  }
+
+  downloadTemplate(idBusiness: any){
+
+    return this.http.post<any>(`${PGG_URL}files/getTemplatePerCategory`, idBusiness)
+      .pipe(
+        catchError(this.handleError)
+    );
+
+  }
+
+  cargarTemplate(file: any){
+
+    return this.http.post<any>(`${PGG_URL}files/setTemplatePerCategory`, file)
+      .pipe(
+        catchError(this.handleError)
+    );
   }
 
   

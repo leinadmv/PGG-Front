@@ -80,15 +80,14 @@ if(type === 'crear'){
   this.userService.saveUser(user).subscribe((resp) => {
 
     this.createForm.reset();
-    this.router.navigate(['/app/admin-users']);
-
+  
     Swal.fire(
      'Creado!',
      resp.message,
       'success'
     )
     
-    this.router.navigate(['/app/admin-users']);
+    this.router.navigate(['/app/admin-users/1']);
 
   }),error=>{
 
@@ -98,7 +97,7 @@ if(type === 'crear'){
       text: 'No se ha podido crear el usuario!',
     })
 
-    this.router.navigate(['/app/admin-users']);
+    this.router.navigate(['/app/admin-users/1']);
     
   };
 

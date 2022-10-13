@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  backPgg : 'http://localhost:8000/api/',
+  //backPgg : 'http://localhost:8000/api/',
+  backPgg: 'https://pggmanager.net/public/api/',
 };

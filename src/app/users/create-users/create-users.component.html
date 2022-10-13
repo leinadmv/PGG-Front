@@ -212,7 +212,7 @@
         <div class="col-2 button">
           <button *ngIf="modelo?.type !== 'ver'" type='submit' mat-raised-button color="success" disabled='{{createForm.invalid}}' cdkFocusInitial>{{modelo?.tittle}}</button>
         </div><div class="col-6">
-          <button *ngIf="modelo?.type === 'editar'" type='submit' mat-raised-button color="success" routerLink="/app/admin-users">Volver a Usuarios</button>
+          <button *ngIf="modelo?.type === 'editar'" mat-raised-button color="success" routerLink="/app/admin-users/1">Volver a Usuarios</button>
         </div></div>
       </div>
     </form>

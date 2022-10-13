@@ -16,3 +16,7 @@ th{
 .icon-display {
   transform: scale(2);
 }
+
+table {
+  width: 100%;
+}

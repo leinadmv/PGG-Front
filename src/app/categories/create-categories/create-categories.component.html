@@ -57,7 +57,10 @@
           >
         </mat-form-field>
         <div class="row">
-          <div class="col-5"></div>
+          <div class="col-4">
+
+          </div>
+
           <div class="col-2 button">
             <button
               *ngIf="modelo?.type !== 'ver'"
@@ -68,14 +71,16 @@
               cdkFocusInitial
             >
               {{ modelo?.tittle }}
-            </button></div>
-            <div class="col-6 button">
+            </button>
+          
+          </div>
+
+            <div class="col-5 button">
             <button
               *ngIf="modelo?.type === 'editar'"
-              type="submit"
               mat-raised-button
               color="success"
-              routerLink="/app/admin-categories"
+              routerLink="/app/admin-categories/2"
             >
               Volver a Categorias
             </button></div>

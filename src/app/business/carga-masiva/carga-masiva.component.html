@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Carga Masiva</h1>
+<div mat-dialog-content>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-4" style="text-align: center;">
+      <button mat-raised-button color="success" (click)="descargarPlantilla()"><mat-icon>save_alt</mat-icon> Descargar Plantilla</button>
+    </div>
+    <div class="col-4" style="text-align: center;">
+      <button mat-raised-button color="success" (click)="fileInput.click()"><mat-icon> publish</mat-icon> Carga Archivo</button>
+      <input hidden (change)="cargarPlantilla($event)" #fileInput type="file" id="file" accept=".xlsx"> 
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>

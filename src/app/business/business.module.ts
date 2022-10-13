@@ -7,12 +7,14 @@ import { DemoMaterialModule } from '../demo-material-module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { CreateBusinessComponent } from './create-business/create-business.component';
+import { CargaMasivaComponent } from './carga-masiva/carga-masiva.component';
 
 
 @NgModule({
   declarations: [
     AdminBusinessComponent,
-    CreateBusinessComponent
+    CreateBusinessComponent,
+    CargaMasivaComponent
   ],
   imports: [
     CommonModule,

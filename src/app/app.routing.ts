@@ -41,6 +41,10 @@ export const AppRoutes: Routes = [
         path: '',
         loadChildren: () => import('./business/business.module').then(m => m.BusinessModule)
       },
+      {
+        path: '',
+        loadChildren: () => import('./calendar/calendar.module').then(m => m.CalendarModule)
+      }
     ]
   },
   {

@@ -23,7 +23,7 @@ export class ViewUserComponent implements OnInit {
 
   ngOnInit() {
 
-    this.visualService.changeColor('usersGrey');
+    this.visualService.changeColor('users');
 
     this.userService.getUserWhitToken().subscribe(async resp => {
       
