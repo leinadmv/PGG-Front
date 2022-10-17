@@ -26,6 +26,11 @@
                 >¡Advertencia! Este campo es requerido</span
               ></mat-error
             >
+            <mat-error *ngIf="error.firstName.errors"
+              ><span *ngIf="error.firstName.errors.minlength"
+                >¡Advertencia! Este campo debe tener mas de 4 caracteres</span
+              ></mat-error
+            >
           </mat-form-field>
         </div>
         <br />
@@ -37,6 +42,11 @@
               formControlName="middleName"
               placeholder="Ingresa tu segundo nombre"
             />
+            <mat-error *ngIf="error.middleName.errors"
+              ><span *ngIf="error.middleName.errors.minlength"
+                >¡Advertencia! Este campo debe tener mas de 4 caracteres</span
+              ></mat-error
+            >
           </mat-form-field>
         </div>
       <br />
@@ -54,6 +64,11 @@
                 >¡Advertencia! Este campo es requerido</span
               ></mat-error
             >
+            <mat-error *ngIf="error.firstLastname.errors"
+              ><span *ngIf="error.firstLastname.errors.minlength"
+                >¡Advertencia! Este campo debe tener mas de 4 caracteres</span
+              ></mat-error
+            >
           </mat-form-field>
         </div>
         <br />
@@ -62,13 +77,12 @@
             <mat-label>Segundo apellido</mat-label>
             <input
               matInput
-              required
               formControlName="secondLastname"
               placeholder="Ingresa tu segundo apellido"
             />
             <mat-error *ngIf="error.secondLastname.errors"
-              ><span *ngIf="error.secondLastname.errors.required"
-                >¡Advertencia! Este campo es requerido</span
+              ><span *ngIf="error.secondLastname.errors.minlength"
+                >¡Advertencia! Este campo debe tener mas de 4 caracteres</span
               ></mat-error
             >
           </mat-form-field>
@@ -110,6 +124,7 @@
           <mat-form-field appearance="fill">
             <mat-label>Numero de documento</mat-label>
             <input
+              type="number"
               matInput
               required
               formControlName="documentNumber"
@@ -121,7 +136,7 @@
               ></mat-error
             >
             <mat-error *ngIf="error.documentNumber.errors"
-              ><span *ngIf="error.documentNumber.errors.minlength"
+              ><span *ngIf="error.documentNumber.errors.min"
                 >¡Aún falta! Recibimos mínimo 5 caracteres</span
               ></mat-error
             >
@@ -146,6 +161,11 @@
           <mat-error *ngIf="error.phone.errors"
           ><span *ngIf="error.phone.errors.min"
             >¡Advertencia! Este campo requiere minimo de 10 caracteres</span
+          ></mat-error
+        >
+        <mat-error *ngIf="error.phone.errors"
+          ><span *ngIf="error.phone.errors.max"
+            >¡Advertencia! Este campo requiere maximo de 10 caracteres</span
           ></mat-error
         >
         </mat-form-field>
@@ -187,6 +207,11 @@
                 >¡Advertencia! Este campo es requerido</span
               ></mat-error
             >
+            <mat-error *ngIf="error.position.errors"
+              ><span *ngIf="error.position.errors.minlength"
+                >¡Advertencia! Este campo debe tener mas de 3 caracteres</span
+              ></mat-error
+            >
           </mat-form-field>
         </div>
         <br />
@@ -202,6 +227,11 @@
             <mat-error *ngIf="error.business.errors"
               ><span *ngIf="error.business.errors.required"
                 >¡Advertencia! Este campo es requerido</span
+              ></mat-error
+            >
+            <mat-error *ngIf="error.business.errors"
+              ><span *ngIf="error.business.errors.minlength"
+                >¡Advertencia! Este campo debe tener mas de 3 caracteres</span
               ></mat-error
             >
           </mat-form-field>

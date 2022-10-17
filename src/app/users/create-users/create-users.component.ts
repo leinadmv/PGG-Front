@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, MinLengthValidator, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { min } from 'rxjs-compat/operator/min';
 import { UsersService } from 'src/app/service/rest/users.service';
@@ -43,17 +43,17 @@ export class CreateUsersComponent implements OnInit {
   formControl() {
 
     this.createForm = new FormGroup({
-      firstName: new FormControl('', [Validators.required, ]),
-      middleName: new FormControl('', []),
-      firstLastname: new FormControl('', [Validators.required, ]),
-      secondLastname: new FormControl('', [Validators.required, ]),
+      firstName: new FormControl('', [Validators.required, Validators.minLength(4) ]),
+      middleName: new FormControl('', [Validators.minLength(4)]),
+      firstLastname: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      secondLastname: new FormControl('', [Validators.minLength(4)]),
       fkDocumentType: new FormControl('', [Validators.required, ]),
-      documentNumber: new FormControl('', [Validators.required, ]),
+      documentNumber: new FormControl('', [Validators.required, Validators.min(9999) ]),
       email: new FormControl('', [Validators.required, Validators.email ]),
-      phone: new FormControl('', [Validators.required, Validators.min(999999999) ]),
-      position: new FormControl('', [Validators.required, ]),
-      business: new FormControl('', [Validators.required, ]),
-      roles: new FormControl('', [Validators.required, ]),
+      phone: new FormControl('', [Validators.required, Validators.min(999999999), Validators.max(11111111111)]),
+      position: new FormControl('', [Validators.required, Validators.minLength(3) ]),
+      business: new FormControl('', [Validators.required, Validators.minLength(3) ]),
+      roles: new FormControl('', [Validators.required ]),
     });
 
   }

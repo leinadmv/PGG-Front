@@ -43,7 +43,8 @@
 
               <input matInput *ngIf="control.type === 'calc'" [type]="text"
               [formControlName]="control.name"
-              [value]="control.value">
+              [value]="control.value"
+              disabled = true>
       
               <textarea matInput *ngIf="control.type === 'textarea'"
               [formControlName]="control.name"
