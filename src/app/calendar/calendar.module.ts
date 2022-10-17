@@ -8,7 +8,8 @@ import { CalendarRoutes } from './calendar.routing';
 import { AdminCalendarComponent } from './admin-calendar/admin-calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
-import interactionPlugin from '@fullcalendar/interaction'; 
+import interactionPlugin from '@fullcalendar/interaction';
+import { SelectCalendarComponent } from './select-calendar/select-calendar.component'; 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -17,7 +18,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 
 @NgModule({
   declarations: [
-    AdminCalendarComponent
+    AdminCalendarComponent,
+    SelectCalendarComponent
   ],
   imports: [
     CommonModule,
