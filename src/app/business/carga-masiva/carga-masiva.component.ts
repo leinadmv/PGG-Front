@@ -22,7 +22,7 @@ export class CargaMasivaComponent implements OnInit {
 		idCategorie.append('idCategory', this.data);
     this.service.downloadTemplate(idCategorie).subscribe(async resp => {
       console.log(resp);
-      importedSaveAs(resp.data.template, 'Plantilla carga masiva.xlsx');
+      importedSaveAs(resp.data.template);
     })
     
   }
