@@ -62,14 +62,11 @@ export class DynamicFormComponent implements OnChanges {
     if (changes.jsonFormData) {
 
       this.fullForm = JSON.parse(this.jsonFormData);
-      console.log(this.fullForm);
-
+     
       this.fullForm.forEach(element => {
         this.createForm(element.form);
       });
 
-      console.log(this.myForm);
-   
     }
 
   }
@@ -140,10 +137,6 @@ export class DynamicFormComponent implements OnChanges {
   }
 
   getErrorMessage(control) {
-
-    if(control.type === 'date'){
-      console.log(control);
-    }
 
     if (this.myForm.controls[control.name]) {
       if (this.myForm.controls[control.name].hasError('required')) {
