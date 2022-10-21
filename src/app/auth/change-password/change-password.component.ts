@@ -2,6 +2,7 @@ import { T } from '@angular/cdk/keycodes';
 import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/rest/auth.service';
 import Swal from 'sweetalert2';
 
@@ -17,7 +18,7 @@ export class ChangePasswordComponent implements OnInit {
   loginForm: FormGroup;
   
 
-  constructor(private authService: AuthService, public dialog: MatDialog, public dialogRef: MatDialogRef<ChangePasswordComponent>) { }
+  constructor(private authService: AuthService, public dialog: MatDialog, public dialogRef: MatDialogRef<ChangePasswordComponent>, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -51,6 +52,19 @@ export class ChangePasswordComponent implements OnInit {
           text: resp.message,
         });
         this.dialogRef.close();
+
+        this.authService.logOut().subscribe(resp =>{
+          localStorage.clear();
+          this.router.navigate(['/']);
+        });error=>{
+    
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No se ha podido deslogear!',
+          })
+        }
+
       }, error=>{
 
         Swal.fire({

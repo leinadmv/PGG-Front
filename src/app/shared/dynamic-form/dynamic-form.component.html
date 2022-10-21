@@ -43,15 +43,15 @@
 
               <input matInput *ngIf="control.type === 'calc'" [type]="text"
               [formControlName]="control.name"
-              [value]="control.value"
-              disabled = true>
+              [value]="control.value">
       
               <textarea matInput *ngIf="control.type === 'textarea'"
               [formControlName]="control.name"
               [value]="control.value"></textarea>
     
+              
               <mat-select *ngIf="control.type === 'select'" [formControlName]="control.name">
-                <mat-option *ngFor="let option of control.options" value="option.value">{{option.label}}</mat-option>
+                <mat-option *ngFor="let option of control.options" [value]="option.value">{{option.label}}</mat-option>
               </mat-select>
     
               <div *ngIf="control.type === 'date'">

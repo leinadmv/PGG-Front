@@ -62,10 +62,13 @@ export class DynamicFormComponent implements OnChanges {
     if (changes.jsonFormData) {
 
       this.fullForm = JSON.parse(this.jsonFormData);
+      console.log(this.fullForm);
 
       this.fullForm.forEach(element => {
         this.createForm(element.form);
       });
+
+      console.log(this.myForm);
    
     }
 
@@ -124,14 +127,24 @@ export class DynamicFormComponent implements OnChanges {
 
       if(control.enable){
         this.myForm.controls[control.name].enable();
-      } else if(control.disabled){
+      } else if(control.disabled || control.type === 'calc'){
         this.myForm.controls[control.name].disable();
       }
+
+      if((control.type === 'select' || control.type === 'date') && control.value !== ''){
+        this.myForm.get(control.name).setValue(control.value);
+      }
+
     }
 
   }
 
   getErrorMessage(control) {
+
+    if(control.type === 'date'){
+      console.log(control);
+    }
+
     if (this.myForm.controls[control.name]) {
       if (this.myForm.controls[control.name].hasError('required')) {
         return `${control.label} es requerido`;
