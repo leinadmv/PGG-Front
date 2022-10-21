@@ -35,7 +35,6 @@ export class CreateBusinessComponent implements OnInit {
       this.mensaje = 'Crear'
     } else if(this.data?.accion === 'editar'){
       this.formulario = this.data?.answers;
-      console.log(this.data)
       this.band = true;
       this.mensaje = 'Editar '+this.data?.type_bussines?.name;
     }
@@ -53,7 +52,6 @@ export class CreateBusinessComponent implements OnInit {
 
     this.businessService.getForm(idTypeBusiness).subscribe(resp => {
       this.formulario = resp.data.form.form;
-      console.log(this.formulario);
       this.band = true;
     }, error=>{
 

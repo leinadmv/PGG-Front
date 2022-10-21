@@ -113,7 +113,6 @@ export class AdminCalendarComponent implements OnInit {
     dates.append('Year', this.Year);
     const noti = await this.service.getNotification(dates).toPromise();
     this.notifications = noti.data.notifications;
-    console.log(this.notifications);
 
   }
 
@@ -148,8 +147,6 @@ export class AdminCalendarComponent implements OnInit {
   }
 
   eventClick(arg){
-    console.log(arg)
-
     arg.event._def['accion'] = 'ver';
     const dialogRef = this.dialog.open(SelectCalendarComponent,{
       width: '40%',

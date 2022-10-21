@@ -37,7 +37,6 @@ export class SelectCalendarComponent implements OnInit {
       this.mensaje = 'Crear'
     }
     this.users = await this.userService.getUsers().toPromise();
-    console.log(this.data);
 
   }
 
