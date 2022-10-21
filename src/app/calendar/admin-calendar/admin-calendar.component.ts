@@ -59,7 +59,8 @@ export class AdminCalendarComponent implements OnInit {
         },
       },
       select: this.dateClick.bind(this),
-      events: this.notifications
+      events: this.notifications,
+      eventClick: this.eventClick.bind(this)
       /* events: [
         {
           id: '1',
@@ -117,9 +118,9 @@ export class AdminCalendarComponent implements OnInit {
   }
 
   dateClick(arg){
-    console.log(arg);
+    
 
-    if(moment(arg.startStr).isBefore(moment())) {
+    if(moment(arg.startStr).isBefore(moment().subtract(1, 'days'))) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -144,6 +145,27 @@ export class AdminCalendarComponent implements OnInit {
     }
 
     
+  }
+
+  eventClick(arg){
+    console.log(arg)
+
+    arg.event._def['accion'] = 'ver';
+    const dialogRef = this.dialog.open(SelectCalendarComponent,{
+      width: '40%',
+      panelClass: 'custom-dialog-container',
+      data: arg.event._def
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.consultarNotificaciones();
+      const calendarApi = this.calendarComponent.getApi();
+      calendarApi.today();
+      let date = new Date(calendarApi.getDate());
+      this.Month = moment(date).locale('es').format('MM');
+      this.Year = moment(date).locale('es').format('YYYY');
+      this.consultarNotificaciones();
+    });
   }
 
 }

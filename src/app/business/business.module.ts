@@ -8,13 +8,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { CreateBusinessComponent } from './create-business/create-business.component';
 import { CargaMasivaComponent } from './carga-masiva/carga-masiva.component';
+import { EditBusinessComponent } from './edit-business/edit-business.component';
 
 
 @NgModule({
   declarations: [
     AdminBusinessComponent,
     CreateBusinessComponent,
-    CargaMasivaComponent
+    CargaMasivaComponent,
+    EditBusinessComponent
   ],
   imports: [
     CommonModule,

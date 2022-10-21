@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { validateBasis } from '@angular/flex-layout';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import * as moment from 'moment';
 import { CalendarService } from 'src/app/service/rest/calendar.service';
 import { UsersService } from 'src/app/service/rest/users.service';
 import Swal from 'sweetalert2';
@@ -20,13 +21,23 @@ export class SelectCalendarComponent implements OnInit {
 
   Form: FormGroup;
   users: any = [];
+  band: boolean = true;
+  mensaje: string = '';
   
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private userService: UsersService, private calendarService: CalendarService) { }
 
   async ngOnInit(): Promise<void> {
+    
     this.formControl();
+    if(this.data?.accion === 'ver'){
+      this.band = false;
+      this.editar();
+      this.mensaje = 'Ver'
+    } else {
+      this.mensaje = 'Crear'
+    }
     this.users = await this.userService.getUsers().toPromise();
-    console.log(this.users);
+    console.log(this.data);
 
   }
 
@@ -50,6 +61,12 @@ export class SelectCalendarComponent implements OnInit {
     this.Form.get('fechaStart').disable();
     this.Form.get('fechaEnd').disable();
 
+  }
+
+  editar(){
+    this.Form.disable();
+    this.Form.get('titulo').setValue(this.data.title);
+    this.Form.get('descripcion').setValue(this.data.extendedProps.description);
   }
 
   save(form: any){

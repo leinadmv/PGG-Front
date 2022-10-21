@@ -13,9 +13,11 @@ export class CreateBusinessComponent implements OnInit {
 
   formulario: any;
   band: boolean = false;
+  bandSelect:boolean = false;
   select: any;
   data: any = null;
   id: any = 0;
+  mensaje: string = ''
 
   constructor(private businessService: BusinessService, private _location: Location) { }
 
@@ -27,7 +29,18 @@ export class CreateBusinessComponent implements OnInit {
       this._location.back();
     }
 
-    this.select = this.data?.data?.selectTypeBussines;
+    if(this.data?.accion === 'crear'){
+      this.bandSelect = true;
+      this.select = this.data?.data?.selectTypeBussines;
+      this.mensaje = 'Crear'
+    } else if(this.data?.accion === 'editar'){
+      this.formulario = this.data?.answers;
+      console.log(this.data)
+      this.band = true;
+      this.mensaje = 'Editar '+this.data?.type_bussines?.name;
+    }
+
+    
   }
 
   getForm(id){
@@ -39,7 +52,8 @@ export class CreateBusinessComponent implements OnInit {
     this.id = id;
 
     this.businessService.getForm(idTypeBusiness).subscribe(resp => {
-      this.formulario = resp;
+      this.formulario = resp.data.form.form;
+      console.log(this.formulario);
       this.band = true;
     }, error=>{
 

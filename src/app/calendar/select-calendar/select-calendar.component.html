@@ -1,14 +1,12 @@
-<h1 mat-dialog-title>Crear recordatorio</h1>
+<h1 mat-dialog-title>{{mensaje}} recordatorio</h1>
 
 <form [formGroup]="Form" (ngSubmit)="save(Form)" >
 
 <div mat-dialog-content>
-  
-    
 
         <div class="row">
 
-            <div class="col-12">
+            <div class="col-12" *ngIf="band">
 
                 <mat-form-field appearance="fill">
                     <mat-label>Fecha</mat-label>
@@ -45,7 +43,7 @@
 
             </div>
 
-            <div class="col-12">
+            <div class="col-12" *ngIf="band">
 
                 <mat-form-field appearance="fill">
                     <mat-label>Hora</mat-label>
@@ -55,7 +53,7 @@
 
             </div>
 
-            <div class="col-12">
+            <div class="col-12" *ngIf="band">
                 
                 <mat-form-field appearance="fill">
                     <mat-label>Usuarios</mat-label>
@@ -80,7 +78,7 @@
     <div class="row">
         <div class="col-5">
         </div>
-        <div class="col-2">
+        <div class="col-2" *ngIf="band">
           <button type='submit' mat-raised-button color="success" disabled='{{Form.invalid}}' cdkFocusInitial [mat-dialog-close]="true">Guardar</button>
         </div>
     </div>

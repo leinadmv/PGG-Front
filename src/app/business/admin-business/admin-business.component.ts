@@ -35,6 +35,7 @@ export class AdminBusinessComponent implements OnInit {
     this.busineesService.getBusiness(idCategorie).subscribe(resp => {
       this.infoBusiness = resp;
       this.infoBusiness['categoria'] = this.categoria;
+      this.infoBusiness['accion'] = 'crear';
     }, error=>{
 
       Swal.fire({

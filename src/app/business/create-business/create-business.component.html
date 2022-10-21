@@ -1,9 +1,10 @@
 <div *ngIf="data">
-    <h1>Crear {{data.categoria.name}}</h1>
+    <h1>{{mensaje}} {{data?.categoria?.name}}</h1>
 <br><br>
 <div class="row">
     <div class="col-2"></div>
-    <div class="col-8"><mat-form-field appearance="fill">
+    <div class="col-8">
+        <mat-form-field appearance="fill" *ngIf="bandSelect">
         <mat-label>Elija le negocio que quiere crear</mat-label>
         <mat-select>
             <mat-option *ngFor="let item of select" [value]="item.id" (click)="getForm(item.id)">
@@ -11,11 +12,12 @@
               </mat-option>
         </mat-select>
 
-    </mat-form-field></div>
+    </mat-form-field>
+    </div>
     <div class="col-2"></div>
 </div>
 <div mat-dialog-content>
-    <app-dynamic-form *ngIf="band" [jsonFormData]="formulario.data.form.form" (guardar)="guardar($event)"></app-dynamic-form>
+    <app-dynamic-form *ngIf="band" [jsonFormData]="formulario" (guardar)="guardar($event)"></app-dynamic-form>
 </div>
 
 </div>

@@ -1,6 +1,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BusinessService } from 'src/app/service/rest/business.service';
 
 @Component({
   selector: 'app-dynamic-table',
@@ -21,10 +24,16 @@ export class DynamicTableComponent implements OnInit, OnChanges {
   displayedColumns: string[] = [];
   dataSource =  new MatTableDataSource<any>();
 
-  constructor() { 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  constructor(private router: Router, private busineesService: BusinessService) { 
   }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -33,7 +42,19 @@ export class DynamicTableComponent implements OnInit, OnChanges {
 
   drawTable(data:any){
     this.displayedColumns = data?.currentValue?.data?.table?.encabezados;
-    this.dataSource.data = data?.currentValue?.data?.data;
+    this.dataSource.data = data?.currentValue?.data?.table?.data;
   }
+
+  isArray(obj : any ) {
+    return !Array.isArray(obj)
+ }
+
+ editarForm(form: any){
+
+  this.router.navigate(['/app/create-business']);
+  form['accion'] = 'editar';
+  this.busineesService.createBusiness(form);
+ 
+}
 
 }
