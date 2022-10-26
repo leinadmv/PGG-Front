@@ -50,11 +50,12 @@ saveCategories(type, createCategory) {
   const categories = {
 
     name: createCategory.value.name,
-    description: createCategory.value.description,
-    configuration: createCategory.value.configuration,
-}
+    description: createCategory.value.description
+  }
 
 if(type === 'crear'){
+
+  categories['configuration'] = {"state":"","type":"","name":"","icon":"","color": createCategory.value.configuration}
 
   this.categsService.saveCategories(categories).subscribe((resp) => {
 
@@ -81,7 +82,10 @@ if(type === 'crear'){
 
 } else if(type === 'editar') {
 
-  categories['id'] = this.modelo.row.id
+  categories['id'] = this.modelo.row.id;
+  const configuracion = JSON.parse(this.modelo.row.configuration);
+  configuracion.color = createCategory.value.configuration;
+  categories['configuration'] = JSON.stringify(configuracion);
 
   this.categsService.updateCategories(categories).subscribe((resp) => {
 
@@ -101,9 +105,9 @@ if(type === 'crear'){
 }
 } 
   setEdit(row: any ) {
-     this.createForm.controls.name.setValue(row.name);
+    this.createForm.controls.name.setValue(row.name);
     this.createForm.controls.description.setValue(row.description);
-    this.createForm.controls.configuration.setValue(row.configuration);
+    this.createForm.controls.configuration.setValue(row.color);
 
   }
 

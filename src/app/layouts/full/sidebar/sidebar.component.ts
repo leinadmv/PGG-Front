@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MenuItems } from '../../../shared/menu-items/menu-items';
 import { VisualService } from 'src/app/service/rest/visual.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -16,7 +17,7 @@ export class AppSidebarComponent implements OnDestroy {
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     public menuItems: MenuItems,
-    public visualService: VisualService
+    public visualService: VisualService,
   ) {
     this.mobileQuery = media.matchMedia('(min-width: 768px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -31,4 +32,5 @@ export class AppSidebarComponent implements OnDestroy {
     localStorage.setItem('color', color);
     this.visualService.changeColor(color);
   }
+
 }

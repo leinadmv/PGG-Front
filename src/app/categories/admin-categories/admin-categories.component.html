@@ -40,7 +40,7 @@
         <mat-slide-toggle
           class="example-margin"
           (click)="changeStatus(row.id, row.status)"
-          [checked]="row.status === 0 ? 'true' : 'false'"
+          [checked]="row.status === 0 ? 'false' : 'true'"
         >
         </mat-slide-toggle>
       </td>
@@ -95,20 +95,20 @@
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="configuration">
+    <ng-container matColumnDef="color">
       <th
         style="padding-left: 20px; padding-right: 20px"
         mat-header-cell
         *matHeaderCellDef
       >
-        Configuracion
+        Color
       </th>
       <td
         style="padding-left: 20px; padding-right: 20px"
         mat-cell
         *matCellDef="let row"
       >
-        {{ row.configuration }}
+        {{ row.color }}
       </td>
     </ng-container>
 

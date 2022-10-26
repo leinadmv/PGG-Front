@@ -77,5 +77,14 @@ export class BusinessService {
     );
   }
 
+  informeCategoria(id){
+
+    return this.http.get<any>(`${PGG_URL}categoriesBussines/reports?idCategory=${id}`)
+      .pipe(
+        catchError(this.handleError)
+    );
+
+  }
+
   
 }

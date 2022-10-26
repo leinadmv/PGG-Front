@@ -41,6 +41,7 @@ export class DynamicTableComponent implements OnInit, OnChanges {
   }
 
   drawTable(data:any){
+    console.log(data);
     this.displayedColumns = data?.currentValue?.data?.table?.encabezados;
     this.dataSource.data = data?.currentValue?.data?.table?.data;
   }

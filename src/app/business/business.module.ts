@@ -9,6 +9,9 @@ import { SharedModule } from '../shared/shared.module';
 import { CreateBusinessComponent } from './create-business/create-business.component';
 import { CargaMasivaComponent } from './carga-masiva/carga-masiva.component';
 import { EditBusinessComponent } from './edit-business/edit-business.component';
+import { DashboardBusinessComponent } from './dashboard-business/dashboard-business.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -16,14 +19,17 @@ import { EditBusinessComponent } from './edit-business/edit-business.component';
     AdminBusinessComponent,
     CreateBusinessComponent,
     CargaMasivaComponent,
-    EditBusinessComponent
+    EditBusinessComponent,
+    DashboardBusinessComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(BusinessRoutes),
     DemoMaterialModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    FlexLayoutModule,
+    NgApexchartsModule,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

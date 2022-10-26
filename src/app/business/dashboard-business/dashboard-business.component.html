@@ -1,0 +1,127 @@
+<div class="row">
+    <div class="col 10"> <h1>  <mat-icon class="icon-display">account_balance</mat-icon> Resumen inmuebles   </h1>  </div>
+    <div class="col-1">
+      <button mat-raised-button color="success" (click)="routerAdmin()">
+        Administrar inmuebles
+      </button>
+    </div>
+    <div class="col-1"></div>
+</div>
+<br>
+<div fxLayout="row wrap">
+
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+      <h1>  <mat-icon>home</mat-icon> Inmuebles  </h1>
+      <br>
+      <app-dynamic-table *ngIf="tablaVar" [Data]="tabla"></app-dynamic-table>
+    </div>
+    
+      <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+          
+        <h1>  <mat-icon>notification_important</mat-icon> Eventos   </h1>
+    <br>
+    <div *ngFor="let item of notificaciones" style="overflow-y: auto;">
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title> <h2>{{item.title}}</h2> Hora: <p> <mat-icon>alarm</mat-icon> {{item.time}} </p> </mat-card-title>
+        </mat-card-header>
+      </mat-card>
+
+    </div>
+
+      </div>
+
+    </div>
+    <br>
+    <br>
+    <div fxLayout="row wrap">
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+              <div class="d-flex flex-wrap">
+                <div>
+                  <mat-card-title>Sales Overview</mat-card-title>
+                  <mat-card-subtitle>Ample Admin Vs Material Admin</mat-card-subtitle>
+                </div>
+                <div class="ml-auto">
+                  <ul class="list-inline">
+                    <li>
+                      <h6 class="text-success m-0">
+                        <i class="mdi mdi-checkbox-blank-circle font-10 m-r-10"></i>Ample
+                      </h6>
+                    </li>
+                    <li>
+                      <h6 class="text-info m-0">
+                        <i class="mdi mdi-checkbox-blank-circle font-10 m-r-10"></i>Pixel
+                      </h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+          
+              <div>
+                <apx-chart
+                  [series]="chartOptions.series"
+                  [chart]="chartOptions.chart"
+                  [dataLabels]="chartOptions.dataLabels"
+                  [plotOptions]="chartOptions.plotOptions"
+                  [yaxis]="chartOptions.yaxis"
+                  [legend]="chartOptions.legend"
+                  [fill]="chartOptions.fill"
+                  [stroke]="chartOptions.stroke"
+                  [tooltip]="chartOptions.tooltip"
+                  [xaxis]="chartOptions.xaxis"
+                  [grid]="chartOptions.grid"
+                >
+                </apx-chart>
+              </div>
+            </mat-card-content>
+          </mat-card>
+    </div>
+  
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+              <mat-card-title>Our Visitors</mat-card-title>
+              <mat-card-subtitle>Different Devices Used to Visit</mat-card-subtitle>
+              <div class="piechart">
+                <apx-chart
+                  [series]="VisitorChartOptions.series"
+                  [chart]="VisitorChartOptions.chart"
+                  [labels]="VisitorChartOptions.labels"
+                  [responsive]="VisitorChartOptions.responsive"
+                  [tooltip]="VisitorChartOptions.tooltip"
+                  [legend]="VisitorChartOptions.legend"
+                  [colors]="VisitorChartOptions.colors"
+                  [dataLabels]="VisitorChartOptions.dataLabels"
+                  [plotOptions]="VisitorChartOptions.plotOptions"
+                  [stroke]="VisitorChartOptions.stroke"
+                >
+                </apx-chart>
+              </div>
+            </mat-card-content>
+            <hr />
+            <mat-card-content>
+              <ul class="list-inline text-center">
+                <li>
+                  <h6 class="text-success m-0">
+                    <i class="mdi mdi-checkbox-blank-circle font-10 m-r-10"></i>Mobile
+                  </h6>
+                </li>
+                <li>
+                  <h6 class="text-info m-0">
+                    <i class="mdi mdi-checkbox-blank-circle font-10 m-r-10"></i>Desktop
+                  </h6>
+                </li>
+                <li>
+                  <h6 class="text-purple m-0">
+                    <i class="mdi mdi-checkbox-blank-circle font-10 m-r-10"></i>Tablet
+                  </h6>
+                </li>
+              </ul>
+            </mat-card-content>
+          </mat-card>
+    </div>
+
+</div>

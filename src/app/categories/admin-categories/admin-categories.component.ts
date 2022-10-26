@@ -18,7 +18,7 @@ export class AdminCategoriesComponent implements OnInit {
   color: any;
   checked = true;
 
-  displayedColumns: string[] = ['accion', 'estado', 'id', 'name', 'description', 'configuration' ];
+  displayedColumns: string[] = ['accion', 'estado', 'id', 'name', 'description', 'color' ];
   dataSource =  new MatTableDataSource<any>();
 
   constructor(private router: Router , public categsService : CategoriesService, public visualService: VisualService) { }
@@ -34,6 +34,8 @@ export class AdminCategoriesComponent implements OnInit {
   getCategories() {
     this.categsService.getCategories().subscribe((resp) => {
       this.dataSource.data = resp.data.categories;
+
+      console.log(resp.data.categories);
     
     });error=>{
 

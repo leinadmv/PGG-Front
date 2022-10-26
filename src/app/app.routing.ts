@@ -12,11 +12,11 @@ export const AppRoutes: Routes = [
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     children: [
-      /* {
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full'
-      }, */
+      },
       {
         path: '',
         loadChildren: () => import('./material-component/material.module').then(m => m.MaterialComponentsModule)
